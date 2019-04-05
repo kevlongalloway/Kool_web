@@ -4,10 +4,11 @@
             <div class="col-md-8">
                 <div class="card">
                     <ul class="list-group">
-                        <li v-for="user in users" :key="user.id" class="list-group-item">{{user.name}}</li>
+                        <li class="list-group-item"><a href="#">Add New Organization</a></li>
+                        <li v-for="user in users" :key="user.id" class="list-group-item"><a href="#">{{user.name}}</a></li>
                     </ul>
                 </div>
-                <nav aria-label="Pagination">
+                <nav aria-label="Page navigation example">
                   <ul class="pagination">
                     <li v-bind:class="{'disabled':(!pagination.prev_page_url),'page-item' : true}">
                         <button class="page-link" v-on:click="fetchPaginateUsers(pagination.prev_page_url)">Previous</button>
@@ -32,7 +33,7 @@
         data(){
            return{
              users : [],
-             url: '/api/test',
+             url: '/api/organizations',
              pagination : []
            }
         },
@@ -46,7 +47,7 @@
                 let $this = this
                 axios.get(this.url)
                 .then(response => {
-                    this.users = response.data.data       
+                    this.users = response.data.data      
                  $this.makePagination(response.data)
                 });
             },

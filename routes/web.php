@@ -19,9 +19,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/subscriptions',function(){
-	return view('subscriptions');
-})->name('subscriptions');
 
 Route::get('/admin/CreateOrganization','Admin\CreateOrgController@index')->name('admin.createorg');
 
@@ -32,6 +29,12 @@ Route::post('admin','Admin\Auth\LoginController@login')->name('admin.login');
 
 Route::get('admin/home', 'Admin\HomeController@index')->name('admin.home');
 
+/*ADMIN WEB-API ROUTES*/
+Route::get('/api/organizations','Admin\OrganizationController@index');
+Route::post('/api/organizations','Admin\OrganizationController@store');
+
+
+
 
 
 /*TEST ROUTES*/
@@ -40,3 +43,5 @@ Route::get('/test','Organization\TestController@run');
 Route::post('/test','Organization\TestController@store')->name('test');
 
 Route::get('api/test','Organization\TestController@api');
+
+Route::get('delete/{user}','Admin\UserController@delete');

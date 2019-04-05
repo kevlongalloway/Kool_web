@@ -49,9 +49,19 @@
                                 </li>
                             @endif
                         @else
+                            @auth('web')
                             <li class="nav-item">
                                 <router-link class="nav-link" to="/home">Home</router-link>
                             </li>
+                            @endauth
+                            @auth('admin')
+                            <li class="nav-item">
+                                <router-link class="nav-link" to="/admin/home">Home</router-link>
+                            </li>
+                            <li class="nav-item">
+                                <router-link class="nav-link" to="/admin/users">User Dashboard</router-link>
+                            </li>
+                            @endauth
                             <li class="nav-item">
                                 <router-link class="nav-link" to="/users">Users</router-link>
                             </li>
@@ -79,11 +89,8 @@
         </nav>
 
         <main class="py-4">
-            <router-view></router-view>
             <vue-progress-bar></vue-progress-bar>
             @yield('content')
-
-
         </main>
     </div>
 </body>

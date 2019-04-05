@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\User;
 
 class Organization extends Authenticatable
 {
@@ -71,6 +72,9 @@ class Organization extends Authenticatable
     public function setSubscriptionLevel($id){
         $this->update(['subscription_id' => $id]);
     }
+
+
+
 
     protected function teacherData($request){
         return $data = [

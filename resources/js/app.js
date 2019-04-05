@@ -30,6 +30,8 @@ Vue.use(VueRouter)
 	
 const routes = [
 	{path:'/home',component: require('./components/ExampleComponent.vue').default},
+  {path:'/admin/home',component: require('./components/ExampleComponent.vue').default},
+  {path:'/admin/users',component: require('./components/Admin/Organizations.vue').default},
 	{path:'/users',component: require('./components/UserList.vue').default,meta: {
       progress: {
         func: [

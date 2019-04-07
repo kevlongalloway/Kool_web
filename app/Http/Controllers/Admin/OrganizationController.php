@@ -20,9 +20,9 @@ class OrganizationController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
@@ -30,10 +30,24 @@ class OrganizationController extends Controller
         return response()->json($organizations);
     }
 
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function show(Organization $organization){
         return $organization;
     }
 
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(AdminOrganizationPost $request){
         $organization  = Organization::create($request->all());
         $organization->generateAccessCode();
@@ -42,11 +56,25 @@ class OrganizationController extends Controller
     }
 
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function update(Request $request, Organization $organization){
         $organization->update($request->all());
         return response()->json(null,204);
     }
 
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function delete(Organization $organization){
         $organization->delete();
         return response()->json(null, 204);

@@ -62,6 +62,10 @@ class Teacher extends Authenticatable
         return $this->update(['first_login' => 1]);
     }
 
+    public function isActive(){
+        return $this->organization->isActive();
+    }
+
 
 
     

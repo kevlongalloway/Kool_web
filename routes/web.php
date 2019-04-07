@@ -31,7 +31,7 @@ Route::get('admin/home', 'Admin\HomeController@index')->name('admin.home');
 
 /*ADMIN WEB-API ROUTES*/
 Route::get('/api/organizations','Admin\OrganizationController@index');
-Route::post('/api/organizations','Admin\OrganizationController@store');
+Route::post('/api/organization','Admin\OrganizationController@store');
 
 
 

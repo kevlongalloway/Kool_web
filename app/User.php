@@ -73,4 +73,10 @@ class User extends Authenticatable
     public function leaveClass($class_id){
             return $this->classrooms()->detach($class_id);
     }
+
+    public function isActive(){
+        $this->organization_id == null :
+        return $this->is_active ?
+        return $this->organization->isActive();
+    }
 }

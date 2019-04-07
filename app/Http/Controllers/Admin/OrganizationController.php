@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use \App\Http\Requests\AdminOrganizationPost;
 use App\Http\Controllers\Controller;
-
 use App\Organization;
 
 class OrganizationController extends Controller
@@ -26,7 +26,7 @@ class OrganizationController extends Controller
      */
     public function index()
     {
-        $organizations =  Organization::orderBy('name','desc')->paginate(10);
+        $organizations =  Organization::orderBy('created_at','desc')->paginate(10);
         return response()->json($organizations);
     }
 
@@ -34,10 +34,13 @@ class OrganizationController extends Controller
         return $organization;
     }
 
-    public function store(Request $request){
+    public function store(AdminOrganizationPost $request){
         $organization  = Organization::create($request->all());
-        return response()->json($organization, 201);
+        $organization->generateAccessCode();
+        $organization->hashPassword($request);
+        return response()->json(null, 201);
     }
+
 
     public function update(Request $request, Organization $organization){
         $organization->update($request->all());

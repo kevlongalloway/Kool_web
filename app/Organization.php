@@ -18,7 +18,7 @@ class Organization extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','subscription_id',
+        'id','name', 'email', 'password','subscription_id','is_active'
     ];
 
     /**
@@ -73,7 +73,18 @@ class Organization extends Authenticatable
         $this->update(['subscription_id' => $id]);
     }
 
+    /*Check is user is active*/
+    public function isActive(){
+        return $this->is_active;
+    }
 
+    public function activate(){
+        return $this->update(['is_active' => 1]);
+    }
+
+    public function deactivate(){
+        return $this->update(['is_active' => 0]);
+    }
 
 
     protected function teacherData($request){
@@ -93,5 +104,16 @@ class Organization extends Authenticatable
 
     }
 
+    public function generateAccessCode(){
+        $code = rand(100000,999999);
+        if(!Organization::find($code)){
+           $this->update(['id' => $code]);
+           return $code;
+        }
+        generateAccessCode();
+    }
 
+    public function hashPassword($request){
+        $this->update(['password' => Hash::make($request->password)]);
+    }
 }

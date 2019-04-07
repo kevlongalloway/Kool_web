@@ -45,7 +45,7 @@
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('subscriptions') }}">Join Now</a>
+                                    <a class="nav-link" href="#">Join Now</a>
                                 </li>
                             @endif
                         @else

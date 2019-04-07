@@ -4,7 +4,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <ul class="list-group">
-                        <li class="list-group-item"><a href="#">Add New Organization</a></li>
+                        <li class="list-group-item"><router-link to="/admin/organization/store">Add New Organization</router-link></li>
                         <li v-for="user in users" :key="user.id" class="list-group-item"><a href="#">{{user.name}}</a></li>
                     </ul>
                 </div>

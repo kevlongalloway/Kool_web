@@ -38,7 +38,7 @@ class OrganizationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Organization $organization){
-        return $organization;
+        return response()->json($organization);
     }
 
 

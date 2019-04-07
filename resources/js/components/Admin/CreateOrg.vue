@@ -2,7 +2,7 @@
 	<div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Register New Organization</div>
+                <div class="card-header"><router-link to="/admin/users"><i class="fas fa-arrow-left"></i></router-link> Register New Organization</div>
 
                 <div class="card-body">
                    <form @submit="formSubmit">
@@ -27,8 +27,8 @@
                         <input v-model="organization.password_confirmation" :class="{'is-invalid' : errors.password}" type="password" class="form-control" placeholder="Confirm Password" required>
                       </div>
                         <div class="form-group">
-                            <label for="subscription_level">Subscription Level</label>
-                            <select v-model="organization.subscription_level" name="subscription_level" class="form-control" required>
+                            <label for="subscription_id">Subscription Level</label>
+                            <select v-model="organization.subscription_id" name="subscription_id" class="form-control" required>
                               <option value="1">Full School Site License</option>
                               <option value="2">Classroom</option>
                             </select>
@@ -56,24 +56,25 @@
                   email:'',
                   password:'',
                   password_confirmation:'',
-                  subscription_level:''
+                  subscription_id:''
                 },
                 errors:[]
                 };
             },
         methods: {
             formSubmit(e) {
+                const router = this.$router;
                 e.preventDefault();
                 let user = this
-                axios.post('/api/organization',{
+                axios.post('/organizations',{
                     name:this.organization.name,
                     email:this.organization.email,
                     password:this.organization.password,
                     password_confirmation:this.organization.password_confirmation,
-                    subscription_level:this.organization.subscription_level
+                    subscription_id:this.organization.subscription_id
                 })
                 .then(function(response){
-                    user.output = response.data
+                    router.push({path:'/admin/users'})
                 })
                 .catch(errors => {
                   this.errors = errors.response.data.errors

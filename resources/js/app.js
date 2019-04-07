@@ -31,7 +31,8 @@ Vue.use(VueRouter)
 const routes = [
 	{path:'/home',component: require('./components/ExampleComponent.vue').default},
   {path:'/admin/home',component: require('./components/ExampleComponent.vue').default},
-  {path:'/admin/users',component: require('./components/Admin/Organizations.vue').default},
+  {path:'/admin/users',component: require('./components/Admin/Organizations.vue').default,name: 'admin.users'},
+  {path:'/admin/user/:id',component: require('./components/Admin/ReadOrg.vue').default},
   {path:'/admin/organization/store',component: require('./components/Admin/CreateOrg.vue').default},
 	{path:'/users',component: require('./components/UserList.vue').default,meta: {
       progress: {
@@ -70,6 +71,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('user-list', require('./components/UserList.vue').default);
 Vue.component('subscriptions', require('./components/Subscriptions.vue').default);
 Vue.component('access-input', require('./components/AccessInput.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

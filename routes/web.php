@@ -29,9 +29,7 @@ Route::post('admin','Admin\Auth\LoginController@login')->name('admin.login');
 
 Route::get('admin/home', 'Admin\HomeController@index')->name('admin.home');
 
-/*ADMIN WEB-API ROUTES*/
-Route::get('/api/organizations','Admin\OrganizationController@index');
-Route::post('/api/organization','Admin\OrganizationController@store');
+Route::resource('organizations','Admin\OrganizationController');
 
 
 

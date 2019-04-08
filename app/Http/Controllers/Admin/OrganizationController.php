@@ -75,9 +75,10 @@ class OrganizationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete(Organization $organization){
+    public function destroy(Organization $organization){
         $organization->delete();
         return response()->json(null, 204);
     }
+
 }    
 

@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('grade')->nullable();
             $table->boolean('first_login')->default(0);
+            $table->boolean('is_active')->default(1);
             $table->integer('organization_id')->nullable();
             $table->rememberToken();
             $table->timestamps();

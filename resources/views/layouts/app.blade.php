@@ -16,6 +16,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -45,7 +46,7 @@
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('subscriptions') }}">Join Now</a>
+                                    <a class="nav-link" href="#">Join Now</a>
                                 </li>
                             @endif
                         @else
@@ -62,9 +63,6 @@
                                 <router-link class="nav-link" to="/admin/users">User Dashboard</router-link>
                             </li>
                             @endauth
-                            <li class="nav-item">
-                                <router-link class="nav-link" to="/users">Users</router-link>
-                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>

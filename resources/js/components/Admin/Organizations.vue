@@ -4,8 +4,9 @@
             <div class="col-md-8">
                 <div class="card">
                     <ul class="list-group">
-                        <li class="list-group-item"><a href="#">Add New Organization</a></li>
-                        <li v-for="user in users" :key="user.id" class="list-group-item"><a href="#">{{user.name}}</a></li>
+                        <li class="list-group-item"><router-link to="/admin/organization/store">Add New Organizations</router-link></li>
+                        <li v-if="loading" class="list-group-item"><strong>Loading...</strong></li>
+                        <li v-else v-for="user in users" :key="user.id" class="list-group-item"><router-link :to="{path: '/admin/user/' + user.id }">{{user.name}}</router-link></li>
                     </ul>
                 </div>
                 <nav aria-label="Page navigation example">
@@ -33,14 +34,16 @@
         data(){
            return{
              users : [],
-             url: '/api/organizations',
-             pagination : []
+             url: '/organizations',
+             pagination : [],
+             loading:true,
            }
         },
         beforeMount(){
             this.$Progress.start()
             this.getUsers()
             this.$Progress.finish()
+
         },
         methods:{
             getUsers(){
@@ -49,6 +52,7 @@
                 .then(response => {
                     this.users = response.data.data      
                  $this.makePagination(response.data)
+                this.loading = false
                 });
             },
             makePagination(data){

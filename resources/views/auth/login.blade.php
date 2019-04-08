@@ -67,7 +67,7 @@
                     </form>
                 </div>
             </div>
-                 <access-input></access-input>
+                 <access-input guard="user"></access-input>
         </div>
     </div>
 </div>

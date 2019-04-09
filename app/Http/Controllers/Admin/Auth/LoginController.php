@@ -60,12 +60,9 @@ class LoginController extends Controller
      */
     public function login(Request $request){
         $e = new Login;
-        if($e->login('admin')){
-            //if successful, redirect to their intended location
-            return redirect()->intended(route('admin.home'));
-        }
-        
-        return redirect()->back()->withInput($request->only('email', 'remember'));
+        $e->login('admin') ?
+            redirect()->intended(route('admin.home'):
+            redirect()->back()->withInput($request->only('email', 'remember');
     }
 
     /**

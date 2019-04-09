@@ -28,6 +28,7 @@ Vue.use(VueProgressBar, options)
 
 Vue.use(VueRouter)
 	
+
 const routes = [
 	{path:'/home',component: require('./components/ExampleComponent.vue').default},
   {path:'/admin/home',component: require('./components/ExampleComponent.vue').default},
@@ -46,7 +47,10 @@ const routes = [
     }},
 	{path:'/subscriptions',component:require('./components/Subscriptions.vue').default},
 	{path:'/subscriptions/package-1',component:require('./components/Subscriptions/package-1').default},
-	{path:'/subscriptions/package-2',component:require('./components/Subscriptions/package-2').default}
+	{path:'/subscriptions/package-2',component:require('./components/Subscriptions/package-2').default},
+  {path:'/registration/:guard/organization/:access_code', component: require('./components/Registration/Register.vue').default},
+
+
 
 	
 ]

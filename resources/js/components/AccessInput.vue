@@ -9,9 +9,9 @@
         </div>
 
         <div class="form-group row mb-0">
-            <small v-if="errors" class="text-danger">The given data was invalid</small>
+            <small v-if="errors == true" class="text-danger">The given data was invalid</small>
             <div class="col-md-8 offset-md-4">
-                <button type="submit" class="btn btn-primary" @click="formSubmit">
+                <button type="submit" class="btn btn-primary" @click="submitForm">
                     Next
                 </button>
             </div>
@@ -28,20 +28,27 @@
         data(){
             return {
                 access_code:'',
-                errors:false
+                errors:false,
+                url:'',
+                errors:{}
             };
         },
         props:['guard'],
         methods: {
-            formSubmit() {
-                const router = this.$router;
+            submitForm(){
+                const router = this.$router
                 axios.post('/access-code',{
-                    access_code: this.access_code,
+                    access_code:this.access_code,
                     guard:this.$props.guard
-                }).then(
-                    
-                )
-                .catch(errors => this.errors = true);
+                })
+                .then(function(response){
+                    console.log('then')
+                    router.push({path:'home'})
+                    router.go('/home')
+                })
+                .catch(function(errors){
+                    console.log('error')
+                })
             }
         }
 

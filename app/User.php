@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -75,8 +76,12 @@ class User extends Authenticatable
     }
 
     public function isActive(){
-        $this->organization_id == null :
-        return $this->is_active ?
-        return $this->organization->isActive();
+        return $this->organization_id == null ?
+         $this->is_active :
+         $this->organization->isActive();
+    }
+
+    public function hashPassword($request){
+        $this->update(['password' => Hash::make($request->password)]);
     }
 }

@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Hash;
 
 class Teacher extends Authenticatable
 {
@@ -66,6 +67,9 @@ class Teacher extends Authenticatable
         return $this->organization->isActive();
     }
 
+    public function hashPassword($request){
+        $this->update(['password' => Hash::make($request->password)]);
+    }
 
 
     

@@ -48,6 +48,10 @@ class Organization extends Authenticatable
         return $this->hasMany('App\User');
     }
 
+    public function resolveguard($guard){
+        return $guard == 'user' ? $this->users() : $this->teachers();
+    }
+
     public function playlists(){
         return $this->morphToMany('App\Playlist','playlistable');
     } 

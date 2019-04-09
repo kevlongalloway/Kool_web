@@ -19,6 +19,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('user.home');
 
 /*ADMIN ROUTES*/
 Route::get('admin','Admin\Auth\LoginController@showLoginForm');
@@ -42,4 +43,7 @@ Route::post('portal','Teacher\Auth\LoginController@login')->name('teacher.login'
 Route::get('portal/home','Teacher\HomeController@index')->name('teacher.home');
 
 
-Route::post('/access-code','AccessCodeController@handle')->middleware(['throttle:10,10']);
+Route::post('/access-code','AccessCodeController@handle')->middleware(['throttle:10,10'])->name('access-code');
+
+Route::get('/registration/{guard}/{accesscode}', 'AccessCodeController@showRegisterForm')->middleware(['throttle:100,10']);
+Route::post('/registration','AccessCodeController@register')->middleware(['throttle:100,10'])->name('accesscode.register');

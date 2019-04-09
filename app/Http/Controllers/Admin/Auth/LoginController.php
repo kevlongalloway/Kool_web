@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Repository\Login;
+use App\Http\Requests\LoginRequest;
 
 class LoginController extends Controller
 {
@@ -58,11 +59,9 @@ class LoginController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function login(Request $request){
+    public function login(LoginRequest $request){
         $e = new Login;
-        $e->login($request,guard()) ?
-            return redirect()->intended(route('admin.home'):
-            return redirect()->back()->withInput($request->only('email', 'remember');
+        return $e->login($request,'admin');
     }
 
     /**

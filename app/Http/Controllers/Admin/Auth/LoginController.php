@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Repository\Login;
 
 class LoginController extends Controller
 {
@@ -58,19 +59,8 @@ class LoginController extends Controller
      * @throws \Illuminate\Validation\ValidationException
      */
     public function login(Request $request){
-        //validate the form data
-        $this->validate($request, [
-            'email' => 'required|email',
-            'password' => 'required|min:6',
-        ]);
-        //get credentials
-        $credentials = [
-            'email' =>$request->email, 
-            'password' => $request->password
-        ];
-        // attempt to log the user in 
-        
-        if(Auth::guard('admin')->attempt($credentials, $request->remember)){
+        $e = new Login;
+        if($e->login('admin')){
             //if successful, redirect to their intended location
             return redirect()->intended(route('admin.home'));
         }

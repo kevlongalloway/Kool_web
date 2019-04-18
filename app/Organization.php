@@ -48,7 +48,7 @@ class Organization extends Authenticatable
         return $this->hasMany('App\User');
     }
 
-    public function resolveguard($guard){
+    public function resolveGuard($guard){
         return $guard == 'user' ? $this->users() : $this->teachers();
     }
 

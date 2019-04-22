@@ -27,4 +27,10 @@ class AccessCodeRequest extends FormRequest
             'access_code' => 'exists:organizations,id'
         ];
     }
+
+    public function messages(){
+        return [
+            'access_code.exists' => 'The given data is invalid.'
+        ];
+    }
 }

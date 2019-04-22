@@ -33,8 +33,8 @@ class Login{
     public function register(Request $request){
         $guard = $request->guard;
         $organization = Organization::find($request->access_code);
-        $teacher = $organization->resolveGuard($request->guard)->create($request->all());
-        $teacher->hashPassword($request);
+        $user = $organization->resolveGuard($request->guard)->create($request->all());
+        $user->hashPassword($request);
     }
 
 }

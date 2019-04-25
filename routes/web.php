@@ -17,6 +17,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::get('api/user', 'APIController@index');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('user.home');
@@ -28,6 +29,7 @@ Route::post('admin','Admin\Auth\LoginController@login')->name('admin.login');
 Route::get('admin/home', 'Admin\HomeController@index')->name('admin.home');
 
 Route::resource('organizations','Admin\OrganizationController');
+Route::resource('users','UserController');
 
 /*ORGANIZATION ROUTES*/
 Route::get('club','Organization\Auth\LoginController@showLoginForm');
@@ -46,9 +48,9 @@ Route::get('portal/home','Teacher\HomeController@index')->name('teacher.home');
 
 
 /*Access Code Routes*/
-Route::post('/register/access-code', 'AccessCodeController@AccessCodeRequest')->middleware(['throttle:10,10'])->name('access-code');
+Route::post('/register/access-code', 'AccessCodeController@AccessCodeRequest')->middleware(['throttle:100,10'])->name('access-code');
 
-Route::get('/registration/{guard}/{accesscode}', 'AccessCodeController@showRegisterForm')->middleware(['throttle:10,10']);
+Route::get('/registration/{guard}/{accesscode}', 'AccessCodeController@showRegisterForm')->middleware(['throttle:100,10']);
 
 
-Route::post('/registration/access-code','AccessCodeController@register')->middleware(['throttle:10,10'])->name('accesscode.register');
+Route::post('/registration/access-code','AccessCodeController@register')->middleware(['throttle:100,10'])->name('accesscode.register');

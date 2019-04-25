@@ -46,7 +46,7 @@ class AccessCodeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function showRegisterForm($guard ,$accesscode){
-        return view('register',['guard'=>$guard,'access_code'=>$accesscode]);
+        return view('teacher.auth.register',['guard'=>$guard,'access_code'=>$accesscode]);
     }
 
 

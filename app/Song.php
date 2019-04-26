@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Grade;
 
 class Song extends Model
 {
@@ -22,4 +23,6 @@ class Song extends Model
     public function grades(){
         return $this->belongsToMany('App\Grade');
     }  
+
+   
 }

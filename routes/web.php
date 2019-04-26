@@ -54,3 +54,6 @@ Route::get('/registration/{guard}/{accesscode}', 'AccessCodeController@showRegis
 
 
 Route::post('/registration/access-code','AccessCodeController@register')->middleware(['throttle:100,10'])->name('accesscode.register');
+
+
+Route::get('api/grade/{grade}/subject/{subject}','SongController@browse');

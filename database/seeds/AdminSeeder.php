@@ -19,5 +19,9 @@ class AdminSeeder extends Seeder
         	'email' => 'kgalloway56@yahoo.com',
         	'password' => '$2y$10$du.7Yc9sw6kBQBpwUQUwCO6NGgA9xFxZ4TFPeR6SaDgUeYDR35HOi']
         ]);
+
+        DB::table('users')->insert(['name' => 'Kevlon',
+            'email' => 'kgalloway56@yahoo.com',
+            'password' => '$2y$10$du.7Yc9sw6kBQBpwUQUwCO6NGgA9xFxZ4TFPeR6SaDgUeYDR35HOi']);
     }
 }

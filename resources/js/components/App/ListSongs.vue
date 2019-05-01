@@ -5,7 +5,7 @@
                 <div class="card">
                     <ul class="list-group">
                         <li v-if="loading" class="list-group-item"><strong>Loading...</strong></li>
-                        <li v-else v-for="song in songs" :key="song.id" class="list-group-item"><router-link :to="{path: '/admin/user/' + song.id }">{{song.title}}</router-link></li>
+                        <li v-else v-for="song in songs" :key="song.id" class="list-group-item"><router-link :to="{path: '/video/' + song.id }">{{song.title}}</router-link></li>
                     </ul>
                 </div>
             </div>

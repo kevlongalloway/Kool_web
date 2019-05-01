@@ -16,6 +16,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Auth::routes();
 Route::get('api/user', 'APIController@index');
 
@@ -30,6 +31,7 @@ Route::get('admin/home', 'Admin\HomeController@index')->name('admin.home');
 
 Route::resource('organizations','Admin\OrganizationController');
 Route::resource('users','UserController');
+Route::resource('songs','SongController');
 
 /*ORGANIZATION ROUTES*/
 Route::get('club','Organization\Auth\LoginController@showLoginForm');
@@ -57,3 +59,17 @@ Route::post('/registration/access-code','AccessCodeController@register')->middle
 
 
 Route::get('api/grade/{grade}/subject/{subject}','SongController@browse');
+
+
+
+
+
+
+
+
+
+
+
+
+Route::get('/{any}','DefaultController@index')->where('any','.*');
+

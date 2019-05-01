@@ -8,7 +8,7 @@
             		<div class="card-body">
             			<div class="row">
 
-		                	<div class="col-md-4 dev"><router-link class="" :to="{path: 'grade/k'}">K</router-link></div>
+		                	<div class="col-md-4 dev"><router-link class="" :to="{path: 'grade/13'}">K</router-link></div>
 		                	<div class="col-md-4 dev"><router-link class="" :to="{path: 'grade/1'}">1</router-link></div>
                       <div class="col-md-4 dev"><router-link class="" :to="{path: 'grade/2'}">2</router-link></div>
 		                </div>

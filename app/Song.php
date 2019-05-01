@@ -13,7 +13,7 @@ class Song extends Model
      * @var array
      */
     protected $fillable = [
-        'title','standard','tags','month','subject_id'
+        'title','standard','tags','month','week','subject_id','src','thumbnail_src',
     ];
 
     public function subject(){

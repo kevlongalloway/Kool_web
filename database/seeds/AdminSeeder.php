@@ -20,8 +20,13 @@ class AdminSeeder extends Seeder
         	'password' => '$2y$10$du.7Yc9sw6kBQBpwUQUwCO6NGgA9xFxZ4TFPeR6SaDgUeYDR35HOi']
         ]);
 
-        DB::table('users')->insert(['name' => 'Kevlon',
+        DB::table('users')->insert([
+            ['name' => 'Kevlon Jr',
+            'email' => 'kevlongalloway1999m@gmail.com',
+            'password' => '$2y$10$du.7Yc9sw6kBQBpwUQUwCO6NGgA9xFxZ4TFPeR6SaDgUeYDR35HOi'],
+            ['name' => 'Kevlon',
             'email' => 'kgalloway56@yahoo.com',
-            'password' => '$2y$10$du.7Yc9sw6kBQBpwUQUwCO6NGgA9xFxZ4TFPeR6SaDgUeYDR35HOi']);
+            'password' => '$2y$10$du.7Yc9sw6kBQBpwUQUwCO6NGgA9xFxZ4TFPeR6SaDgUeYDR35HOi']
+        ]);
     }
 }

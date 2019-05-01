@@ -62,28 +62,24 @@
                 };
             },
         methods: {
-            formSubmit(e) {
-                const router = this.$router;
-                e.preventDefault();
-                let user = this
-                axios.post('/organizations',{
-                    name:this.organization.name,
-                    email:this.organization.email,
-                    password:this.organization.password,
-                    password_confirmation:this.organization.password_confirmation,
-                    subscription_id:this.organization.subscription_id
-                })
-                .then(function(response){
-                    router.push({path:'/admin/users'})
-                })
-                .catch(errors => {
-                  this.errors = errors.response.data.errors
-                });
-
-        }
-
-
-        
+          formSubmit(e) {
+              const router = this.$router;
+              e.preventDefault();
+              let user = this
+              axios.post('/organizations',{
+                  name:this.organization.name,
+                  email:this.organization.email,
+                  password:this.organization.password,
+                  password_confirmation:this.organization.password_confirmation,
+                  subscription_id:this.organization.subscription_id
+              })
+              .then(function(response){
+                  router.push({path:'/admin/users'})
+              })
+              .catch(errors => {
+                this.errors = errors.response.data.errors
+              });
+        }     
     }
 }
 </script>

@@ -17,9 +17,12 @@ class CreateSongsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('standard')->nullable();
+            $table->integer('week')->nullable();
             $table->string('month')->nullable();
             $table->text('tags')->nullable();
             $table->integer('subject_id')->nullable();
+            $table->string('src')->nullable();
+            $table->string('thumbnail_src')->nullable();
             $table->timestamps();
         });
     }

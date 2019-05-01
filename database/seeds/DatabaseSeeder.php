@@ -17,6 +17,5 @@ class DatabaseSeeder extends Seeder
         $this->call(AdminSeeder::class);
         $this->call(SubscriptionTableSeeder::class);
         $this->call(GradeTableSeeder::class);
-        $this->call(SongTableSeeder::class);
     }
 }

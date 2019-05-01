@@ -9,6 +9,7 @@
 	<script type="text/javascript">
 		document.documentElement.className = 'js';
 	</script>
+	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 	<script>var et_site_url='http://koolriculumclub.com';var et_post_id='6';function et_core_page_resource_fallback(a,b){"undefined"===typeof b&&(b=a.sheet.cssRules&&0===a.sheet.cssRules.length);b&&(a.onerror=null,a.onload=null,a.href?a.href=et_site_url+"/?et_core_page_resource="+a.id+et_post_id:a.src&&(a.src=et_site_url+"/?et_core_page_resource="+a.id+et_post_id))}
 </script><title>Koolriculum | Learning with music</title>
@@ -34,12 +35,8 @@ img.emoji {
 	padding: 0 !important;
 }
 </style>
-	<link rel='stylesheet' id='pmpro_frontend-css'  href='http://koolriculumclub.com/wp-content/plugins/paid-memberships-pro/css/frontend.css?ver=2.0.4' type='text/css' media='screen' />
-<link rel='stylesheet' id='pmpro_print-css'  href='http://koolriculumclub.com/wp-content/plugins/paid-memberships-pro/css/print.css?ver=2.0.4' type='text/css' media='print' />
-<link rel='stylesheet' id='wp-block-library-css'  href='http://koolriculumclub.com/wp-includes/css/dist/block-library/style.min.css?ver=5.1.1' type='text/css' media='all' />
-<link rel='stylesheet' id='wpforo-widgets-css'  href='http://koolriculumclub.com/wp-content/plugins/wpforo/wpf-themes/classic/widgets.css?ver=1.6.1' type='text/css' media='all' />
-<link rel='stylesheet' id='divi-fonts-css'  href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&#038;subset=latin,latin-ext' type='text/css' media='all' />
-<link rel='stylesheet' id='divi-style-css'  href='http://koolriculumclub.com/wp-content/themes/Divi/style.css?ver=3.22.1' type='text/css' media='all' />
+
+<link rel='stylesheet' id='divi-fonts-css'  href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&#038;subset=latin,latin-ext' type='text/css' media='all' />
 <link rel='stylesheet' id='et-builder-googlefonts-cached-css'  href='http://fonts.googleapis.com/css?family=Assistant%3A200%2C300%2Cregular%2C600%2C700%2C800%7CPoppins%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2Cregular%2Citalic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7COpen+Sans%3A300%2C300italic%2Cregular%2Citalic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic&#038;ver=5.1.1#038;subset=latin,latin-ext' type='text/css' media='all' />
 <link rel='stylesheet' id='dashicons-css'  href='http://koolriculumclub.com/wp-includes/css/dashicons.min.css?ver=5.1.1' type='text/css' media='all' />
 <script type='text/javascript' src='http://koolriculumclub.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
@@ -60,7 +57,9 @@ img.emoji {
 				});
 			});
 		</script>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" /><link rel="stylesheet" id="et-core-unified-cached-inline-styles" href="http://koolriculumclub.com/wp-content/cache/et/6/et-core-unified-15551755005477.min.css" onerror="et_core_page_resource_fallback(this, true)" onload="et_core_page_resource_fallback(this)" /></head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" /><link rel="stylesheet" id="et-core-unified-cached-inline-styles" href="http://koolriculumclub.com/wp-content/cache/et/6/et-core-unified-15551755005477.min.css" onerror="et_core_page_resource_fallback(this, true)" onload="et_core_page_resource_fallback(this)" />
+
+	</head>
 <body class="home page-template-default page page-id-6 et_divi_builder pmpro-body-has-access et_pb_button_helper_class et_fixed_nav et_show_nav et_cover_background et_pb_gutter windows et_pb_gutters3 et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_pb_footer_columns4 et_header_style_left et_pb_pagebuilder_layout et_right_sidebar et_divi_theme et-db et_minified_js et_minified_css">
 	<div id="page-container">
 

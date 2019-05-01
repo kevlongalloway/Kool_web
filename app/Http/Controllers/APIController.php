@@ -11,4 +11,5 @@ class APIController extends Controller
     {
         return response()->json(Auth::user());
     }
+    
 }

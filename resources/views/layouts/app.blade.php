@@ -62,6 +62,9 @@
                             <li class="nav-item">
                                 <router-link class="nav-link" to="/admin/users">User Dashboard</router-link>
                             </li>
+                            <li class="nav-item">
+                                <router-link class="nav-link" to="/admin/songs/create">Add Songs</router-link>
+                            </li>
                             @endauth
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

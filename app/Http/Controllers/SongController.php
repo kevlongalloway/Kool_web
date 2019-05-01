@@ -5,9 +5,27 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Song;
 use App\Grade;
+use Storage;
+use Illuminate\Support\Facades\Auth;
+
 
 class SongController extends Controller
 {
+    protected $grades = [
+            'one' => 1,
+            'two' => 2,
+            'three' => 3,
+            'four' => 4,
+            'five' => 5,
+            'six' => 6,
+            'seven' => 7,
+            'eight' => 8,
+            'nine' => 9,
+            'ten' => 10,
+            'eleven' => 11,
+            'twelve' => 12,
+            'kinder' => 13
+        ];
     /**
      * Display a listing of the resource.
      *
@@ -37,7 +55,15 @@ class SongController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(Auth::guard('admin')->check()) {
+        $song = Song::create($request->all());
+        $this->attachGrades($song,$request);
+        
+        $this->storeSong($song);
+
+        return response()->json(['message' => $song->title.' has successfully been uploaded!'],201);
+        }
+        return response()->json(null,404);
     }
 
     /**
@@ -46,9 +72,9 @@ class SongController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($song)
     {
-        //
+        return response()->json($song);
     }
 
     /**
@@ -56,8 +82,8 @@ class SongController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+     */+
+    public function edit($song)
     {
         //
     }
@@ -106,5 +132,21 @@ class SongController extends Controller
             break;
 
         }
+    }
+
+    protected function attachGrades($song, $request){
+        foreach($request->grades as $key => $grade){
+            $song->grades()->attach($this->grades[$key]);
+        }
+    }
+
+    protected function storeSong($song){
+        if(Storage::exists('songs.txt')){
+         Storage::append('songs.txt',[$song, $song->grades()->pluck('grade_id')]);
+        }else{
+            
+            Storage::put('songs.txt',[$song, $song->grades()->pluck('grade_id')]);
+        }
+
     }
 }

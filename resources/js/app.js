@@ -35,6 +35,7 @@ const routes = [
   {path:'/admin/users',component: require('./components/Admin/Organizations.vue').default,name: 'admin.users'},
   {path:'/admin/user/:id',component: require('./components/Admin/ReadOrg.vue').default},
   {path:'/admin/organization/store',component: require('./components/Admin/CreateOrg.vue').default},
+  {path:'/admin/songs/create',component: require('./components/Admin/AddSong.vue').default},
 	{path:'/users',component: require('./components/UserList.vue').default,meta: {
       progress: {
         func: [
@@ -50,7 +51,8 @@ const routes = [
 	{path:'/subscriptions/package-2',component:require('./components/Subscriptions/package-2').default},
   {path:'/registration/:guard/organization/:access_code', component: require('./components/Registration/Register.vue').default},
   {path:'/grade/:grade/', component: require('./components/views/SubjectsPage.vue').default},
-  {path:'/grade/:grade/subject/:subject', component: require('./components/App/ListSongs.vue').default}
+  {path:'/grade/:grade/subject/:subject', component: require('./components/App/ListSongs.vue').default},
+  {path:'/video/:video_id', component: require('./components/views/VideoPage.vue').default}
 
 
 
@@ -80,6 +82,7 @@ Vue.component('subscriptions', require('./components/Subscriptions.vue').default
 Vue.component('access-input', require('./components/AccessInput.vue').default);
 Vue.component('subjects', require('./components/App/Subjects.vue').default);
 Vue.component('grades', require('./components/App/Grades.vue').default);
+Vue.component('video-player', require('./components/App/Video.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

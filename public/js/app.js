@@ -1968,9 +1968,9 @@ __webpack_require__.r(__webpack_exports__);
         subject_id: '',
         grades: {},
         src: '',
-        thumbnail_src: '',
-        file: ''
+        thumbnail_src: ''
       },
+      file: '',
       message: false,
       errors: []
     };
@@ -1996,6 +1996,9 @@ __webpack_require__.r(__webpack_exports__);
         return $this.errors = errors;
       });
       window.scrollTo(0, 0);
+    },
+    uploadFile: function uploadFile() {
+      this.file = this.$refs.file.files[0];
     }
   }
 });
@@ -39006,23 +39009,11 @@ var render = function() {
               _c("label", { attrs: { for: "file" } }, [_vm._v("File Upload")]),
               _vm._v(" "),
               _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.song.file,
-                    expression: "song.file"
-                  }
-                ],
                 staticClass: "form-control",
-                attrs: { type: "textarea", placeholder: "File Upload" },
-                domProps: { value: _vm.song.file },
+                attrs: { type: "file", id: "file" },
                 on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.song, "file", $event.target.value)
+                  change: function($event) {
+                    return _vm.uploadFile()
                   }
                 }
               })

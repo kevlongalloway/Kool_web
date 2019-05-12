@@ -44,7 +44,7 @@
                       OR
                       <div class="form-group">
                         <label for="file">File Upload</label>
-                        <input v-model="song.file" type="textarea" class="form-control" placeholder="File Upload">
+                        <input type="file" id="file" class="form-control" v-on:change="uploadFile()">
                       </div>
 
                       <div class="form-group">
@@ -59,7 +59,7 @@
                         </div>
                         <div class="form-check form-check-inline">
                           <input v-model="song.grades.two" class="form-check-input" type="checkbox" id="inlineCheckbox1" value="2">
-                          <label class="form-check-label" for="inlineCheckbox1">2</label>
+                          <label class="form-check-label" for="inlineCheckbox1">2</label> 
                         </div>
                         <div class="form-check form-check-inline">
                           <input v-model="song.grades.three"class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
@@ -139,8 +139,8 @@
                 grades:{},
                 src:'',
                 thumbnail_src:'',
-                file:''
               },
+              file:'',
               message:false,
               errors:[]
               }
@@ -165,6 +165,9 @@
 
                 }).catch(errors => $this.errors = errors);
                 window.scrollTo(0,0)
+            },
+            uploadFile(){
+             this.file = this.$refs.file.files[0]
             }
         }
 

@@ -56,10 +56,11 @@ class SongController extends Controller
     public function store(Request $request)
     {
         if(Auth::guard('admin')->check()) {
-        $song = Song::create($request->all());
+        $song = Song::create($request->except('file'));
         $this->attachGrades($song,$request);
-        
-        $this->storeSong($song);
+        $request->file->store('media', 'dropbox');
+        //$this->storeFile($request);
+        $this->storeRawSongData($song);
 
         return response()->json(['message' => $song->title.' has successfully been uploaded!'],201);
         }
@@ -82,7 +83,7 @@ class SongController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */+
+     */
     public function edit($song)
     {
         //
@@ -140,13 +141,31 @@ class SongController extends Controller
         }
     }
 
-    protected function storeSong($song){
+    protected function storeRawSongData($song){
         if(Storage::exists('songs.txt')){
          Storage::append('songs.txt',[$song, $song->grades()->pluck('grade_id')]);
         }else{
-            
             Storage::put('songs.txt',[$song, $song->grades()->pluck('grade_id')]);
         }
 
+    }
+
+    protected function storeFile($request){
+        dd($request->file('file'));
+        if($request->hasFile('file')){
+            // Get filename with the extension
+
+            $filenameWithExt = $request->file('file');
+
+            // Get just filename
+            $filename = pathinfo($filenameWithExt,PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('file')->getOriginalClientExtension();
+            // Filename to store
+            $filenameToStore = $filename.'_'.time().'.'.$extension;
+            //Upload Image
+            $path = $request->file('file')->storeAs('storage/app/content/',$filenameToStore);
+            dd($path);
+        }
     }
 }

@@ -8,7 +8,6 @@ class DefaultController extends Controller
 {
     public function index($any)
     {
-        if(Auth::check()){
             if(Auth::user()){
                 return redirect(url('/home'));
             } 
@@ -20,7 +19,6 @@ class DefaultController extends Controller
             }
              if(Auth::guard('organization')->check()){
                 return redirect(url('/club/home'));
-            }
         }
         return redirect(url('/'));
     }

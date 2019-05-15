@@ -11,11 +11,6 @@ class SongTableSeeder extends Seeder
      */
     public function run()
     {
-    	factory(App\Song::class,20)->create();
-        App\Song::all()->each(function ($song){
-			$song->grades()->attach(
-				rand(1,13)
-			);
-		});
+    	
     }
 }

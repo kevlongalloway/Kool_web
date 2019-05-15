@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Koolriculum</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -85,8 +85,8 @@
                 </div>
 
                 <div class="links">
-                    <a href="{{ url('/portal/login') ">Teacher Login</a>
-                    <a href="{{ url('/club/login') ">Organization Login</a>
+                    <a href="{{ url('/portal/login') }}">Teacher Login</a>
+                    <a href="{{ url('/club/login') }}">Organization Login</a>
                 </div>
             </div>
         </div>

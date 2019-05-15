@@ -27,7 +27,14 @@ class RegisterRequest extends FormRequest
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users|unique:teachers',
             'password' => 'required|string|min:8|confirmed',
-            'guard' => 'required|string'
+            'guard' => 'required|string',
+            'access_code' => 'required|exists:organizations'
+        ];
+    }
+
+    public function messages(){
+        return [
+            'access_code.exists' => 'The given data is invalid.'
         ];
     }
 }

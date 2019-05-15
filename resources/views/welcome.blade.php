@@ -85,8 +85,8 @@
                 </div>
 
                 <div class="links">
-                    <a href="/portal/login">Teacher Login</a>
-                    <a href="/club/login">Organization Login</a>
+                    <a href="{{ url('/portal/login') ">Teacher Login</a>
+                    <a href="{{ url('/club/login') ">Organization Login</a>
                 </div>
             </div>
         </div>

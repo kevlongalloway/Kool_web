@@ -31,7 +31,8 @@ Vue.use(VueRouter)
 
 const routes = [
 	{path:'/home',component: require('./components/views/Home.vue').default},
-  {path:'/admin/home',component: require('./components/ExampleComponent.vue').default},
+  {path:'/admin/home',component: require('./components/views/Home.vue').default},
+  {path:'/portal/home',component: require('./components/views/Home.vue').default},
   {path:'/admin/users',component: require('./components/Admin/Organizations.vue').default,name: 'admin.users'},
   {path:'/admin/user/:id',component: require('./components/Admin/ReadOrg.vue').default},
   {path:'/admin/organization/store',component: require('./components/Admin/CreateOrg.vue').default},
@@ -52,7 +53,8 @@ const routes = [
   {path:'/registration/:guard/organization/:access_code', component: require('./components/Registration/Register.vue').default},
   {path:'/grade/:grade/', component: require('./components/views/SubjectsPage.vue').default},
   {path:'/grade/:grade/subject/:subject', component: require('./components/App/ListSongs.vue').default},
-  {path:'/video/:video_id', component: require('./components/views/VideoPage.vue').default}
+  {path:'/video/:video_id', component: require('./components/views/VideoPage.vue').default},
+  {path:'/playlists', component: require('./components/views/PlaylistsPage.vue').default}
 
 
 

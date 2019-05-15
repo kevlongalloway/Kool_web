@@ -41,11 +41,6 @@
                         <label for="src">File Link</label>
                         <input v-model="song.src" type="textarea" class="form-control" placeholder="Link to video">
                       </div>
-                      OR
-                      <div class="form-group">
-                        <label for="file">File Upload</label>
-                        <input type="file" id="file" class="form-control" v-on:change="uploadFile()">
-                      </div>
 
                       <div class="form-group">
                         <label for="grades">Select Grades</label>

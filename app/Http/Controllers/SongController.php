@@ -57,11 +57,7 @@ class SongController extends Controller
     {
         if(Auth::guard('admin')->check()) {
         $song = Song::create($request->except('file'));
-        $this->attachGrades($song,$request);
-        $request->file->store('media', 'dropbox');
-        //$this->storeFile($request);
-        $this->storeRawSongData($song);
-
+        $this->attachGrades($song,$request); 
         return response()->json(['message' => $song->title.' has successfully been uploaded!'],201);
         }
         return response()->json(null,404);
@@ -73,8 +69,9 @@ class SongController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($song)
+    public function show($id)
     {
+        $song = Song::find($id);
         return response()->json($song);
     }
 
@@ -114,7 +111,9 @@ class SongController extends Controller
 
      public function browse($grade,$subject){
        $grade = Grade::find($grade);
-       return response()->json($grade->songs);
+       $subject_id = $this->subjectID($subject);
+       $songs = $grade->songs->where('subject_id',$subject_id);
+       return response()->json($songs);
     }
 
     protected function subjectID($subject){

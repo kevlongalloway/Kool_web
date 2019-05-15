@@ -60,6 +60,8 @@ Route::post('/registration/access-code','AccessCodeController@register')->middle
 
 Route::get('api/grade/{grade}/subject/{subject}','SongController@browse');
 
+Route::resource('playlists','PlaylistController');
+
 
 
 

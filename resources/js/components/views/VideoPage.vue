@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <video-player></video-player>
+        <video-player v-bind:song="song"></video-player>
     </div>
 </template>
 

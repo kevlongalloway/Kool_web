@@ -32,6 +32,7 @@ Route::resource('organizations','Admin\OrganizationController');
 Route::resource('users','UserController');
 Route::resource('songs','SongController');
 Route::resource('playlists','PlaylistController')->except(['index']);
+Route::resource('classrooms', 'ClassroomController');
 /*ORGANIZATION ROUTES*/
 Route::get('club','Organization\Auth\LoginController@showLoginForm');
 Route::post('club','Organization\Auth\LoginController@login')->name('organization.login');

@@ -54,7 +54,9 @@ const routes = [
   {path:'/grade/:grade/', component: require('./components/views/SubjectsPage.vue').default},
   {path:'/grade/:grade/subject/:subject', component: require('./components/App/ListSongs.vue').default},
   {path:'/video/:video_id', component: require('./components/views/VideoPage.vue').default},
-  {path:'/playlists', component: require('./components/views/PlaylistsPage.vue').default}
+  {path:'/user/:user_id/playlists/', component: require('./components/views/PlaylistsPage.vue').default},
+    {path:'/playlist/:playlist_id', component: require('./components/App/Playlist.vue').default}
+
 
 
 
@@ -94,5 +96,19 @@ Vue.component('video-player', require('./components/App/Video.vue').default);
 
 const app = new Vue({
     el: '#app',
+    data:{
+      user:{}
+    },
+    mounted(){
+      this.userData()
+    },
+    methods:{
+      userData(){
+      axios.get('/api/user')
+        .then(response => {
+          this.user = response.data
+        });
+      }
+    },
     router
 }).$mount('#app')

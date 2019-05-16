@@ -1,4 +1,3 @@
-
 <?php
 
 /*
@@ -18,7 +17,7 @@ Route::get('/', function () {
 
 
 Auth::routes();
-Route::get('api/user', 'APIController@index');
+Route::get('api/user', 'APIController@user');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('user.home');
@@ -32,7 +31,7 @@ Route::get('admin/home', 'Admin\HomeController@index')->name('admin.home');
 Route::resource('organizations','Admin\OrganizationController');
 Route::resource('users','UserController');
 Route::resource('songs','SongController');
-
+Route::resource('playlists','PlaylistController')->except(['index']);
 /*ORGANIZATION ROUTES*/
 Route::get('club','Organization\Auth\LoginController@showLoginForm');
 Route::post('club','Organization\Auth\LoginController@login')->name('organization.login');
@@ -60,7 +59,13 @@ Route::post('/registration/access-code','AccessCodeController@register')->middle
 
 Route::get('api/grade/{grade}/subject/{subject}','SongController@browse');
 
-Route::resource('playlists','PlaylistController');
+
+Route::get('api/playlists/{userid}','PlaylistController@index');
+
+Route::get('api/playlists/{playlist_id}/songs','PlaylistController@showSongs');
+
+
+Route::get('/attachSongToPlaylist/{playlists_id}/{song}','PlaylistController@attachSongToPlaylist');
 
 
 

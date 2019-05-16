@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Playlist;
 use Illuminate\Support\Facades\Auth;
 use App\Teacher;
+use App\User;
+use App\Admin;
+use App\Organization;
+use App\Song;
 
 class PlaylistController extends Controller
 {
@@ -14,27 +18,15 @@ class PlaylistController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        $playlists = $this->getUser()->playlists;
+        $user = $this->getUser($id);
+        $user->playlists == null ?$playlists = null : 
+        $playlists = array_reverse($user->playlists->toArray());
         return response()->json($playlists);
     }
 
-    public function getUser($id){
-        if (Auth::guard('admin')->check()) {
-            return Admin::find($id);
-        }
-        else if (Auth::guard('teacher')->check()) {
-            return Teacher::find($id);
-        }
-        else if (Auth::guard('organization')->check()) {
-            return Organization::find($id);
-        }
-        else if (Auth::guard()->check()) {
-            return User::find($id);
-        }
 
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -43,7 +35,7 @@ class PlaylistController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -54,7 +46,12 @@ class PlaylistController extends Controller
      */
     public function store(Request $request)
     {
-        Auth::user()->playlists()->create($request->all());
+        $user = Auth::user();
+        $user == null ? $user = Auth::guard('teacher')->user() : ''; 
+        $user == null ? $user = Auth::guard('admin')->user() : ''; 
+        $user == null ? $user = Auth::guard('organization')->user() : ''; 
+        $user->playlists()->create($request->all());
+        return response()->json(null,201);
     }
 
     /**
@@ -63,9 +60,15 @@ class PlaylistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($playlist)
+    public function show($id)
     {
+        $playlist = Playlist::find($id);
         return response()->json($playlist);
+    }
+
+    public function showSongs($playlist_id){
+        $songs = Playlist::find($playlist_id)->songs;
+        return response()->json($songs);
     }
 
     /**
@@ -92,15 +95,44 @@ class PlaylistController extends Controller
         return response()->json(null,201);
     }
 
+    
+    public function attachSongToPlaylist($playlist_id,$song_id){
+        $playlist = Playlist::find($playlist_id);
+        $song = Song::find($song_id);
+        if (!$playlist->songs->contains($song)) 
+        {
+        $playlist->songs()->attach($song_id);
+        }
+        return response()->json(null,201);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($playlist)
+    public function destroy($id)
     {
+        $playlist = Playlist::find($id);
         $playlist->delete();
         return response()->json(null,201);
+    }
+
+
+    protected function getUser($id){
+        if (Auth::guard('admin')->check()) {
+            return Admin::find($id);
+        }
+        else if (Auth::guard('teacher')->check()) {
+            return Teacher::find($id);
+        }
+        else if (Auth::guard('organization')->check()) {
+            return Organization::find($id);
+        }
+        else if (Auth::guard()->check()) {
+            return User::find($id);
+        }
+
     }
 }

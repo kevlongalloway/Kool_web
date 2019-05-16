@@ -45,5 +45,9 @@ class Admin extends Authenticatable
     	return App\Song::all();
     }
 
+    public function playlists(){
+        return $this->morphToMany('App\Playlist','playlistable');
+    }  
+
     
 }

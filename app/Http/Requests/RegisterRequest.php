@@ -28,7 +28,7 @@ class RegisterRequest extends FormRequest
             'email' => 'required|string|email|max:255|unique:users|unique:teachers',
             'password' => 'required|string|min:8|confirmed',
             'guard' => 'required|string',
-            'access_code' => 'required|exists:organizations'
+            'access_code' => 'required|exists:organizations,id'
         ];
     }
 

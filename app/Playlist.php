@@ -18,5 +18,5 @@ class Playlist extends Model
     	return $this->belongsToMany('App\Song');
     }
 
-    
+
 }

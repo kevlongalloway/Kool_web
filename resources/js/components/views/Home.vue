@@ -8,7 +8,7 @@
 export default {
   mounted () {
     console.log('page mounted')
-    this.userData()
+    this.user = this.$root.$data.user
 
   },
   data(){
@@ -16,17 +16,6 @@ export default {
       user:{},
       grade:''
     }
-  },
-  methods: {
-    userData(){
-      axios.get('api/user')
-        .then(response => {
-          console.log(response.data)
-          this.user = response.data
-        });
-      }
-    }
-
-
+  }
   }
 </script>

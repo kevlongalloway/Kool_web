@@ -66,13 +66,19 @@
                                 <router-link class="nav-link" to="/admin/songs/create">Add Songs</router-link>
                             </li>
                             @endauth
+                            @auth('teacher')
+                            <li class="nav-item">
+                                <router-link class="nav-link" to="/portal/home">Home</router-link>
+                            </li>
+                           
+                            @endauth
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <router-link to="/playlists" class="dropdown-item">
+                                    <router-link to="{{ '/user/'.Auth::user()->id.'/playlists' }}" class="dropdown-item">
                                         My Playlists
                                     </router-link>
                                     <a class="dropdown-item" href="{{ route('logout') }}"

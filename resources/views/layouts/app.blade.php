@@ -52,12 +52,12 @@
                         @else
                             @auth('web')
                             <li class="nav-item">
-                                <router-link class="nav-link" to="/home">Home</router-link>
+                                <router-link class="nav-link" to="/home">Dashboard</router-link>
                             </li>
                             @endauth
                             @auth('admin')
                             <li class="nav-item">
-                                <router-link class="nav-link" to="/admin/home">Home</router-link>
+                                <router-link class="nav-link" to="/admin/home">Dashboard</router-link>
                             </li>
                             <li class="nav-item">
                                 <router-link class="nav-link" to="/admin/users">User Dashboard</router-link>
@@ -68,7 +68,10 @@
                             @endauth
                             @auth('teacher')
                             <li class="nav-item">
-                                <router-link class="nav-link" to="/portal/home">Home</router-link>
+                                <router-link class="nav-link" to="/portal/home">Dashboard</router-link>
+                            </li>
+                            <li class="nav-item">
+                                <router-link class="nav-link" to="/portal/classrooms">My Classes</router-link>
                             </li>
                            
                             @endauth

@@ -62,11 +62,17 @@ Route::get('api/grade/{grade}/subject/{subject}','SongController@browse');
 
 
 Route::get('api/playlists/{userid}','PlaylistController@index');
+Route::get('api/teacher-playlists','PlaylistController@getTeacherPlaylists');
 
 Route::get('api/playlists/{playlist_id}/songs','PlaylistController@showSongs');
 
 
 Route::get('/attachSongToPlaylist/{playlists_id}/{song}','PlaylistController@attachSongToPlaylist');
+Route::get('/attachPlaylistToClass/{classroom_id}/{playlist_id}','ClassroomController@attachPlaylist');
+Route::post('/playlists/classroom/{classroom_id}/','ClassroomController@createPlaylist');
+
+Route::get('/api/classrooms','ClassroomController@getClassroomsNoParams');
+Route::get('/api/classrooms/available-students','ClassroomController@getAvailableStudents');
 
 
 

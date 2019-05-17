@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Classroom;
 use App\Playlist;
 use App\User;
-use Auth\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
 
 class ClassroomController extends Controller
 {
@@ -40,7 +40,8 @@ class ClassroomController extends Controller
     {
         if (Auth::guard('teacher')->check()) 
         {
-            Auth::guard('teacher')->user()->classrooms()->create($request->all);
+            $classroom = Auth::guard('teacher')->user()->classrooms()->create($request->except('students'));
+            $this->attachStudents($request, $classroom);
         }
         return response()->json(null,201);
     }
@@ -53,7 +54,10 @@ class ClassroomController extends Controller
      */
     public function show($id)
     {
-        
+        $classroom = Classroom::find($id);
+        $playlists = $classroom->playlists;
+        $students = $classroom->users;
+        return response()->json(['classroom' => $classroom,'students' => $students,'playlists' =>$playlists]);
     }
 
     /**
@@ -94,6 +98,15 @@ class ClassroomController extends Controller
     public function getClassrooms($user_id) 
     {
         $classrooms = $this->getUser($user_id)->classrooms;
+        return response()->json($classrooms);
+    }
+
+    public function getClassroomsNoParams()
+    {
+        $user = Auth::user();
+        $user == null ? $user = Auth::guard('teacher')->user() : '';
+        $classrooms = $user->classrooms;
+        return response()->json($classrooms);
     }
 
     public function getPlaylists($classroom_id) 
@@ -126,14 +139,14 @@ class ClassroomController extends Controller
     {
         $classroom = Classroom::find($classroom_id);
         $classroom->playlists()->create($request->all());
+        
     }
 
     public function getAvailableStudents()
     {
         if (Auth::guard('teacher')->check())
         {
-            $teacher = Auth::guard('teacher')->user();
-            $students = $teacher->organization->students;
+            $students = Auth::guard('teacher')->user()->organization->users;
             return response()->json($students);
         }
     }
@@ -141,6 +154,11 @@ class ClassroomController extends Controller
     public function addStudents(Request $request,$classroom_id)
     {
         $classroom = Classroom::find($classroom_id);
+        $this->attachStudents($request,$classroom);
+    }
+
+    protected function attachStudents(Request $request, $classroom) 
+    {
         foreach ($request->students as $student_id)
         {
             $user = User::find($student_id);
@@ -159,9 +177,9 @@ class ClassroomController extends Controller
         {
             $classroom->users()->detach($student_id);
         }
-
-
     }
+
+
 
     protected function getUser($id)
     {

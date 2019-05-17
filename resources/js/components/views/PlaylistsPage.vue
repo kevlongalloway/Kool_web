@@ -99,7 +99,7 @@
         this.getPlaylists()
       },
       back(){
-        window.history.go(-1)
+        this.$router.go(-1)
       }
     }
   }

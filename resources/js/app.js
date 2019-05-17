@@ -33,6 +33,7 @@ const routes = [
 	{path:'/home',component: require('./components/views/Home.vue').default},
   {path:'/admin/home',component: require('./components/views/Home.vue').default},
   {path:'/portal/home',component: require('./components/views/Home.vue').default},
+  {path:'/club/home',component: require('./components/views/Home.vue').default},
   {path:'/admin/users',component: require('./components/Admin/Organizations.vue').default,name: 'admin.users'},
   {path:'/admin/user/:id',component: require('./components/Admin/ReadOrg.vue').default},
   {path:'/admin/organization/store',component: require('./components/Admin/CreateOrg.vue').default},
@@ -55,7 +56,10 @@ const routes = [
   {path:'/grade/:grade/subject/:subject', component: require('./components/App/ListSongs.vue').default},
   {path:'/video/:video_id', component: require('./components/views/VideoPage.vue').default},
   {path:'/user/:user_id/playlists/', component: require('./components/views/PlaylistsPage.vue').default},
-    {path:'/playlist/:playlist_id', component: require('./components/App/Playlist.vue').default}
+  {path:'/playlist/:playlist_id', component: require('./components/App/Playlist.vue').default},
+  {path:'/portal/classrooms', component: require('./components/App/Classrooms/TeacherClassrooms.vue').default},
+  {path:'/portal/classrooms/create', component: require('./components/App/Classrooms/Create.vue').default},
+  {path:'/portal/classrooms/:classroom_id', component: require('./components/App/Classrooms/TeacherClassroom.vue').default}
 
 
 
@@ -102,6 +106,26 @@ const app = new Vue({
     mounted(){
       this.userData()
     },
+    created () {
+    //  hook the progress bar to start before we move router-view
+    this.$router.beforeEach((to, from, next) => {
+      //  does the page we want to go to have a meta.progress object
+      if (to.meta.progress !== undefined) {
+        let meta = to.meta.progress
+        // parse meta tags
+        this.$Progress.parseMeta(meta)
+      //  start the progress bar
+      this.$Progress.start()
+      }
+      //  continue to next page
+      next()
+    })
+    //  hook the progress bar to finish after we've finished moving router-view
+    this.$router.afterEach((to, from) => {
+      //  finish the progress bar
+      this.$Progress.finish()
+    })
+  },
     methods:{
       userData(){
       axios.get('/api/user')

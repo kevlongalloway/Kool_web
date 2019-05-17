@@ -111,8 +111,7 @@ class SongController extends Controller
 
      public function browse($grade,$subject){
        $grade = Grade::find($grade);
-       $subject_id = $this->subjectID($subject);
-       $songs = $grade->songs->where('subject_id',$subject_id);
+       $songs = $grade->songs->where('subject_id',$subject);
        return response()->json($songs);
     }
 

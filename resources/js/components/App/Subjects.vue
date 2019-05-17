@@ -7,12 +7,12 @@
             		<div class="card-header"><a href="#" @click="back"><i class="fas fa-arrow-left"></i></a>Grade {{grade}}</div>
             		<div class="card-body">
             			<div class="row">
-		                	<div class="col-md-6 dev"><router-link class="" :to="{path: '/grade/'+grade+'/subject/math'}">Math</router-link></div>
-		                	<div class="col-md-6 dev"><router-link class="" :to="{path: '/grade/'+grade+'/subject/ela'}">ELA</router-link></div>
+		                	<div class="col-md-6 dev"><router-link class="" :to="{path: '/grade/'+grade+'/subject/2'}">Math</router-link></div>
+		                	<div class="col-md-6 dev"><router-link class="" :to="{path: '/grade/'+grade+'/subject/1'}">ELA</router-link></div>
 		                </div>
 		                <div class="row">
-		                	<div class="col-md-6 dev"><router-link class="" :to="{path: '/grade/'+grade+'/subject/social-studies'}">Social Studies</router-link></div>
-		                	<div class="col-md-6 dev"><router-link class="" :to="{path: '/grade/'+grade+'/subject/science'}">Science</router-link></div>
+		                	<div class="col-md-6 dev"><router-link class="" :to="{path: '/grade/'+grade+'/subject/4'}">Social Studies</router-link></div>
+		                	<div class="col-md-6 dev"><router-link class="" :to="{path: '/grade/'+grade+'/subject/3'}">Science</router-link></div>
 		                </div>
             		</div>
             	</div>
@@ -28,7 +28,7 @@ export default {
   props: ['grade'],
   methods:{
     back(){
-        window.history.go(-1)
+        this.$router.go(-1)
     }
   }
 }

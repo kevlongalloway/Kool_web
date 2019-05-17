@@ -50,8 +50,8 @@ class PlaylistController extends Controller
         $user == null ? $user = Auth::guard('teacher')->user() : ''; 
         $user == null ? $user = Auth::guard('admin')->user() : ''; 
         $user == null ? $user = Auth::guard('organization')->user() : ''; 
-        $user->playlists()->create($request->all());
-        return response()->json(null,201);
+        $playlist = $user->playlists()->create($request->all());
+        return response()->json($playlist,201);
     }
 
     /**
@@ -134,5 +134,19 @@ class PlaylistController extends Controller
             return User::find($id);
         }
 
+    }
+
+    public function getTeacherPlaylists()
+    {
+        $playlists = Auth::guard('teacher')->user()->playlists;
+        return response()->json($playlists);
+    }
+
+    protected function getUserNoParams(){
+        $user = Auth::user();
+        $user == null ? $user = Auth::guard('teacher')->user() : ''; 
+        $user == null ? $user = Auth::guard('admin')->user() : ''; 
+        $user == null ? $user = Auth::guard('organization')->user() : ''; 
+        return $user;
     }
 }

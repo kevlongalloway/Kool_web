@@ -41901,9 +41901,7 @@ var render = function() {
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "col-md-8" }, [
         _c("div", { staticClass: "card" }, [
-          _c("a", { attrs: { href: "#" }, on: { click: _vm.back } }, [
-            _c("i", { staticClass: "fas fa-arrow-left" })
-          ]),
+          _vm._m(0),
           _vm._v(" "),
           _c(
             "ul",
@@ -41961,7 +41959,7 @@ var render = function() {
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(0),
+              _vm._m(1),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _c("div", { staticClass: "row" }, [
@@ -42013,7 +42011,7 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(1)
+              _vm._m(2)
             ])
           ]
         )
@@ -42032,7 +42030,7 @@ var render = function() {
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(2),
+              _vm._m(3),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _c("form", [
@@ -42105,6 +42103,14 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:history.go(-1)" } }, [
+      _c("i", { staticClass: "fas fa-arrow-left" })
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -42254,9 +42260,14 @@ var render = function() {
       _c("div", { staticClass: "col-md-8" }, [
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-header" }, [
-            _c("a", { attrs: { href: "#" }, on: { click: _vm.back } }, [
-              _c("i", { staticClass: "fas fa-arrow-left" })
-            ]),
+            _c(
+              "a",
+              {
+                attrs: { href: "javascript:void(0)" },
+                on: { click: _vm.back }
+              },
+              [_c("i", { staticClass: "fas fa-arrow-left" })]
+            ),
             _vm._v("Grade " + _vm._s(_vm.grade))
           ]),
           _vm._v(" "),
@@ -42364,9 +42375,7 @@ var render = function() {
     _c("div", { staticClass: "col-md-8" }, [
       _c("div", { staticClass: "card" }, [
         _c("div", { staticClass: "card-header" }, [
-          _c("a", { attrs: { href: "#" }, on: { click: _vm.back } }, [
-            _c("i", { staticClass: "fas fa-arrow-left" })
-          ]),
+          _vm._m(0),
           _vm._v(" " + _vm._s(_vm.song.title))
         ]),
         _vm._v(" "),
@@ -42391,7 +42400,16 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "#", onclick: "history.back()" } }, [
+      _c("i", { staticClass: "fas fa-arrow-left" })
+    ])
+  }
+]
 render._withStripped = true
 
 

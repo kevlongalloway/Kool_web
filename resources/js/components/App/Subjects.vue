@@ -4,7 +4,7 @@
 
             <div class="col-md-8">
             	<div class="card">
-            		<div class="card-header"><a href="#" @click="back"><i class="fas fa-arrow-left"></i></a>Grade {{grade}}</div>
+            		<div class="card-header"><a href="javascript:void(0)" @click="back"><i class="fas fa-arrow-left"></i></a>Grade {{grade}}</div>
             		<div class="card-body">
             			<div class="row">
 		                	<div class="col-md-6 dev"><router-link class="" :to="{path: '/grade/'+grade+'/subject/2'}">Math</router-link></div>

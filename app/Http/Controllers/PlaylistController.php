@@ -21,8 +21,19 @@ class PlaylistController extends Controller
     public function index($id)
     {
         $user = $this->getUser($id);
-        $user->playlists == null ?$playlists = null : 
-        $playlists = array_reverse($user->playlists->toArray());
+
+        $playlists = $user->playlists;
+
+        if (Auth::guard('teacher')->check()) 
+        {
+            $classrooms = $user->classrooms;
+            
+            foreach($classrooms as $classroom)
+            {
+               $playlists = $playlists->merge($classroom->playlists);
+            }
+        }
+
         return response()->json($playlists);
     }
 
@@ -50,7 +61,9 @@ class PlaylistController extends Controller
         $user == null ? $user = Auth::guard('teacher')->user() : ''; 
         $user == null ? $user = Auth::guard('admin')->user() : ''; 
         $user == null ? $user = Auth::guard('organization')->user() : ''; 
+        
         $playlist = $user->playlists()->create($request->all());
+
         return response()->json($playlist,201);
     }
 

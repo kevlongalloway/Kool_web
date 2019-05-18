@@ -90,6 +90,7 @@
               .then(function(response){
                 $('#newPlaylistModal').modal('hide');
               })
+              this.playlist = ''
          this.getPlaylists()
       },
       deletePlaylist(playlist_id){

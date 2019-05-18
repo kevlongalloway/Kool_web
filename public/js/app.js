@@ -2545,6 +2545,7 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         $('#newPlaylistModal').modal('hide');
       });
+      this.form.playlist.name = '';
       this.getClassroom();
     }
   }
@@ -3324,6 +3325,7 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         $('#newPlaylistModal').modal('hide');
       });
+      this.playlist = '';
       this.getPlaylists();
     },
     deletePlaylist: function deletePlaylist(playlist_id) {
@@ -59951,8 +59953,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Kevlon\kool_web\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Kevlon\kool_web\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/jamelbrown/github/kool_web/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/jamelbrown/github/kool_web/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -155,6 +155,7 @@ export default {
               .then(function(response){
                 $('#newPlaylistModal').modal('hide');
         })
+        this.form.playlist.name = ''
         this.getClassroom()
 
          

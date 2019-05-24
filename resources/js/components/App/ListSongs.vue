@@ -113,7 +113,7 @@ export default {
       $('#addSongToPlaylistModal').modal('show');
   },
   addSongToPlaylist(playlist_id){
-    axios.get('/attachSongToPlaylist/'+playlist_id+'/'+this.songId)
+    axios.get('/playlists/'+playlists_id+'/song/'+this.songId)
           .then(response => {
             this.playlists = response.data
     });

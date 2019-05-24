@@ -37,7 +37,8 @@ class OrganizationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Organization $organization){
+    public function show(Organization $organization)
+    {
         return response()->json($organization);
     }
 
@@ -48,7 +49,8 @@ class OrganizationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminOrganizationPost $request){
+    public function store(AdminOrganizationPost $request)
+    {
         $organization  = Organization::create($request->all());
         $organization->generateAccessCode();
         $organization->hashPassword($request);
@@ -63,7 +65,8 @@ class OrganizationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Organization $organization){
+    public function update(Request $request, Organization $organization)
+    {
         $organization->update($request->all());
         return response()->json(null,204);
     }
@@ -75,7 +78,8 @@ class OrganizationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Organization $organization){
+    public function destroy(Organization $organization)
+    {
         $organization->delete();
         return response()->json(null, 204);
     }

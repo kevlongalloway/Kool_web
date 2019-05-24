@@ -37,18 +37,6 @@ class PlaylistController extends Controller
         return response()->json($playlists);
     }
 
-
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -134,16 +122,20 @@ class PlaylistController extends Controller
 
 
     protected function getUser($id){
-        if (Auth::guard('admin')->check()) {
+        if (Auth::guard('admin')->check()) 
+        {
             return Admin::find($id);
         }
-        else if (Auth::guard('teacher')->check()) {
+        else if (Auth::guard('teacher')->check()) 
+        {
             return Teacher::find($id);
         }
-        else if (Auth::guard('organization')->check()) {
+        else if (Auth::guard('organization')->check()) 
+        {
             return Organization::find($id);
         }
-        else if (Auth::guard()->check()) {
+        else if (Auth::guard()->check()) 
+        {
             return User::find($id);
         }
 
@@ -155,7 +147,8 @@ class PlaylistController extends Controller
         return response()->json($playlists);
     }
 
-    protected function getUserNoParams(){
+    protected function getUserNoParams()
+    {
         $user = Auth::user();
         $user == null ? $user = Auth::guard('teacher')->user() : ''; 
         $user == null ? $user = Auth::guard('admin')->user() : ''; 

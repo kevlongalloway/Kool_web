@@ -3,7 +3,7 @@
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <div class="card">
-                    <div class="card-header"><a href="#" @click="back"><i class="fas fa-arrow-left"></i></a> Playlists </div>
+                    <div class="card-header"><a href="javascript:void(0)" @click="back"><i class="fas fa-arrow-left"></i></a> Playlists </div>
 
                     <div class="card-body">
                         <button type="button" class="btn btn-primary btn-sm btn-block" @click="addPlaylistToClassModal">Add Playlist</button>
@@ -144,7 +144,7 @@ export default {
             $('#newPlaylistModal').modal('show');
         },
         addPlaylistToClass(playlist_id){
-            axios.get('/attachPlaylistToClass/'+this.$route.params.classroom_id+'/'+playlist_id)
+            axios.get('/classrooms/'+this.$route.params.classroom_id+'/playlists/'+playlist_id)
             $('#addPlaylistToClassModal').modal('hide');
             this.getClassroom()
         },

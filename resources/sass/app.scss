@@ -12,6 +12,42 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+.card-header{
+	font-weight:bold;
+	font-size:1.2rem;
+}
+
+.grade-button{
+    background-color:#5f5fc4;
+    border-radius:5px;
+    margin-bottom:.5em;
+    color:#fff;
+    font-size:1.3rem;
+  }
+
+
+  .new-playlist{
+  	margin-bottom:1em;
+  }
+
+  .list-icon{
+  	float:right;
+  }
+@media (min-width: 768px) {
+	.grade-button{
+ 		padding:1em;
+ 		margin-bottom:1em;
+ 	}
+
+}
+ @media (min-width: 993px) {
+ 	.grade-button{
+ 		padding:1.5em;
+ 		margin-bottom:1em;
+ 	}
+ }
+
+@import '~admin-lte/dist/css/adminlte.min.css';
 
 @import '~@fortawesome/fontawesome-free/css/all.min';
 html,body {

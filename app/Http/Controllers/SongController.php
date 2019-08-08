@@ -55,10 +55,11 @@ class SongController extends Controller
      */
     public function store(Request $request)
     {
-        if(Auth::guard('admin')->check()) {
-        $song = Song::create($request->except('file'));
-        $this->attachGrades($song,$request); 
-        return response()->json(['message' => $song->title.' has successfully been uploaded!'],201);
+        if (Auth::guard('admin')->check()) 
+        {
+            $song = Song::create($request->except('file'));
+            $this->attachGrades($request,$song); 
+            return response()->json(['message' => $song->title.' has successfully been uploaded!'],201);
         }
         return response()->json(null,404);
     }
@@ -109,14 +110,17 @@ class SongController extends Controller
         //
     }
 
-     public function browse($grade,$subject){
+     public function browse($grade, $subject)
+     {
        $grade = Grade::find($grade);
        $songs = $grade->songs->where('subject_id',$subject);
        return response()->json($songs);
     }
 
-    protected function subjectID($subject){
-        switch($subject){
+    protected function subjectID($subject)
+    {
+        switch($subject)
+        {
             case 'ELA' || 'ela' || 'Ela':
             return 1;
             break;
@@ -133,24 +137,28 @@ class SongController extends Controller
         }
     }
 
-    protected function attachGrades($song, $request){
-        foreach($request->grades as $key => $grade){
+    protected function attachGrades($request, $song)
+    {
+        foreach ($request->grades as $key => $grade)
+        {
             $song->grades()->attach($this->grades[$key]);
         }
     }
 
     protected function storeRawSongData($song){
-        if(Storage::exists('songs.txt')){
-         Storage::append('songs.txt',[$song, $song->grades()->pluck('grade_id')]);
-        }else{
+        if (Storage::exists('songs.txt'))
+        {
+            Storage::append('songs.txt',[$song, $song->grades()->pluck('grade_id')]);
+        }else
+        {
             Storage::put('songs.txt',[$song, $song->grades()->pluck('grade_id')]);
         }
-
     }
 
-    protected function storeFile($request){
-        dd($request->file('file'));
-        if($request->hasFile('file')){
+    protected function storeFile($request)
+    {
+        if($request->hasFile('file'))
+        {
             // Get filename with the extension
 
             $filenameWithExt = $request->file('file');

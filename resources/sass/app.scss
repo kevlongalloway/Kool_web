@@ -12,6 +12,24 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
-@import '~admin-lte/dist/css/adminlte.min.css';
 
 @import '~@fortawesome/fontawesome-free/css/all.min';
+html,body {
+	height:100vh !important;
+}
+
+body {
+	box-sizing:border-box;
+}
+
+.grade-icon{
+	background-color:#FEFEFE;
+	border:1px solid #000;
+	padding:2em;
+}
+
+
+
+.grade-card{
+	
+	}

@@ -52,7 +52,8 @@ class AccessCodeController extends Controller
 
     public function register(RegisterRequest $request){
         $guard = $request->guard;
-        $route = "{$guard}.home";
+        $route = "{$guard}.welcome";
+
         $e = new Login;
         $e->register($request);
         //get credentials

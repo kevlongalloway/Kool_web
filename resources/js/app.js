@@ -10,6 +10,7 @@ require('./bootstrap');
 window.Vue = require('vue')
 import VueRouter from 'vue-router'
 import VueProgressBar from 'vue-progressbar'
+
 const options = {
   color: '#00E676',
   failedColor: '#874b4b',
@@ -59,7 +60,8 @@ const routes = [
   {path:'/playlist/:playlist_id', component: require('./components/App/Playlist.vue').default},
   {path:'/portal/classrooms', component: require('./components/App/Classrooms/TeacherClassrooms.vue').default},
   {path:'/portal/classrooms/create', component: require('./components/App/Classrooms/Create.vue').default},
-  {path:'/portal/classrooms/:classroom_id', component: require('./components/App/Classrooms/TeacherClassroom.vue').default}
+  {path:'/portal/classrooms/:classroom_id', component: require('./components/App/Classrooms/TeacherClassroom.vue').default},
+  {path:'/portal/welcome',component: require('./components/Instructor/Welcome.vue').default}
 
 
 
@@ -91,7 +93,7 @@ Vue.component('access-input', require('./components/AccessInput.vue').default);
 Vue.component('subjects', require('./components/App/Subjects.vue').default);
 Vue.component('grades', require('./components/App/Grades.vue').default);
 Vue.component('video-player', require('./components/App/Video.vue').default);
-
+Vue.component('loading-screen',require('./components/App/Loading.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

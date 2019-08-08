@@ -61,7 +61,7 @@ class PlaylistController extends Controller
         $user == null ? $user = Auth::guard('teacher')->user() : ''; 
         $user == null ? $user = Auth::guard('admin')->user() : ''; 
         $user == null ? $user = Auth::guard('organization')->user() : ''; 
-        
+
         $playlist = $user->playlists()->create($request->all());
 
         return response()->json($playlist,201);
@@ -116,7 +116,6 @@ class PlaylistController extends Controller
         {
         $playlist->songs()->attach($song_id);
         }
-        return response()->json(null,201);
     }
 
     /**

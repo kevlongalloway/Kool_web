@@ -28,6 +28,23 @@ Route::post('admin','Admin\Auth\LoginController@login')->name('admin.login');
 
 Route::get('admin/home', 'Admin\HomeController@index')->name('admin.home');
 
+//After registration routes
+Route::get('/admin/welcome', function(){
+	return redirect(route('admin.home'));
+})->name('admin.welcome');
+
+Route::get('/portal/welcome', 'Teacher\HomeController@welcome')->name('teacher.welcome');
+
+Route::get('/club/welcome', function(){
+	return redirect(route('organization.home'));
+} )->name('organization.welcome');
+
+Route::get('/welcome', function(){
+	return redirect(route('home'));
+})->name('welcome');
+
+
+
 Route::resource('organizations','Admin\OrganizationController');
 Route::resource('users','UserController');
 Route::resource('songs','SongController');

@@ -2537,7 +2537,7 @@ __webpack_require__.r(__webpack_exports__);
       $('#newPlaylistModal').modal('show');
     },
     addPlaylistToClass: function addPlaylistToClass(playlist_id) {
-      axios.get('/attachPlaylistToClass/' + this.$route.params.classroom_id + '/' + playlist_id);
+      axios.get('/classrooms/' + this.$route.params.classroom_id + '/playlists/' + playlist_id);
       $('#addPlaylistToClassModal').modal('hide');
       this.getClassroom();
     },
@@ -2745,7 +2745,7 @@ __webpack_require__.r(__webpack_exports__);
     addSongToPlaylist: function addSongToPlaylist(playlist_id) {
       var _this2 = this;
 
-      axios.get('/attachSongToPlaylist/' + playlist_id + '/' + this.songId).then(function (response) {
+      axios.get('/playlists/' + playlists_id + '/song/' + this.songId).then(function (response) {
         _this2.playlists = response.data;
       });
       this.getPlaylists();
@@ -60142,8 +60142,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/jamelbrown/github/kool_web/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/jamelbrown/github/kool_web/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/kaylagalloway/github/kool_web/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/kaylagalloway/github/kool_web/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

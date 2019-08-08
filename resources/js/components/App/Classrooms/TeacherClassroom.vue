@@ -144,7 +144,7 @@ export default {
             $('#newPlaylistModal').modal('show');
         },
         addPlaylistToClass(playlist_id){
-            axios.get('/attachPlaylistToClass/'+this.$route.params.classroom_id+'/'+playlist_id)
+            axios.get('/classrooms/'+this.$route.params.classroom_id+'/playlists/'+playlist_id)
             $('#addPlaylistToClassModal').modal('hide');
             this.getClassroom()
         },

@@ -29,27 +29,32 @@ class UserController extends Controller
         return User::all();
     }
 
-    public function show(User $user){
+    public function show(User $user)
+    {
         return $user;
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $user  = User::create($request->all());
         return response()->json($user, 201);
     }
 
-    public function update(Request $request, User $user){
+    public function update(Request $request, User $user)
+    {
         $user->update($request->all());
         return response()->json(null,204);
     }
 
-    public function delete(User $user){
+    public function delete(User $user)
+    {
         $user->delete();
         return response()->json(null, 204);
     }
 
 
-    public function massStore(Request $request, Organization $organization){
+    public function massStore(Request $request, Organization $organization)
+    {
         $count = $request->count;
         $start_id = User::orderBy('id','desc')->first()->id + 1;
         for($i=$start_id; $i<=$count;$i++){

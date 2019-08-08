@@ -36,7 +36,8 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user){
+    public function show(User $user)
+    {
         return response()->json($user);
     }
 
@@ -47,7 +48,8 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminUserPost $request){
+    public function store(AdminUserPost $request)
+    {
         $user  = User::create($request->all());
         $user->generateAccessCode();
         $user->hashPassword($request);
@@ -62,7 +64,8 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user){
+    public function update(Request $request, User $user)
+    {
         $user->update($request->all());
         return response()->json(null,204);
     }
@@ -74,7 +77,8 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user){
+    public function destroy(User $user)
+    {
         $user->delete();
         return response()->json(null, 204);
     }

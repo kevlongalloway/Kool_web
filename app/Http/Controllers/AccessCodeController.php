@@ -50,7 +50,8 @@ class AccessCodeController extends Controller
     }
 
 
-    public function register(RegisterRequest $request){
+    public function register(RegisterRequest $request)
+    {
         $guard = $request->guard;
         $route = "{$guard}.home";
         $e = new Login;

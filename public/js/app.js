@@ -2370,7 +2370,9 @@ __webpack_require__.r(__webpack_exports__);
         name: this.classroom.name,
         students: this.selectedStudents
       });
-      this.$router.go(-1);
+      this.$router.push({
+        path: '/portal/classrooms'
+      });
     },
     back: function back() {
       this.$router.go(-1);
@@ -2587,6 +2589,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     this.getClassrooms();
@@ -2765,7 +2771,7 @@ __webpack_require__.r(__webpack_exports__);
       this.getPlaylists();
     },
     back: function back() {
-      this.$router.go(-1);
+      history.go(-1);
     }
   }
 });
@@ -2848,6 +2854,22 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3235,6 +3257,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -7906,7 +7932,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.dev{\n\tbackground-color:#FEFEFE;\n\tborder:1px solid #000;\n}\n", ""]);
+exports.push([module.i, "\n.grade-link{\n}\n", ""]);
 
 // exports
 
@@ -41636,55 +41662,59 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
-            _c(
-              "div",
-              { staticClass: "row" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    staticClass: "btn btn-primary",
-                    attrs: { to: "/portal/classrooms/create" }
-                  },
-                  [
-                    _vm._v(
-                      "\n                      Create New Classroom\n                    "
-                    )
-                  ]
-                )
-              ],
-              1
-            ),
+            _c("div", { staticClass: "row" }, [
+              _c(
+                "div",
+                { staticClass: "col" },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "btn btn-primary",
+                      attrs: { to: "/portal/classrooms/create" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                      Create New Classroom\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              )
+            ]),
             _vm._v(" "),
             _c("div", { staticClass: "row" }, [
-              _vm.classrooms.length
-                ? _c(
-                    "ul",
-                    { staticClass: "list-group" },
-                    _vm._l(_vm.classrooms, function(classroom) {
-                      return _c(
-                        "li",
-                        { key: classroom.id, staticClass: "list-group-item" },
-                        [
-                          _c(
-                            "router-link",
-                            {
-                              attrs: {
-                                to: {
-                                  path: "/portal/classrooms/" + classroom.id
+              _c("div", { staticClass: "col-md-12" }, [
+                _vm.classrooms.length
+                  ? _c(
+                      "ul",
+                      { staticClass: "list-group" },
+                      _vm._l(_vm.classrooms, function(classroom) {
+                        return _c(
+                          "li",
+                          { key: classroom.id, staticClass: "list-group-item" },
+                          [
+                            _c(
+                              "router-link",
+                              {
+                                attrs: {
+                                  to: {
+                                    path: "/portal/classrooms/" + classroom.id
+                                  }
                                 }
-                              }
-                            },
-                            [_vm._v(_vm._s(classroom.name))]
-                          ),
-                          _vm._m(0, true)
-                        ],
-                        1
-                      )
-                    }),
-                    0
-                  )
-                : _vm._e()
+                              },
+                              [_vm._v(_vm._s(classroom.name))]
+                            ),
+                            _vm._m(0, true)
+                          ],
+                          1
+                        )
+                      }),
+                      0
+                    )
+                  : _vm._e()
+              ])
             ])
           ])
         ])
@@ -41730,159 +41760,276 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-8" }, [
+      _c("div", { staticClass: "col-md-6" }, [
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-header" }, [_vm._v("Select A Grade")]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
-            _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "row justify-content-around" }, [
               _c(
                 "div",
-                { staticClass: "col-md-4 dev" },
+                { staticClass: "col-md-4" },
                 [
-                  _c("router-link", { attrs: { to: { path: "/grade/13" } } }, [
-                    _vm._v("K")
-                  ])
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "grade-link",
+                      attrs: { to: { path: "/grade/13" } }
+                    },
+                    [
+                      _c("div", { staticClass: "text-center grade-button" }, [
+                        _vm._v("K")
+                      ])
+                    ]
+                  )
                 ],
                 1
               ),
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "col-md-4 dev" },
+                { staticClass: "col-md-4" },
                 [
-                  _c("router-link", { attrs: { to: { path: "/grade/1" } } }, [
-                    _vm._v("1")
-                  ])
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "grade-link",
+                      attrs: { to: { path: "/grade/1" } }
+                    },
+                    [
+                      _c("div", { staticClass: "text-center grade-button" }, [
+                        _vm._v("1")
+                      ])
+                    ]
+                  )
                 ],
                 1
               ),
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "col-md-4 dev" },
+                { staticClass: "col-md-4" },
                 [
-                  _c("router-link", { attrs: { to: { path: "/grade/2" } } }, [
-                    _vm._v("2")
-                  ])
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "grade-link",
+                      attrs: { to: { path: "/grade/2" } }
+                    },
+                    [
+                      _c("div", { staticClass: "text-center grade-button" }, [
+                        _vm._v("2")
+                      ])
+                    ]
+                  )
                 ],
                 1
               )
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "row justify-content-around" }, [
               _c(
                 "div",
-                { staticClass: "col-md-4 dev" },
+                { staticClass: "col-md-4" },
                 [
-                  _c("router-link", { attrs: { to: { path: "/grade/3" } } }, [
-                    _vm._v("3")
-                  ])
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "grade-link",
+                      attrs: { to: { path: "/grade/3" } }
+                    },
+                    [
+                      _c("div", { staticClass: "text-center grade-button" }, [
+                        _vm._v("3")
+                      ])
+                    ]
+                  )
                 ],
                 1
               ),
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "col-md-4 dev" },
+                { staticClass: "col-md-4" },
                 [
-                  _c("router-link", { attrs: { to: { path: "/grade/4" } } }, [
-                    _vm._v("4")
-                  ])
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "grade-link",
+                      attrs: { to: { path: "/grade/4" } }
+                    },
+                    [
+                      _c("div", { staticClass: "text-center grade-button" }, [
+                        _vm._v("4")
+                      ])
+                    ]
+                  )
                 ],
                 1
               ),
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "col-md-4 dev" },
+                { staticClass: "col-md-4" },
                 [
-                  _c("router-link", { attrs: { to: { path: "/grade/5" } } }, [
-                    _vm._v("5")
-                  ])
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "grade-link",
+                      attrs: { to: { path: "/grade/5" } }
+                    },
+                    [
+                      _c("div", { staticClass: "text-center grade-button" }, [
+                        _vm._v("5")
+                      ])
+                    ]
+                  )
                 ],
                 1
               )
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "row justify-content-around" }, [
               _c(
                 "div",
-                { staticClass: "col-md-4 dev" },
+                { staticClass: "col-md-4" },
                 [
-                  _c("router-link", { attrs: { to: { path: "/grade/6" } } }, [
-                    _vm._v("6")
-                  ])
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "grade-link",
+                      attrs: { to: { path: "/grade/6" } }
+                    },
+                    [
+                      _c("div", { staticClass: "text-center grade-button" }, [
+                        _vm._v("6")
+                      ])
+                    ]
+                  )
                 ],
                 1
               ),
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "col-md-4 dev" },
+                { staticClass: "col-md-4" },
                 [
-                  _c("router-link", { attrs: { to: { path: "/grade/7" } } }, [
-                    _vm._v("7")
-                  ])
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "grade-link",
+                      attrs: { to: { path: "/grade/7" } }
+                    },
+                    [
+                      _c("div", { staticClass: "text-center grade-button" }, [
+                        _vm._v("7")
+                      ])
+                    ]
+                  )
                 ],
                 1
               ),
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "col-md-4 dev" },
+                { staticClass: "col-md-4" },
                 [
-                  _c("router-link", { attrs: { to: { path: "/grade/8" } } }, [
-                    _vm._v("8")
-                  ])
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "grade-link",
+                      attrs: { to: { path: "/grade/8" } }
+                    },
+                    [
+                      _c("div", { staticClass: "text-center grade-button" }, [
+                        _vm._v("8")
+                      ])
+                    ]
+                  )
                 ],
                 1
               )
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "row justify-content-around" }, [
               _c(
                 "div",
-                { staticClass: "col-md-4 dev" },
+                { staticClass: "col-md-4" },
                 [
-                  _c("router-link", { attrs: { to: { path: "/grade/9" } } }, [
-                    _vm._v("9")
-                  ])
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "grade-link",
+                      attrs: { to: { path: "/grade/9" } }
+                    },
+                    [
+                      _c("div", { staticClass: "text-center grade-button" }, [
+                        _vm._v("9")
+                      ])
+                    ]
+                  )
                 ],
                 1
               ),
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "col-md-4 dev" },
+                { staticClass: "col-md-4" },
                 [
-                  _c("router-link", { attrs: { to: { path: "/grade/10" } } }, [
-                    _vm._v("10")
-                  ])
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "grade-link",
+                      attrs: { to: { path: "/grade/10" } }
+                    },
+                    [
+                      _c("div", { staticClass: "text-center grade-button" }, [
+                        _vm._v("10")
+                      ])
+                    ]
+                  )
                 ],
                 1
               ),
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "col-md-4 dev" },
+                { staticClass: "col-md-4" },
                 [
-                  _c("router-link", { attrs: { to: { path: "/grade/11" } } }, [
-                    _vm._v("11")
-                  ])
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "grade-link",
+                      attrs: { to: { path: "/grade/11" } }
+                    },
+                    [
+                      _c("div", { staticClass: "text-center grade-button" }, [
+                        _vm._v("11")
+                      ])
+                    ]
+                  )
                 ],
                 1
               )
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "row justify-content-around" }, [
               _c(
                 "div",
-                { staticClass: "col-md-4 dev" },
+                { staticClass: "col-md-4" },
                 [
-                  _c("router-link", { attrs: { to: { path: "/grade/12" } } }, [
-                    _vm._v("12")
-                  ])
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "grade-link",
+                      attrs: { to: { path: "/grade/12" } }
+                    },
+                    [
+                      _c("div", { staticClass: "text-center grade-button" }, [
+                        _vm._v("12")
+                      ])
+                    ]
+                  )
                 ],
                 1
               )
@@ -42294,16 +42441,21 @@ var render = function() {
             _c("div", { staticClass: "row" }, [
               _c(
                 "div",
-                { staticClass: "col-md-6 dev" },
+                { staticClass: "col-md-6" },
                 [
                   _c(
                     "router-link",
                     {
+                      staticClass: "grade-link",
                       attrs: {
                         to: { path: "/grade/" + _vm.grade + "/subject/2" }
                       }
                     },
-                    [_vm._v("Math")]
+                    [
+                      _c("div", { staticClass: "text-center grade-button" }, [
+                        _vm._v("Math")
+                      ])
+                    ]
                   )
                 ],
                 1
@@ -42311,16 +42463,21 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "col-md-6 dev" },
+                { staticClass: "col-md-6" },
                 [
                   _c(
                     "router-link",
                     {
+                      staticClass: "grade-link",
                       attrs: {
                         to: { path: "/grade/" + _vm.grade + "/subject/1" }
                       }
                     },
-                    [_vm._v("ELA")]
+                    [
+                      _c("div", { staticClass: "text-center grade-button" }, [
+                        _vm._v("ELA")
+                      ])
+                    ]
                   )
                 ],
                 1
@@ -42330,16 +42487,21 @@ var render = function() {
             _c("div", { staticClass: "row" }, [
               _c(
                 "div",
-                { staticClass: "col-md-6 dev" },
+                { staticClass: "col-md-6" },
                 [
                   _c(
                     "router-link",
                     {
+                      staticClass: "grade-link",
                       attrs: {
                         to: { path: "/grade/" + _vm.grade + "/subject/4" }
                       }
                     },
-                    [_vm._v("Social Studies")]
+                    [
+                      _c("div", { staticClass: "text-center grade-button" }, [
+                        _vm._v("Social Studies")
+                      ])
+                    ]
                   )
                 ],
                 1
@@ -42347,16 +42509,21 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "col-md-6 dev" },
+                { staticClass: "col-md-6" },
                 [
                   _c(
                     "router-link",
                     {
+                      staticClass: "grade-link",
                       attrs: {
                         to: { path: "/grade/" + _vm.grade + "/subject/3" }
                       }
                     },
-                    [_vm._v("Science")]
+                    [
+                      _c("div", { staticClass: "text-center grade-button" }, [
+                        _vm._v("Science")
+                      ])
+                    ]
                   )
                 ],
                 1
@@ -43034,66 +43201,71 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
-            _c("div", { staticClass: "row" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "btn btn-primary",
-                  on: { click: _vm.newPlaylist }
-                },
-                [
-                  _vm._v(
-                    "\n                    Create New Playlist\n                  "
-                  )
-                ]
-              )
+            _c("div", { staticClass: "row new-playlist" }, [
+              _c("div", { staticClass: "col" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-primary text-white",
+                    on: { click: _vm.newPlaylist }
+                  },
+                  [
+                    _vm._v(
+                      "\n                    Create New Playlist\n                  "
+                    )
+                  ]
+                )
+              ])
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "row" }, [
-              _vm.playlists.length
-                ? _c(
-                    "ul",
-                    { staticClass: "list-group" },
-                    _vm._l(_vm.playlists, function(playlist) {
-                      return _c(
-                        "li",
-                        { key: playlist.id, staticClass: "list-group-item" },
-                        [
-                          _c(
-                            "router-link",
-                            {
-                              attrs: {
-                                to: { path: "/playlist/" + playlist.id }
-                              }
-                            },
-                            [_vm._v(_vm._s(playlist.name))]
-                          ),
-                          _c("span", [
+              _c("div", { staticClass: "col-md-12" }, [
+                _vm.playlists.length
+                  ? _c(
+                      "ul",
+                      { staticClass: "list-group" },
+                      _vm._l(_vm.playlists, function(playlist) {
+                        return _c(
+                          "li",
+                          { key: playlist.id, staticClass: "list-group-item" },
+                          [
                             _c(
-                              "a",
+                              "router-link",
                               {
-                                attrs: { href: "#" },
-                                on: {
-                                  click: function($event) {
-                                    return _vm.deletePlaylist(playlist.id)
-                                  }
+                                attrs: {
+                                  to: { path: "/playlist/" + playlist.id }
                                 }
                               },
-                              [
-                                _c("i", {
-                                  staticClass: "fa fa-trash",
-                                  attrs: { "aria-hidden": "true" }
-                                })
-                              ]
-                            )
-                          ])
-                        ],
-                        1
-                      )
-                    }),
-                    0
-                  )
-                : _vm._e()
+                              [_vm._v(_vm._s(playlist.name))]
+                            ),
+                            _c("span", [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "list-icon",
+                                  attrs: { href: "#" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.deletePlaylist(playlist.id)
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("i", {
+                                    staticClass: "fa fa-trash",
+                                    attrs: { "aria-hidden": "true" }
+                                  })
+                                ]
+                              )
+                            ])
+                          ],
+                          1
+                        )
+                      }),
+                      0
+                    )
+                  : _vm._e()
+              ])
             ])
           ])
         ])

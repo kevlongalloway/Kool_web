@@ -59,7 +59,7 @@ export default {
             name:this.classroom.name,
             students: this.selectedStudents
         })
-        this.$router.go(-1)
+        this.$router.push({path: '/portal/classrooms'})
       },
       back(){
         this.$router.go(-1)

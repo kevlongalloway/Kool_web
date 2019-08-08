@@ -140,7 +140,7 @@ export default {
          this.getPlaylists()
   },
   back(){
-    this.$router.go(-1)
+    history.go(-1)
   }
   }
   

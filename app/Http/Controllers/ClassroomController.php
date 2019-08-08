@@ -40,8 +40,11 @@ class ClassroomController extends Controller
     {
         if (Auth::guard('teacher')->check()) 
         {
-            $classroom = Auth::guard('teacher')->user()->classrooms()->create($request->except('students'));
-            $this->attachStudents($request, $classroom);
+            $teacher = Auth::guard('teacher')->user();
+            $classroom = $teacher->classrooms()->create($request->except(['students']));
+            foreach($request->students as $student) {
+                dd($student);
+            }
         }
         return response()->json(null,201);
     }
@@ -54,10 +57,7 @@ class ClassroomController extends Controller
      */
     public function show($id)
     {
-        $classroom = Classroom::find($id);
-        $playlists = $classroom->playlists;
-        $students = $classroom->users;
-        return response()->json(['classroom' => $classroom,'students' => $students,'playlists' =>$playlists]);
+        
     }
 
     /**
@@ -98,15 +98,15 @@ class ClassroomController extends Controller
     public function getClassrooms($user_id) 
     {
         $classrooms = $this->getUser($user_id)->classrooms;
-        return response()->json($classrooms);
     }
 
-    public function getClassroomsNoParams()
-    {
-        $user = Auth::user();
-        $user == null ? $user = Auth::guard('teacher')->user() : '';
-        $classrooms = $user->classrooms;
-        return response()->json($classrooms);
+    public function getClassroomsNoParams() {
+        if (Auth::guard('teacher')->check())
+        {
+            $teacher = Auth::guard('teacher')->user();
+            $classrooms = $teacher->classrooms;
+            return response()->json($classrooms);
+        }
     }
 
     public function getPlaylists($classroom_id) 
@@ -139,14 +139,14 @@ class ClassroomController extends Controller
     {
         $classroom = Classroom::find($classroom_id);
         $classroom->playlists()->create($request->all());
-        
     }
 
     public function getAvailableStudents()
     {
         if (Auth::guard('teacher')->check())
         {
-            $students = Auth::guard('teacher')->user()->organization->users;
+            $teacher = Auth::guard('teacher')->user();
+            $students = $teacher->organization->students;
             return response()->json($students);
         }
     }
@@ -154,11 +154,6 @@ class ClassroomController extends Controller
     public function addStudents(Request $request,$classroom_id)
     {
         $classroom = Classroom::find($classroom_id);
-        $this->attachStudents($request,$classroom);
-    }
-
-    protected function attachStudents(Request $request, $classroom) 
-    {
         foreach ($request->students as $student_id)
         {
             $user = User::find($student_id);
@@ -177,9 +172,9 @@ class ClassroomController extends Controller
         {
             $classroom->users()->detach($student_id);
         }
+
+
     }
-
-
 
     protected function getUser($id)
     {

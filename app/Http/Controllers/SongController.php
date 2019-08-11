@@ -11,7 +11,7 @@ use Storage;
 class SongController extends Controller
 {
     protected $grades = [
-        'one'    => 1,
+        'one' => 1,
         'two'    => 2,
         'three'  => 3,
         'four'   => 4,
@@ -30,8 +30,7 @@ class SongController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(){
         $songs = Song::all();
         return response()->json($songs);
     }

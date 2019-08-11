@@ -41,7 +41,7 @@ class AccessCodeController extends Controller
      */
     public function showRegisterForm($guard, $accesscode)
     {
-        return view('teacher.auth.register', ['guard' => $guard, 'access_code' => $accesscode]);
+        return view('register', ['guard' => $guard, 'access_code' => $accesscode]);
     }
 
     public function register(RegisterRequest $request)

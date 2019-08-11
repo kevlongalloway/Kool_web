@@ -1784,9 +1784,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Mounted');
@@ -1829,14 +1826,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2137,6 +2126,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2189,10 +2179,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
 //
 //
 //
@@ -2338,10 +2324,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     this.getStudents();
@@ -2391,10 +2373,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
 //
 //
 //
@@ -2720,9 +2698,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2804,6 +2779,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -2909,9 +2885,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['grade'],
   methods: {
@@ -2932,8 +2905,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
 //
 //
 //
@@ -2987,7 +2958,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -3001,7 +2971,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -3032,8 +3001,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
 //
 //
 //
@@ -3118,8 +3085,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Component Mounted');
@@ -3137,9 +3102,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
 //
 //
 //
@@ -3177,8 +3139,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Component Mounted');
@@ -3196,10 +3156,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
 //
 //
 //
@@ -3362,10 +3318,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3426,6 +3378,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -7941,7 +7894,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.current-page{\n    margin:.5em;\n}\n", ""]);
+exports.push([module.i, "\n.current-page {\r\n  margin: .5em;\n}\r\n", ""]);
 
 // exports
 
@@ -7960,7 +7913,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.small-blur{\n  opacity:0.9;\n}\n", ""]);
+exports.push([module.i, "\n.small-blur {\r\n  opacity: 0.9;\n}\r\n", ""]);
 
 // exports
 
@@ -7998,7 +7951,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.dev{\n\tbackground-color:#FEFEFE;\n\tborder:1px solid #000;\n}\n", ""]);
+exports.push([module.i, "\n.dev {\r\n  background-color: #FEFEFE;\r\n  border: 1px solid #000;\n}\r\n", ""]);
 
 // exports
 
@@ -8017,7 +7970,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.current-page{\n    margin:.5em;\n}\n", ""]);
+exports.push([module.i, "\n.current-page {\r\n  margin: .5em;\n}\r\n", ""]);
 
 // exports
 
@@ -39418,7 +39371,7 @@ var render = function() {
             attrs: { type: "submit" },
             on: { click: _vm.submitForm }
           },
-          [_vm._v("\n                 Next\n             ")]
+          [_vm._v("\n        Next\n      ")]
         )
       ])
     ])
@@ -39465,13 +39418,7 @@ var render = function() {
           ? _c(
               "div",
               { staticClass: "alert alert-success", attrs: { role: "alert" } },
-              [
-                _vm._v(
-                  "\n                  " +
-                    _vm._s(_vm.message) +
-                    "\n                "
-                )
-              ]
+              [_vm._v("\n        " + _vm._s(_vm.message) + "\n      ")]
             )
           : _vm._e(),
         _vm._v(" "),
@@ -40827,7 +40774,7 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c("nav", { attrs: { "aria-label": "Page navigation example" } }, [
+        _c("nav", { attrs: { "aria-label": "Page navigat\nion example" } }, [
           _c("ul", { staticClass: "pagination" }, [
             _c(
               "li",
@@ -41724,7 +41671,7 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n                      Create New Classroom\n                    "
+                        "\n                Create New Classroom\n              "
                       )
                     ]
                   )
@@ -42701,7 +42648,7 @@ var staticRenderFns = [
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
-              _vm._v("\n                    what goes here?\n                ")
+              _vm._v("\n          what goes here?\n        ")
             ])
           ])
         ])
@@ -42746,9 +42693,7 @@ var staticRenderFns = [
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                    select your grade.\n                "
-              )
+              _vm._v("\n          select your grade.\n        ")
             ])
           ])
         ])
@@ -43101,12 +43046,10 @@ var render = function() {
         ],
         1
       ),
-      _vm._v("\n         Full School Site License")
+      _vm._v(" Full School Site License")
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "card-body" }, [
-      _vm._v("\n       Package-1\n    ")
-    ])
+    _c("div", { staticClass: "card-body" }, [_vm._v("\n    Package-1\n  ")])
   ])
 }
 var staticRenderFns = []
@@ -43142,12 +43085,10 @@ var render = function() {
         ],
         1
       ),
-      _vm._v("\n         Classroom Subscription")
+      _vm._v(" Classroom Subscription")
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "card-body" }, [
-      _vm._v("\n       Package-2\n    ")
-    ])
+    _c("div", { staticClass: "card-body" }, [_vm._v("\n    Package-2\n  ")])
   ])
 }
 var staticRenderFns = []
@@ -43385,7 +43326,7 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n                    Create New Playlist\n                  "
+                        "\n                      Create New Playlist\n                    "
                       )
                     ]
                   )
@@ -43421,7 +43362,7 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\n          Your changes has been saved!\n        "
+                          "\n            Your changes has been saved!\n          "
                         )
                       ]
                     )

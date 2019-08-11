@@ -2,9 +2,8 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
@@ -17,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','first_login','grade'
+        'name', 'email', 'password', 'first_login', 'grade',
     ];
 
     /**
@@ -38,50 +37,60 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function organization(){
+    public function organization()
+    {
         return $this->belongsTo('App\Organization');
     }
 
-    public function classrooms(){
+    public function classrooms()
+    {
         return $this->belongsToMany('App\Classroom');
     }
 
-    public function playlists(){
-        return $this->morphToMany('App\Playlist','playlistable');
-    } 
+    public function playlists()
+    {
+        return $this->morphToMany('App\Playlist', 'playlistable');
+    }
 
-    public function createPlaylist(){
+    public function createPlaylist()
+    {
         return $this->playlists()->create();
     }
 
-
-    public function updateName($name){
+    public function updateName($name)
+    {
         return $this->update(['name' => $name]);
     }
 
-    public function setGrade($grade){
+    public function setGrade($grade)
+    {
         return $this->update(['grade' => $grade]);
     }
 
-    public function loggedIn(){
+    public function loggedIn()
+    {
         return $this->update(['first_login' => 1]);
     }
 
-    public function joinClass($class_id){
+    public function joinClass($class_id)
+    {
         return $this->classrooms()->attach($class_id);
     }
 
-    public function leaveClass($class_id){
-            return $this->classrooms()->detach($class_id);
+    public function leaveClass($class_id)
+    {
+        return $this->classrooms()->detach($class_id);
     }
 
-    public function isActive(){
+    public function isActive()
+    {
         return $this->organization_id == null ?
-         $this->is_active :
-         $this->organization->isActive();
+        $this->is_active :
+        $this->organization->isActive();
     }
 
-    public function hashPassword($request){
+    public function hashPassword($request)
+    {
         $this->update(['password' => Hash::make($request->password)]);
     }
 }

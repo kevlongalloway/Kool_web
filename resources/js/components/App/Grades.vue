@@ -93,10 +93,6 @@
 
 <style>
 
-<<<<<<< HEAD
-</style>
-=======
-
   .grade-link{
   }
 </style>

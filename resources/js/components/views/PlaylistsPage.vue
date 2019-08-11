@@ -6,19 +6,18 @@
               <div class="card">
                 <div class="card-header"><a href="javascript:void(0)" @click="back"><i class="fas fa-arrow-left"></i></a>My Playlists </div>
                 <div class="card-body">
-                  <div class="row new-playlist">
-                    <div class="col">
+                  <div class="row justify-content-between new-playlist">
+                    <div class="col-md-7">
+                      <ul v-if="playlists.length" class="list-group">
+                        <li  v-for="playlist in playlists" :key="playlist.id" class="list-group-item"><router-link :to="{path: '/playlist/' + playlist.id }">{{playlist.name}}</router-link><span><a class="list-icon" href="#" @click="deletePlaylist(playlist.id)"><i class="fa fa-trash" aria-hidden="true"></i></a></span></li>
+                      </ul>
+                    </div> 
+                    <div class="col-lg-4">
                       <a class="btn btn-primary text-white" @click="newPlaylist">
                         Create New Playlist
                       </a>
                       </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-12">
-                      <ul v-if="playlists.length" class="list-group">
-                        <li  v-for="playlist in playlists" :key="playlist.id" class="list-group-item"><router-link :to="{path: '/playlist/' + playlist.id }">{{playlist.name}}</router-link><span><a class="list-icon" href="#" @click="deletePlaylist(playlist.id)"><i class="fa fa-trash" aria-hidden="true"></i></a></span></li>
-                      </ul>
-                      </div> 
+
                     </div>
                 </div>
               </div>

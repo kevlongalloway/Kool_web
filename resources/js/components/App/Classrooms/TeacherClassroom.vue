@@ -3,7 +3,7 @@
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <div class="card">
-                    <div class="card-header"><a href="javascript:void(0)" @click="back"><i class="fas fa-arrow-left"></i></a> Playlists </div>
+                    <div class="card-header"><a href="javascript:void(0)" @click="back"><i class="fas fa-arrow-left"></i></a> Playlists for {{classroom.name}}</div>
 
                     <div class="card-body">
                         <button type="button" class="btn btn-primary btn-sm btn-block" @click="addPlaylistToClassModal">Add Playlist</button>
@@ -98,10 +98,14 @@ export default {
     mounted(){
         this.getClassroom()
         this.getPlaylists()
+        this.getClassroomPlaylists()
+        this.getClassroomStudents()
     },
     data(){
         return {
-            classroom: {},
+            classroom: {
+              name:''
+            },
             students:{},
             playlists:{},
             url:'/classrooms/'+this.$route.params.classroom_id,
@@ -120,9 +124,7 @@ export default {
         getClassroom(){
             axios.get(this.url)
             .then(res => {
-                this.classroom = res.data.classroom
-                this.playlists = res.data.playlists
-                this.students = res.data.students
+                this.classroom = res.data
 
             });
             this.loading = false
@@ -159,6 +161,19 @@ export default {
         this.getClassroom()
 
          
+      },
+      getClassroomPlaylists() {
+        axios.get('/api/classrooms/'+this.$route.params.classroom_id+'/playlists')
+          .then(res => {
+            this.playlists = res.data
+            console.log(res.data)
+          })
+      },
+      getClassroomStudents() {
+        axios.get('/api/classrooms/'+this.$route.params.classroom_id+'/students')
+          .then(res => {
+            this.students = res.data
+          })
       }
     }
 }

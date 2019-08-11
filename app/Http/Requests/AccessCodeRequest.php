@@ -24,13 +24,14 @@ class AccessCodeRequest extends FormRequest
     public function rules()
     {
         return [
-            'access_code' => 'exists:organizations,id'
+            'access_code' => 'exists:organizations,id',
         ];
     }
 
-    public function messages(){
+    public function messages()
+    {
         return [
-            'access_code.exists' => 'The given data is invalid.'
+            'access_code.exists' => 'The given data is invalid.',
         ];
     }
 }

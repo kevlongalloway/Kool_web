@@ -14,7 +14,7 @@
                       </div>
                      
                       <div class="form-group">
-                        <label for="grades">Select Students</label>
+                        <label v-if="students.length" for="grades">Select Students</label>
                         <div v-for="student in students" :key="student.id" class="form-check">
                           <input  :value="student.id" v-model="selectedStudents" class="form-check-input" type="checkbox">
                           <label class="form-check-label">{{ student.name }}</label>

@@ -24,17 +24,18 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users|unique:teachers',
-            'password' => 'required|string|min:8|confirmed',
-            'guard' => 'required|string',
-            'access_code' => 'required|exists:organizations,id'
+            'name'        => 'required|string|max:255',
+            'email'       => 'required|string|email|max:255|unique:users|unique:teachers',
+            'password'    => 'required|string|min:8|confirmed',
+            'guard'       => 'required|string',
+            'access_code' => 'required|exists:organizations,id',
         ];
     }
 
-    public function messages(){
+    public function messages()
+    {
         return [
-            'access_code.exists' => 'The given data is invalid.'
+            'access_code.exists' => 'The given data is invalid.',
         ];
     }
 }

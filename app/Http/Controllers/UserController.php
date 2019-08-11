@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use App\User;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -25,10 +24,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users =  User::orderBy('created_at','desc')->paginate(10);
+        $users = User::orderBy('created_at', 'desc')->paginate(10);
         return response()->json($users);
     }
-
 
     /**
      * Display the specified resource.
@@ -41,7 +39,6 @@ class UserController extends Controller
         return response()->json($user);
     }
 
-
     /**
      * Store a newly created resource in storage.
      *
@@ -50,12 +47,11 @@ class UserController extends Controller
      */
     public function store(AdminUserPost $request)
     {
-        $user  = User::create($request->all());
+        $user = User::create($request->all());
         $user->generateAccessCode();
         $user->hashPassword($request);
         return response()->json(null, 201);
     }
-
 
     /**
      * Update the specified resource in storage.
@@ -67,9 +63,8 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $user->update($request->all());
-        return response()->json(null,204);
+        return response()->json(null, 204);
     }
-
 
     /**
      * Remove the specified resource from storage.
@@ -83,5 +78,4 @@ class UserController extends Controller
         return response()->json(null, 204);
     }
 
-}    
-
+}

@@ -65,7 +65,7 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Access Code</label>
 
                             <div class="col-md-6">
-                                <input id="access_code" type="text" class="form-control" name="access_code" required>
+                                <input id="access_code" type="text" class="form-control" name="access_code">
                             </div>
                         </div>
                         <input id="guard" type="hidden" value="user" name="guard">

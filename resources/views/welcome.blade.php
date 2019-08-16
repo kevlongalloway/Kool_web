@@ -75,7 +75,7 @@ img.emoji {
                                             <nav id="top-menu-nav">
                         <ul id="top-menu" class="nav"><li id="menu-item-327" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-327"><a href="http://koolriculumclub.com/">Home</a></li>
 <li id="menu-item-330" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-330"><a href="http://koolriculumclub.com/allaboutkoolriculum/">About KOOLriculum</a></li>
-<li id="menu-item-331" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-331"><a href="http://koolriculumclub.com/subjects/">Login</a>
+<li id="menu-item-331" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-331"><a href="/login">Login</a>
 <ul class="sub-menu">
     <li id="menu-item-526" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-526"><a href="/login">Individual/Student</a>
    

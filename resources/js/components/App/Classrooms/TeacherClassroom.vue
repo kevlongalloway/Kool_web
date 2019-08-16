@@ -47,7 +47,7 @@
             <div class="row">
               <ul v-if="user.playlists.length" class="list-group">
                 <li v-for="playlist in user.playlists" :key="playlist.id" class="list-group-item">
-                  <a href="#" @click="addPlaylistToClass(playlist.id)">{{playlist.name}}</a>
+                  <a href="javascript:void(0)" @click="addPlaylistToClass(playlist.id)">{{playlist.name}}</a>
                 </li>
               </ul>
             </div>
@@ -144,7 +144,7 @@ export default {
     addPlaylistToClass(playlist_id) {
       axios.get('/classrooms/' + this.$route.params.classroom_id + '/playlists/' + playlist_id)
       $('#addPlaylistToClassModal').modal('hide');
-      this.getClassroom()
+      this.getClassroomPlaylists()
     },
     createPlaylist() {
       axios.post('/playlists/classroom/' + this.$route.params.classroom_id, {
@@ -155,6 +155,7 @@ export default {
         })
       this.form.playlist.name = ''
       this.getClassroom()
+      
 
 
     },

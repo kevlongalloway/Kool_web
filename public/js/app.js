@@ -2519,7 +2519,7 @@ __webpack_require__.r(__webpack_exports__);
     addPlaylistToClass: function addPlaylistToClass(playlist_id) {
       axios.get('/classrooms/' + this.$route.params.classroom_id + '/playlists/' + playlist_id);
       $('#addPlaylistToClassModal').modal('hide');
-      this.getClassroom();
+      this.getClassroomPlaylists();
     },
     createPlaylist: function createPlaylist() {
       axios.post('/playlists/classroom/' + this.$route.params.classroom_id, {
@@ -41475,7 +41475,7 @@ var render = function() {
                               _c(
                                 "a",
                                 {
-                                  attrs: { href: "#" },
+                                  attrs: { href: "javascript:void(0)" },
                                   on: {
                                     click: function($event) {
                                       return _vm.addPlaylistToClass(playlist.id)

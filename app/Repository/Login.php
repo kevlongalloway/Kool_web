@@ -31,9 +31,17 @@ class Login
 
     public function register(Request $request)
     {
-        $guard        = $request->guard;
-        $organization = Organization::find($request->access_code);
-        $user         = $organization->resolveGuard($request->guard)->create($request->all());
+        $guard = $request->guard;
+        if ($request->filled('access_code')) {
+            $organization = Organization::find($request->access_code);
+            $user         = $organization->resolveGuard($request->guard)->create($request->all());
+        }
+        else{
+            $user = \App\User::create($request->all());
+            $user->is_active = 0;
+        }
+
+
         $user->hashPassword($request);
     }
 

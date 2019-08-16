@@ -46,23 +46,28 @@ class AccessCodeController extends Controller
 
     public function register(RegisterRequest $request)
     {
-        $guard = $request->guard;
-        $route = "{$guard}.welcome";
-
         $e = new Login;
         $e->register($request);
-        //get credentials
-        $credentials = [
-            'email'    => $request->email,
-            'password' => $request->password,
-        ];
-        // attempt to log the user in
-        $guard == 'user' ? $guard = null : false;
-        if (Auth::guard($guard)->attempt($credentials, $request->remember)) {
-            //if successful, redirect to their intended location
-            return redirect(route($route));
+
+        $guard = $request->guard;
+        $route = "payment";
+        if ($request->filled('access_code')) {
+            $route = "{$guard}.home";
+
+            //get credentials
+            $credentials = [
+                'email'    => $request->email,
+                'password' => $request->password,
+            ];
+            // attempt to log the user in
+            $guard == 'user' ? $guard = null : false;
+            if (Auth::guard($guard)->attempt($credentials, $request->remember)) {
+                //if successful, redirect to their intended location
+                return redirect(route($route));
+            }
+            return redirect()->back()->withInput($request->only('email', 'remember'));
         }
-        return redirect()->back()->withInput($request->only('email', 'remember'));
+        return redirect(route($route));
 
     }
 

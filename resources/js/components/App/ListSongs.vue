@@ -3,16 +3,23 @@
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="card">
-          <a href="javascript:void(0)" @click="back"><i class="fas fa-arrow-left"></i></a>
-          <ul class="list-group">
-            <li v-if="loading" class="list-group-item"><div class="d-flex justify-content-center">
-  <div class="spinner-border text-info" role="status">
-    <span class="sr-only">Loading...</span>
-  </div>
-</div></li>
-            <li v-else v-for="song in songs" :key="song.id" class="list-group-item">
-              <router-link :to="{path: '/video/' + song.id }">{{song.title}}</router-link><span style="float:right"><button type="button" class="btn btn-sm btn-primary" @click="addSongToPlaylistModal(song.id)">Add To Playlist</button></span></li>
-          </ul>
+          <div class="card-header">
+            <a href="javascript:void(0)" @click="back"><i class="fas fa-arrow-left"></i></a> {{subject_name}} Grade {{this.grade}}
+          </div>
+          <div class="card-body">
+            <ul class="list-group">
+              <li v-if="loading" class="list-group-item">
+                <div class="d-flex justify-content-center">
+                  <div class="spinner-border text-info" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </div>
+              </li>
+              <li v-else v-for="song in songs" :key="song.id" class="list-group-item">
+                <router-link :to="{path: '/video/' + song.id }">{{song.title}}</router-link><span style="float:right"><button type="button" class="btn btn-sm btn-primary" @click="addSongToPlaylistModal(song.id)">Add To Playlist</button></span></li>
+            </ul>
+          </div>
+          
         </div>
       </div>
     </div>
@@ -84,6 +91,7 @@ export default {
       songs: {},
       grade: this.$route.params.grade,
       subject: this.$route.params.subject,
+      subject_name:'',
       url: '',
       loading: true,
       playlists: {},
@@ -100,6 +108,7 @@ export default {
     this.getSongs()
     this.user = this.$root.$data.user
     this.getPlaylists()
+    this.getSubject()
   },
   methods: {
     getSongs() {
@@ -143,6 +152,10 @@ export default {
     },
     back() {
       history.go(-1)
+    },
+    getSubject(){
+      let subjects = ['Math', 'ELA', 'Social Studies', 'Science']
+      this.subject_name = subjects[this.subject]
     }
   }
 

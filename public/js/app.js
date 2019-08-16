@@ -2702,12 +2702,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       songs: {},
       grade: this.$route.params.grade,
       subject: this.$route.params.subject,
+      subject_name: '',
       url: '',
       loading: true,
       playlists: {},
@@ -2724,6 +2732,7 @@ __webpack_require__.r(__webpack_exports__);
     this.getSongs();
     this.user = this.$root.$data.user;
     this.getPlaylists();
+    this.getSubject();
   },
   methods: {
     getSongs: function getSongs() {
@@ -2768,6 +2777,10 @@ __webpack_require__.r(__webpack_exports__);
     },
     back: function back() {
       history.go(-1);
+    },
+    getSubject: function getSubject() {
+      var subjects = ['Math', 'ELA', 'Social Studies', 'Science'];
+      this.subject_name = subjects[this.subject];
     }
   }
 });
@@ -42126,50 +42139,64 @@ var render = function() {
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "col-md-8" }, [
         _c("div", { staticClass: "card" }, [
-          _c(
-            "a",
-            { attrs: { href: "javascript:void(0)" }, on: { click: _vm.back } },
-            [_c("i", { staticClass: "fas fa-arrow-left" })]
-          ),
+          _c("div", { staticClass: "card-header" }, [
+            _c(
+              "a",
+              {
+                attrs: { href: "javascript:void(0)" },
+                on: { click: _vm.back }
+              },
+              [_c("i", { staticClass: "fas fa-arrow-left" })]
+            ),
+            _vm._v(
+              " " +
+                _vm._s(_vm.subject_name) +
+                " Grade " +
+                _vm._s(this.grade) +
+                "\n        "
+            )
+          ]),
           _vm._v(" "),
-          _c(
-            "ul",
-            { staticClass: "list-group" },
-            [
-              _vm.loading
-                ? _c("li", { staticClass: "list-group-item" }, [_vm._m(0)])
-                : _vm._l(_vm.songs, function(song) {
-                    return _c(
-                      "li",
-                      { key: song.id, staticClass: "list-group-item" },
-                      [
-                        _c(
-                          "router-link",
-                          { attrs: { to: { path: "/video/" + song.id } } },
-                          [_vm._v(_vm._s(song.title))]
-                        ),
-                        _c("span", { staticStyle: { float: "right" } }, [
+          _c("div", { staticClass: "card-body" }, [
+            _c(
+              "ul",
+              { staticClass: "list-group" },
+              [
+                _vm.loading
+                  ? _c("li", { staticClass: "list-group-item" }, [_vm._m(0)])
+                  : _vm._l(_vm.songs, function(song) {
+                      return _c(
+                        "li",
+                        { key: song.id, staticClass: "list-group-item" },
+                        [
                           _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-sm btn-primary",
-                              attrs: { type: "button" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.addSongToPlaylistModal(song.id)
+                            "router-link",
+                            { attrs: { to: { path: "/video/" + song.id } } },
+                            [_vm._v(_vm._s(song.title))]
+                          ),
+                          _c("span", { staticStyle: { float: "right" } }, [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-sm btn-primary",
+                                attrs: { type: "button" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.addSongToPlaylistModal(song.id)
+                                  }
                                 }
-                              }
-                            },
-                            [_vm._v("Add To Playlist")]
-                          )
-                        ])
-                      ],
-                      1
-                    )
-                  })
-            ],
-            2
-          )
+                              },
+                              [_vm._v("Add To Playlist")]
+                            )
+                          ])
+                        ],
+                        1
+                      )
+                    })
+              ],
+              2
+            )
+          ])
         ])
       ])
     ]),
@@ -42198,7 +42225,7 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n                Create New Playlist\n              "
+                        "\n              Create New Playlist\n            "
                       )
                     ]
                   )

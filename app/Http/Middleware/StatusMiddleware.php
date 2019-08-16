@@ -13,14 +13,7 @@ class StatusMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-/**
-     * The URIs that should be reachable.
-     *
-     * @var array
-     */
-    protected $except = [
-        'inactive',
-    ];
+
 
     public function handle($request, Closure $next)
     {

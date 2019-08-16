@@ -2779,7 +2779,7 @@ __webpack_require__.r(__webpack_exports__);
       history.go(-1);
     },
     getSubject: function getSubject() {
-      var subjects = ['Math', 'ELA', 'Social Studies', 'Science'];
+      var subjects = ['', 'ELA', 'Math', 'Science', 'Social Studies'];
       this.subject_name = subjects[this.subject];
     }
   }

@@ -154,7 +154,7 @@ export default {
       history.go(-1)
     },
     getSubject(){
-      let subjects = ['Math', 'ELA', 'Social Studies', 'Science']
+      let subjects = ['','ELA','Math','Science', 'Social Studies']
       this.subject_name = subjects[this.subject]
     }
   }

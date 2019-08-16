@@ -112,57 +112,7 @@ img.emoji {
                     <span class="mobile_menu_bar mobile_menu_bar_toggle"></span>
                 <ul id="mobile_menu" class="et_mobile_menu"><li id="menu-item-327" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-327 et_first_mobile_item"><a href="http://koolriculumclub.com/">Home</a></li>
 <li id="menu-item-330" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-330"><a href="http://koolriculumclub.com/allaboutkoolriculum/">About KOOLriculum</a></li>
-<li id="menu-item-331" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-331"><a href="http://koolriculumclub.com/subjects/">Subjects</a>
-<ul class="sub-menu">
-    <li id="menu-item-526" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-526"><a href="#">ELA</a>
-    <ul class="sub-menu">
-        <li id="menu-item-333" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-333"><a href="http://koolriculumclub.com/subjects/english-language-arts-reading/kindergarten/">Kindergarten</a></li>
-        <li id="menu-item-334" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-334"><a href="http://koolriculumclub.com/subjects/english-language-arts-reading/first-grade-2/">First Grade</a></li>
-        <li id="menu-item-335" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-335"><a href="http://koolriculumclub.com/subjects/english-language-arts-reading/second-grade/">Second Grade</a></li>
-        <li id="menu-item-336" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-336"><a href="http://koolriculumclub.com/subjects/english-language-arts-reading/third-grade/">Third Grade</a></li>
-        <li id="menu-item-337" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-337"><a href="http://koolriculumclub.com/subjects/english-language-arts-reading/fourth-grade/">Fourth Grade</a></li>
-        <li id="menu-item-338" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-338"><a href="http://koolriculumclub.com/subjects/english-language-arts-reading/fifth-grade/">Fifth Grade</a></li>
-        <li id="menu-item-593" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-593"><a href="http://koolriculumclub.com/subjects/english-language-arts-reading/sixth-grade-ela/">Sixth-Grade ELA</a></li>
-        <li id="menu-item-592" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-592"><a href="http://koolriculumclub.com/subjects/english-language-arts-reading/seventh-grade-ela/">Seventh Grade – ELA</a></li>
-        <li id="menu-item-591" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-591"><a href="http://koolriculumclub.com/subjects/english-language-arts-reading/eighth-grade-ela/">Eighth Grade – ELA</a></li>
-        <li id="menu-item-590" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-590"><a href="http://koolriculumclub.com/subjects/english-language-arts-reading/ninth-tenth-grade-ela/">Ninth-Tenth-Grade-ELA</a></li>
-        <li id="menu-item-589" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-589"><a href="http://koolriculumclub.com/eleventh-twelfth-grade-ela/">Eleventh-Twelfth Grade ELA</a></li>
-    </ul>
-</li>
-    <li id="menu-item-527" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-527"><a href="#">MATH</a>
-    <ul class="sub-menu">
-        <li id="menu-item-340" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-340"><a href="http://koolriculumclub.com/subjects/mathematics/kindergarten-3/">Kindergarten</a></li>
-        <li id="menu-item-341" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-341"><a href="http://koolriculumclub.com/subjects/mathematics/first-grade/">First Grade</a></li>
-        <li id="menu-item-342" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-342"><a href="http://koolriculumclub.com/subjects/mathematics/second-grade-2/">Second Grade</a></li>
-        <li id="menu-item-343" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-343"><a href="http://koolriculumclub.com/subjects/mathematics/third-grade-2/">Third Grade</a></li>
-        <li id="menu-item-344" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-344"><a href="http://koolriculumclub.com/subjects/mathematics/fourth-grade-2/">Fourth Grade</a></li>
-        <li id="menu-item-345" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-345"><a href="http://koolriculumclub.com/subjects/mathematics/fifth-grade-2/">Fifth Grade</a></li>
-    </ul>
-</li>
-    <li id="menu-item-528" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-528"><a href="#">SCIENCE</a>
-    <ul class="sub-menu">
-        <li id="menu-item-347" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-347"><a href="http://koolriculumclub.com/subjects/science/kindergarten-2/">Kindergarten</a></li>
-        <li id="menu-item-348" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-348"><a href="http://koolriculumclub.com/subjects/science/first-grade/">First Grade</a></li>
-        <li id="menu-item-349" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-349"><a href="http://koolriculumclub.com/subjects/science/second-grade/">Second Grade</a></li>
-        <li id="menu-item-350" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-350"><a href="http://koolriculumclub.com/subjects/science/third-grade/">Third Grade</a></li>
-        <li id="menu-item-351" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-351"><a href="http://koolriculumclub.com/subjects/science/fourth-grade/">Fourth Grade</a></li>
-        <li id="menu-item-352" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-352"><a href="http://koolriculumclub.com/subjects/science/fifth-grade/">Fifth Grade</a></li>
-    </ul>
-</li>
-    <li id="menu-item-529" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-529"><a href="#">SOCIAL STUDIES</a>
-    <ul class="sub-menu">
-        <li id="menu-item-354" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-354"><a href="http://koolriculumclub.com/subjects/social-studies/kindergarten/">Kindergarten</a></li>
-        <li id="menu-item-355" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-355"><a href="http://koolriculumclub.com/subjects/social-studies/first-grade/">First Grade</a></li>
-        <li id="menu-item-356" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-356"><a href="http://koolriculumclub.com/subjects/social-studies/second-grade/">Second Grade</a></li>
-        <li id="menu-item-357" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-357"><a href="http://koolriculumclub.com/subjects/social-studies/third-grade/">Third Grade</a></li>
-        <li id="menu-item-358" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-358"><a href="http://koolriculumclub.com/subjects/social-studies/fourth-grade/">Fourth Grade</a></li>
-        <li id="menu-item-359" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-359"><a href="http://koolriculumclub.com/subjects/social-studies/fifth-grade/">Fifth Grade</a></li>
-    </ul>
-</li>
-</ul>
-</li>
-<li id="menu-item-375" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-375"><a href="http://koolriculumclub.com/contact-us/">Contact Us</a></li>
-<li id="menu-item-600" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-600"><a href="http://koolriculumclub.com/training/">Training</a></li>
+
 </ul></div>
             </div>              </div> <!-- #et-top-navigation -->
             </div> <!-- .container -->

@@ -35,12 +35,10 @@ class Login
         if ($request->filled('access_code')) {
             $organization = Organization::find($request->access_code);
             $user         = $organization->resolveGuard($request->guard)->create($request->all());
-        }
-        else{
-            $user = \App\User::create($request->all());
+        } else {
+            $user            = \App\User::create($request->all());
             $user->is_active = 0;
         }
-
 
         $user->hashPassword($request);
     }

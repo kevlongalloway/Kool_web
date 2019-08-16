@@ -14,18 +14,14 @@ class StatusMiddleware
      * @return mixed
      */
 
-
     public function handle($request, Closure $next)
     {
-        
-        if($request->user())
-        {
+        if ($request->user()) {
             $user = $request->user();
-            if($user->is_active) 
-            {
+            if ($user->is_active) {
                 return $next($request);
             }
-            if(!empty($user->organization_id)) {
+            if (!empty($user->organization_id)) {
                 return redirect(route('inactive'));
             }
             return redirect(route('payment'));

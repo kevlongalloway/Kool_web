@@ -6,7 +6,11 @@
           <div class="card-header"><a href="javascript:void(0)" @click="back"><i class="fas fa-arrow-left"></i></a> {{ playlist.name }}</div>
           <div class="card-body">
             <ul class="list-group">
-              <li v-if="loading" class="list-group-item"><strong>Loading...</strong></li>
+              <li v-if="loading" class="list-group-item"><div class="d-flex justify-content-center">
+  <div class="spinner-border text-info" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div></li>
               <li v-else v-for="song in songs" :key="song.id" class="list-group-item">
                 <router-link :to="{path: '/video/' + song.id }">{{song.title}}</router-link>
               </li>

@@ -2698,6 +2698,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2830,6 +2834,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -3369,9 +3377,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      loading: true,
       playlists: {},
       url: '/api/playlists/' + this.$route.params.user_id,
       added: false,
@@ -3381,7 +3394,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.getPlaylists();
-    console.log('mounted');
   },
   methods: {
     getPlaylists: function getPlaylists() {
@@ -3390,6 +3402,7 @@ __webpack_require__.r(__webpack_exports__);
       var $this = this;
       axios.get(this.url).then(function (response) {
         _this.playlists = response.data;
+        _this.loading = false;
       });
     },
     newPlaylist: function newPlaylist() {
@@ -42124,9 +42137,7 @@ var render = function() {
             { staticClass: "list-group" },
             [
               _vm.loading
-                ? _c("li", { staticClass: "list-group-item" }, [
-                    _c("strong", [_vm._v("Loading...")])
-                  ])
+                ? _c("li", { staticClass: "list-group-item" }, [_vm._m(0)])
                 : _vm._l(_vm.songs, function(song) {
                     return _c(
                       "li",
@@ -42175,7 +42186,7 @@ var render = function() {
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(0),
+              _vm._m(1),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _c("div", { staticClass: "row" }, [
@@ -42187,7 +42198,7 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n              Create New Playlist\n            "
+                        "\n                Create New Playlist\n              "
                       )
                     ]
                   )
@@ -42227,7 +42238,7 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(1)
+              _vm._m(2)
             ])
           ]
         )
@@ -42246,7 +42257,7 @@ var render = function() {
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(2),
+              _vm._m(3),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _c("form", [
@@ -42319,6 +42330,18 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "d-flex justify-content-center" }, [
+      _c(
+        "div",
+        { staticClass: "spinner-border text-info", attrs: { role: "status" } },
+        [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
+      )
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -42521,9 +42544,7 @@ var render = function() {
               { staticClass: "list-group" },
               [
                 _vm.loading
-                  ? _c("li", { staticClass: "list-group-item" }, [
-                      _c("strong", [_vm._v("Loading...")])
-                    ])
+                  ? _c("li", { staticClass: "list-group-item" }, [_vm._m(0)])
                   : _vm._l(_vm.songs, function(song) {
                       return _c(
                         "li",
@@ -42547,7 +42568,20 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "d-flex justify-content-center" }, [
+      _c(
+        "div",
+        { staticClass: "spinner-border text-info", attrs: { role: "status" } },
+        [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -43399,48 +43433,67 @@ var render = function() {
                     ? _c(
                         "ul",
                         { staticClass: "list-group" },
-                        _vm._l(_vm.playlists, function(playlist) {
-                          return _c(
-                            "li",
-                            {
-                              key: playlist.id,
-                              staticClass: "list-group-item"
-                            },
-                            [
-                              _c(
-                                "router-link",
+                        [
+                          _vm.loading
+                            ? _c(
+                                "div",
                                 {
-                                  attrs: {
-                                    to: { path: "/playlist/" + playlist.id }
-                                  }
+                                  staticClass: "spinner-border text-info",
+                                  attrs: { role: "status" }
                                 },
-                                [_vm._v(_vm._s(playlist.name))]
-                              ),
-                              _c("span", [
-                                _c(
-                                  "a",
+                                [
+                                  _c("span", { staticClass: "sr-only" }, [
+                                    _vm._v("Loading...")
+                                  ])
+                                ]
+                              )
+                            : _vm._l(_vm.playlists, function(playlist) {
+                                return _c(
+                                  "li",
                                   {
-                                    staticClass: "list-icon",
-                                    attrs: { href: "#" },
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.deletePlaylist(playlist.id)
-                                      }
-                                    }
+                                    key: playlist.id,
+                                    staticClass: "list-group-item"
                                   },
                                   [
-                                    _c("i", {
-                                      staticClass: "fa fa-trash",
-                                      attrs: { "aria-hidden": "true" }
-                                    })
-                                  ]
+                                    _c(
+                                      "router-link",
+                                      {
+                                        attrs: {
+                                          to: {
+                                            path: "/playlist/" + playlist.id
+                                          }
+                                        }
+                                      },
+                                      [_vm._v(_vm._s(playlist.name))]
+                                    ),
+                                    _c("span", [
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass: "list-icon",
+                                          attrs: { href: "#" },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.deletePlaylist(
+                                                playlist.id
+                                              )
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c("i", {
+                                            staticClass: "fa fa-trash",
+                                            attrs: { "aria-hidden": "true" }
+                                          })
+                                        ]
+                                      )
+                                    ])
+                                  ],
+                                  1
                                 )
-                              ])
-                            ],
-                            1
-                          )
-                        }),
-                        0
+                              })
+                        ],
+                        2
                       )
                     : _vm._e()
                 ]),

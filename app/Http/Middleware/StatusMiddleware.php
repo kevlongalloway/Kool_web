@@ -18,7 +18,7 @@ class StatusMiddleware
     {
         if ($request->user()) {
             $user = $request->user();
-            if ($user->is_active) {
+            if ($user->is_active ||$user->organization->is_active) {
                 return $next($request);
             }
             if (!empty($user->organization_id)) {

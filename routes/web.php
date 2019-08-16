@@ -27,12 +27,7 @@ Route::group(['middleware' => ['active']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/home', 'HomeController@index')->name('user.home');
 
-    Route::get('admin/home', 'Admin\HomeController@index')->name('admin.home');
-    //After registration routes
-    Route::get('/admin/welcome', function () {
-        return redirect(route('admin.home'));
-    })->name('admin.welcome');
-
+   
     Route::get('/portal/welcome', 'Teacher\HomeController@welcome')->name('teacher.welcome');
 
     Route::get('/club/welcome', function () {
@@ -78,6 +73,12 @@ Route::get('/payment', function () {
 /*ADMIN ROUTES*/
 Route::get('admin', 'Admin\Auth\LoginController@showLoginForm');
 Route::post('admin', 'Admin\Auth\LoginController@login')->name('admin.login');
+ Route::get('admin/home', 'Admin\HomeController@index')->name('admin.home');
+    //After registration routes
+    Route::get('/admin/welcome', function () {
+        return redirect(route('admin.home'));
+    })->name('admin.welcome');
+
 
 /*ORGANIZATION ROUTES*/
 Route::get('club', 'Organization\Auth\LoginController@showLoginForm');

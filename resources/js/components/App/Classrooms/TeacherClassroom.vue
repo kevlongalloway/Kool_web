@@ -18,7 +18,7 @@
         <div class="card">
           <div class="card-header">Students</div>
           <div class="card-body">
-            <button type="button" class="btn btn-primary btn-sm btn-block">Add Students</button>
+            <button type="button" class="btn btn-primary btn-sm btn-block" @click="addStudentToClassModal">Add Students</button>
             <ul class="list-group">
               <li v-if="loading" class="list-group-item"><strong>Loading...</strong></li>
               <li v-else v-for="student in students" :key="student.id" class="list-group-item">
@@ -86,6 +86,10 @@
       </div>
     </div>
     <!--MODAL -->
+
+    <div class="modal" id="addStudentToClassModal" tabindex="-1" role="dialog">
+      <add-students></add-students>
+    </div>
   </div>
 </template>
 
@@ -131,6 +135,9 @@ export default {
     addPlaylistToClassModal() {
       $('#addPlaylistToClassModal').modal('show');
     },
+    addStudentToClassModal() {
+      $('#addStudentToClassModal').modal('show');
+    },
     getPlaylists() {
       axios.get('/api/teacher-playlists')
         .then(res => {
@@ -145,16 +152,16 @@ export default {
       axios.get('/classrooms/' + this.$route.params.classroom_id + '/playlists/' + playlist_id)
       $('#addPlaylistToClassModal').modal('hide');
       this.getClassroomPlaylists()
+
     },
     createPlaylist() {
       axios.post('/playlists/classroom/' + this.$route.params.classroom_id, {
           name: this.form.playlist.name
         })
-        .then(function(response) {
-          $('#newPlaylistModal').modal('hide');
-        })
+      $('#newPlaylistModal').modal('hide');  
       this.form.playlist.name = ''
-      this.getClassroom()
+      this.getPlaylists()
+      $('#addPlaylistToClassModal').modal('show');
       
 
 

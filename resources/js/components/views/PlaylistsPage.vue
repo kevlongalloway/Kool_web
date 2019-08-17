@@ -6,7 +6,12 @@
           <div class="card-header"><a href="javascript:void(0)" @click="back"><i class="fas fa-arrow-left"></i></a>My Playlists </div>
           <div class="card-body">
             <div class="row justify-content-between new-playlist">
-              <div class="col-md-7">
+              <div class="col-lg-4 float-right desktop-order-2">
+                <a class="btn btn-primary text-white" @click="newPlaylist">
+                        Create New Playlist
+                      </a>
+              </div>
+              <div class="col-md-7 float-left desktop-order-1">
                 <ul v-if="playlists.length" class="list-group">
                   <div v-if="loading" class="spinner-border text-info" role="status">
                     <span class="sr-only">Loading...</span>
@@ -16,11 +21,7 @@
                   </li>
                 </ul>
               </div>
-              <div class="col-lg-4">
-                <a class="btn btn-primary text-white" @click="newPlaylist">
-                        Create New Playlist
-                      </a>
-              </div>
+              
             </div>
           </div>
         </div>
@@ -73,6 +74,8 @@ export default {
   },
   mounted() {
     this.getPlaylists()
+
+
   },
   methods: {
     getPlaylists() {

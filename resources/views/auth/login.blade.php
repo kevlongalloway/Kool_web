@@ -77,7 +77,7 @@
                 <form method="POST" action="{{ route('access-code') }}">
                         @csrf
                     <div class="form-group row">
-                        <label for="access_code" class="col-md-4 col-form-label text-md-right">Don't have an account? Enter an access code or <a href="/login">Click here</a></label>
+                        <label for="access_code" class="col-md-4 col-form-label text-md-right">Don't have an account? Enter an access code or <a href="/register">Click here</a></label>
 
                         <div class="col-md-6">
                              <input name="access_code" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"  autofocus>

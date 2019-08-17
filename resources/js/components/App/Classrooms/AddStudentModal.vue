@@ -1,6 +1,6 @@
 <template>
   <!--MODAL -->
-    <div class="modal" id="addPlaylistToClassModal" tabindex="-1" role="dialog">
+    
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -11,9 +11,14 @@
           </div>
           <div class="modal-body">
             <div class="row">
-              <ul v-if="user.playlists.length" class="list-group">
-                <li v-for="playlist in user.playlists" :key="playlist.id" class="list-group-item">
-                  <a href="javascript:void(0)" @click="addPlaylistToClass(playlist.id)">{{playlist.name}}</a>
+              <div v-if="loading" class="d-flex justify-content-center">
+                  <div class="spinner-border text-info" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </div>
+              <ul v-else class="list-group">
+                <li v-for="student in students" :key="student.id" class="list-group-item">
+                  <a href="javascript:void(0)">{{student.name}}</a>
                 </li>
               </ul>
             </div>
@@ -23,12 +28,29 @@
           </div>
         </div>
       </div>
-    </div>
     <!--MODAL -->
 </template>
 
 <script>
 export default {
-  
+  mounted(){
+    this.getStudents()
+  },
+  data(){
+    return {
+      students:{},
+      loading:true
+    }
+  },
+  methods:{
+    getStudents() {
+      axios.get('/api/classrooms/available-students')
+        .then(res => {
+          this.students = res.data
+
+        });
+      this.loading = false
+  }
+}
 }
 </script>

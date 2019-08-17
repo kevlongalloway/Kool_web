@@ -40,11 +40,18 @@
  	}
 
 }
- @media (min-width: 993px) {
+ @media (min-width: 991px) {
  	.grade-button{
  		padding:1.5em;
  		margin-bottom:1em;
  	}
+  .desktop-order-1 {
+    order:1;
+  }
+  .desktop-order-2 {
+    order:2;
+  }
+
  }
 
 @import '~@fortawesome/fontawesome-free/css/all.min';

@@ -77,4 +77,8 @@ class Teacher extends Authenticatable
         $this->update(['password' => Hash::make($request->password)]);
     }
 
+    public function isUser(){
+        return false;
+    }
+
 }

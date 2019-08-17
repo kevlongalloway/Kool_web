@@ -62,6 +62,10 @@ class User extends Authenticatable
         return $this->update(['name' => $name]);
     }
 
+    public function belongsToOrganization() {
+        return $this->organization()->exists();
+    }
+
     public function setGrade($grade)
     {
         return $this->update(['grade' => $grade]);
@@ -87,6 +91,10 @@ class User extends Authenticatable
         return $this->organization_id == null ?
         $this->is_active :
         $this->organization->isActive();
+    }
+
+    public function isUser(){
+        return true;
     }
 
     public function hashPassword($request)

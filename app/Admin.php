@@ -54,4 +54,8 @@ class Admin extends Authenticatable
         return $this->morphToMany('App\Playlist', 'playlistable');
     }
 
+     public function isUser(){
+        return false;
+    }
+
 }

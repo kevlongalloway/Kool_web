@@ -50,11 +50,16 @@
                                 </li>
                             @endif
                         @else
-                            @auth('web')
+                            @user
                             <li class="nav-item">
                                 <router-link class="nav-link" to="/home">Dashboard</router-link>
                             </li>
-                            @endauth
+                            @bto
+                            <li class="nav-item">
+                                <router-link class="nav-link" to="/home">My Classes</router-link>
+                            </li>
+                            @endbto
+                            @enduser
                             @auth('admin')
                             <li class="nav-item">
                                 <router-link class="nav-link" to="/admin/home">Dashboard</router-link>

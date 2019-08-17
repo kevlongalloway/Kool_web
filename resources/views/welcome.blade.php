@@ -75,6 +75,7 @@ img.emoji {
                                             <nav id="top-menu-nav">
                         <ul id="top-menu" class="nav"><li id="menu-item-327" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-327"><a href="http://koolriculumclub.com/">Home</a></li>
 <li id="menu-item-330" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-330"><a href="http://koolriculumclub.com/allaboutkoolriculum/">About KOOLriculum</a></li>
+@guest
 <li id="menu-item-331" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-331"><a href="/login">Login</a>
 <ul class="sub-menu">
     <li id="menu-item-526" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-526"><a href="/login">Individual/Student</a>
@@ -87,6 +88,7 @@ img.emoji {
 
     
 </li>
+
 <li id="menu-item-331" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-331"><a href="http://koolriculumclub.com/subjects/">Register</a>
 <ul class="sub-menu">
     <li id="menu-item-526" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-526"><a href="/register">Individual/Student Registration</a>
@@ -99,6 +101,21 @@ img.emoji {
 
     
 </li>
+@else
+    @user
+        <li id="menu-item-330" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-330"><a href="/home">Dashboard</a></li>
+    @enduser
+    @auth('admin')
+        <li id="menu-item-330" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-330"><a href="/admin/home">Dashboard</a></li>
+    @endauth
+    @auth('teacher')
+        <li id="menu-item-330" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-330"><a href="/portal/home">Dashboard</a></li>
+    @endauth
+    @auth('organization')
+    <li id="menu-item-330" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-330"><a href="/club/home">Dashboard</a></li>
+    @endauth
+@endguest
+
 </ul>
 </li>
 

@@ -2321,6 +2321,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2337,8 +2344,8 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/api/classrooms').then(function (response) {
         _this.classrooms = response.data;
+        _this.loading = false;
       });
-      this.loading = false;
     }
   }
 });
@@ -41442,43 +41449,61 @@ var render = function() {
           _c("div", { staticClass: "card-body" }, [
             _c(
               "div",
-              { staticClass: "card", staticStyle: { width: "18rem" } },
+              { staticClass: "row justify-content-between new-classroom" },
               [
-                _c("div", { staticClass: "card-header" }, [
-                  _vm._v("\n              Featured\n            ")
-                ]),
+                _vm._m(0),
                 _vm._v(" "),
                 _c(
-                  "ul",
-                  { staticClass: "list-group" },
+                  "div",
+                  { staticClass: "col-md-7 float-left desktop-order-1" },
                   [
-                    _vm.loading
-                      ? _c("li", { staticClass: "list-group-item" }, [
-                          _c("strong", [_vm._v("Loading...")])
-                        ])
-                      : _vm._l(_vm.classrooms, function(classroom) {
-                          return _c(
-                            "li",
-                            {
-                              key: classroom.id,
-                              staticClass: "list-group-item"
-                            },
-                            [
-                              _c(
-                                "router-link",
-                                {
-                                  attrs: {
-                                    to: { path: "/video/" + _vm.song.id }
-                                  }
-                                },
-                                [_vm._v(_vm._s(classroom.name))]
-                              )
-                            ],
-                            1
-                          )
-                        })
-                  ],
-                  2
+                    _vm.classrooms.length
+                      ? _c(
+                          "ul",
+                          { staticClass: "list-group" },
+                          [
+                            _vm.loading
+                              ? _c(
+                                  "div",
+                                  {
+                                    staticClass: "spinner-border text-info",
+                                    attrs: { role: "status" }
+                                  },
+                                  [
+                                    _c("span", { staticClass: "sr-only" }, [
+                                      _vm._v("Loading...")
+                                    ])
+                                  ]
+                                )
+                              : _vm._l(_vm.classrooms, function(classroom) {
+                                  return _c(
+                                    "li",
+                                    {
+                                      key: classroom.id,
+                                      staticClass: "list-group-item"
+                                    },
+                                    [
+                                      _c(
+                                        "router-link",
+                                        {
+                                          attrs: {
+                                            to: {
+                                              path: "/classroom/" + classroom.id
+                                            }
+                                          }
+                                        },
+                                        [_vm._v(_vm._s(classroom.name))]
+                                      ),
+                                      _vm._m(1, true)
+                                    ],
+                                    1
+                                  )
+                                })
+                          ],
+                          2
+                        )
+                      : _vm._e()
+                  ]
                 )
               ]
             )
@@ -41488,7 +41513,31 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-4 float-right desktop-order-2" }, [
+      _c("a", { staticClass: "btn btn-primary text-white" }, [
+        _vm._v("\n                      Find Classes\n                    ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [
+      _c("a", { staticClass: "list-icon", attrs: { href: "#" } }, [
+        _c("i", {
+          staticClass: "fa fa-trash",
+          attrs: { "aria-hidden": "true" }
+        })
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -59184,7 +59233,7 @@ var routes = [{
   path: '/portal/welcome',
   component: __webpack_require__(/*! ./components/Instructor/Welcome.vue */ "./resources/js/components/Instructor/Welcome.vue").default
 }, {
-  path: '/classrooms',
+  path: '/student/classrooms',
   component: __webpack_require__(/*! ./components/views/Student/ClassroomsPage.vue */ "./resources/js/components/views/Student/ClassroomsPage.vue").default
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
@@ -59708,15 +59757,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!****************************************************!*\
   !*** ./resources/js/components/App/Classrooms.vue ***!
   \****************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Classrooms_vue_vue_type_template_id_231a7579___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Classrooms.vue?vue&type=template&id=231a7579& */ "./resources/js/components/App/Classrooms.vue?vue&type=template&id=231a7579&");
 /* harmony import */ var _Classrooms_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Classrooms.vue?vue&type=script&lang=js& */ "./resources/js/components/App/Classrooms.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Classrooms_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Classrooms_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -59746,7 +59794,7 @@ component.options.__file = "resources/js/components/App/Classrooms.vue"
 /*!*****************************************************************************!*\
   !*** ./resources/js/components/App/Classrooms.vue?vue&type=script&lang=js& ***!
   \*****************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

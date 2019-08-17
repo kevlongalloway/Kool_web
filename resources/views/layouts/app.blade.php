@@ -56,7 +56,7 @@
                             </li>
                             @bto
                             <li class="nav-item">
-                                <router-link class="nav-link" to="/home">My Classes</router-link>
+                                <router-link class="nav-link" to="/student/classrooms">My Classes</router-link>
                             </li>
                             @endbto
                             @enduser

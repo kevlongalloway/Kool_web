@@ -62,7 +62,7 @@ const routes = [
   {path:'/portal/classrooms/create', component: require('./components/App/Classrooms/Create.vue').default},
   {path:'/portal/classrooms/:classroom_id', component: require('./components/App/Classrooms/TeacherClassroom.vue').default},
   {path:'/portal/welcome',component: require('./components/Instructor/Welcome.vue').default},
-  {path:'/classrooms',component: require('./components/views/Student/ClassroomsPage.vue').default}
+  {path:'/student/classrooms',component: require('./components/views/Student/ClassroomsPage.vue').default}
 
 
 

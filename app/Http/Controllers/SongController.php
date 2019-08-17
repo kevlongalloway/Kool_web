@@ -2,37 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Song;
 use App\Grade;
-use Storage;
+use App\Song;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Storage;
 
 class SongController extends Controller
 {
     protected $grades = [
-            'one' => 1,
-            'two' => 2,
-            'three' => 3,
-            'four' => 4,
-            'five' => 5,
-            'six' => 6,
-            'seven' => 7,
-            'eight' => 8,
-            'nine' => 9,
-            'ten' => 10,
-            'eleven' => 11,
-            'twelve' => 12,
-            'kinder' => 13
-        ];
+        'one' => 1,
+        'two'    => 2,
+        'three'  => 3,
+        'four'   => 4,
+        'five'   => 5,
+        'six'    => 6,
+        'seven'  => 7,
+        'eight'  => 8,
+        'nine'   => 9,
+        'ten'    => 10,
+        'eleven' => 11,
+        'twelve' => 12,
+        'kinder' => 13,
+    ];
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(){
         $songs = Song::all();
         return response()->json($songs);
     }
@@ -44,7 +42,7 @@ class SongController extends Controller
      */
     public function create()
     {
-        
+
     }
 
     /**
@@ -55,13 +53,12 @@ class SongController extends Controller
      */
     public function store(Request $request)
     {
-        if (Auth::guard('admin')->check()) 
-        {
+        if (Auth::guard('admin')->check()) {
             $song = Song::create($request->except('file'));
-            $this->attachGrades($request,$song); 
-            return response()->json(['message' => $song->title.' has successfully been uploaded!'],201);
+            $this->attachGrades($request, $song);
+            return response()->json(['message' => $song->title . ' has successfully been uploaded!'], 201);
         }
-        return response()->json(null,404);
+        return response()->json(null, 404);
     }
 
     /**
@@ -110,67 +107,63 @@ class SongController extends Controller
         //
     }
 
-     public function browse($grade, $subject)
-     {
-       $grade = Grade::find($grade);
-       $songs = $grade->songs->where('subject_id',$subject);
-       return response()->json($songs);
+    public function browse($grade, $subject)
+    {
+        $grade = Grade::find($grade);
+        $songs = $grade->songs->where('subject_id', $subject);
+        return response()->json($songs);
     }
 
     protected function subjectID($subject)
     {
-        switch($subject)
-        {
+        switch ($subject) {
             case 'ELA' || 'ela' || 'Ela':
-            return 1;
-            break;
+                return 1;
+                break;
             case 'Math' || 'math':
-            return 2; 
-            break;
+                return 2;
+                break;
             case 'science' || 'Science':
-            return 3;
-            break;
+                return 3;
+                break;
             case 'Social-Studies' || 'social-studies':
-            return 4;
-            break;
+                return 4;
+                break;
 
         }
     }
 
     protected function attachGrades($request, $song)
     {
-        foreach ($request->grades as $key => $grade)
-        {
+        foreach ($request->grades as $key => $grade) {
             $song->grades()->attach($this->grades[$key]);
         }
     }
 
-    protected function storeRawSongData($song){
-        if (Storage::exists('songs.txt'))
-        {
-            Storage::append('songs.txt',[$song, $song->grades()->pluck('grade_id')]);
-        }else
-        {
-            Storage::put('songs.txt',[$song, $song->grades()->pluck('grade_id')]);
+    protected function storeRawSongData($song)
+    {
+        if (Storage::exists('songs.txt')) {
+            Storage::append('songs.txt', [$song, $song->grades()->pluck('grade_id')]);
+        } else {
+            Storage::put('songs.txt', [$song, $song->grades()->pluck('grade_id')]);
         }
     }
 
     protected function storeFile($request)
     {
-        if($request->hasFile('file'))
-        {
+        if ($request->hasFile('file')) {
             // Get filename with the extension
 
             $filenameWithExt = $request->file('file');
 
             // Get just filename
-            $filename = pathinfo($filenameWithExt,PATHINFO_FILENAME);
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             // Get just ext
             $extension = $request->file('file')->getOriginalClientExtension();
             // Filename to store
-            $filenameToStore = $filename.'_'.time().'.'.$extension;
+            $filenameToStore = $filename . '_' . time() . '.' . $extension;
             //Upload Image
-            $path = $request->file('file')->storeAs('storage/app/content/',$filenameToStore);
+            $path = $request->file('file')->storeAs('storage/app/content/', $filenameToStore);
             dd($path);
         }
     }

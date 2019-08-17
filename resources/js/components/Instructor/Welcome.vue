@@ -1,11 +1,11 @@
-<template>
+s<template>
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-md-8">
+      <div class="col-md-6 align-self-center">
         <div class="card">
-          <div class="card-header"></div>
+          <div class="card-header">Thanks for joining Koolriculum!</div>
           <div class="card-body">
-            what goes here?
+            select your grade.
           </div>
         </div>
       </div>
@@ -14,5 +14,9 @@
 </template>
 
 <script>
-export default {}
+export default {
+  mounted() {
+
+  }
+}
 </script>

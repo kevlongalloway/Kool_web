@@ -2,9 +2,8 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 
 class Teacher extends Authenticatable
@@ -17,7 +16,7 @@ class Teacher extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','first_login',
+        'name', 'email', 'password', 'first_login',
     ];
 
     /**
@@ -38,39 +37,44 @@ class Teacher extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function organization(){
+    public function organization()
+    {
         return $this->belongsTo('App\Organization');
     }
 
-
-    public function classrooms(){
+    public function classrooms()
+    {
         return $this->hasMany('App\Classroom');
     }
 
-    public function playlists(){
-        return $this->morphToMany('App\Playlist','playlistable');
-    }  
+    public function playlists()
+    {
+        return $this->morphToMany('App\Playlist', 'playlistable');
+    }
 
-    public function createPlaylist(){
+    public function createPlaylist()
+    {
         return $this->playlists()->create();
     }
 
-    public function createClass(){
+    public function createClass()
+    {
         $this->classrooms()->create();
     }
 
-    public function loggedIn(){
+    public function loggedIn()
+    {
         return $this->update(['first_login' => 1]);
     }
 
-    public function isActive(){
+    public function isActive()
+    {
         return $this->organization->isActive();
     }
 
-    public function hashPassword($request){
+    public function hashPassword($request)
+    {
         $this->update(['password' => Hash::make($request->password)]);
     }
 
-
-    
 }

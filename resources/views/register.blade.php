@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ ucfirst($guard) }} Register</div>
+                <div class="card-header">Register</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('accesscode.register') }}">
@@ -68,6 +68,8 @@
                                 <input id="access_code" type="text" class="form-control" name="access_code" value="{{ $access_code }}" required disabled>
                             </div>
                         </div>
+
+                        <input id="access_code" type="hidden" value="{{ $access_code }}" name="access_code">
                         <input id="guard" type="hidden" value="{{ $guard }}" name="guard">
 
                         <div class="form-group row mb-0">

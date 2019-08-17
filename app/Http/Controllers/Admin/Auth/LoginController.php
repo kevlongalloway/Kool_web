@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Auth;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use App\Repository\Login;
 use App\Http\Requests\LoginRequest;
+use App\Repository\Login;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -20,7 +20,7 @@ class LoginController extends Controller
     | redirecting them to your home screen. The controller uses a trait
     | to conveniently provide its functionality to your applications.
     |
-    */
+     */
 
     use AuthenticatesUsers;
 
@@ -41,7 +41,7 @@ class LoginController extends Controller
         $this->middleware('guest:admin')->except('logout');
     }
 
-     /**
+    /**
      * Show the application's login form.
      *
      * @return \Illuminate\Http\Response
@@ -59,9 +59,10 @@ class LoginController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function login(LoginRequest $request){
+    public function login(LoginRequest $request)
+    {
         $e = new Login;
-        return $e->login($request,'admin');
+        return $e->login($request, 'admin');
     }
 
     /**

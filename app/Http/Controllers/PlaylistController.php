@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Playlist;
-use Illuminate\Support\Facades\Auth;
-use App\Teacher;
-use App\User;
 use App\Admin;
 use App\Organization;
+use App\Playlist;
 use App\Song;
+use App\Teacher;
+use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PlaylistController extends Controller
 {
@@ -24,13 +24,11 @@ class PlaylistController extends Controller
 
         $playlists = $user->playlists;
 
-        if (Auth::guard('teacher')->check()) 
-        {
+        if (Auth::guard('teacher')->check()) {
             $classrooms = $user->classrooms;
-            
-            foreach($classrooms as $classroom)
-            {
-               $playlists = $playlists->merge($classroom->playlists);
+
+            foreach ($classrooms as $classroom) {
+                $playlists = $playlists->merge($classroom->playlists);
             }
         }
 
@@ -45,14 +43,14 @@ class PlaylistController extends Controller
      */
     public function store(Request $request)
     {
-        $user = Auth::user();
-        $user == null ? $user = Auth::guard('teacher')->user() : ''; 
-        $user == null ? $user = Auth::guard('admin')->user() : ''; 
-        $user == null ? $user = Auth::guard('organization')->user() : ''; 
-        
+        $user                 = Auth::user();
+        $user == null ? $user = Auth::guard('teacher')->user() : '';
+        $user == null ? $user = Auth::guard('admin')->user() : '';
+        $user == null ? $user = Auth::guard('organization')->user() : '';
+
         $playlist = $user->playlists()->create($request->all());
 
-        return response()->json($playlist,201);
+        return response()->json($playlist, 201);
     }
 
     /**
@@ -67,7 +65,8 @@ class PlaylistController extends Controller
         return response()->json($playlist);
     }
 
-    public function showSongs($playlist_id){
+    public function showSongs($playlist_id)
+    {
         $songs = Playlist::find($playlist_id)->songs;
         return response()->json($songs);
     }
@@ -80,7 +79,7 @@ class PlaylistController extends Controller
      */
     public function edit($playlist)
     {
-        
+
     }
 
     /**
@@ -93,18 +92,16 @@ class PlaylistController extends Controller
     public function update(Request $request, $playlist)
     {
         $playlist->update($request->all());
-        return response()->json(null,201);
+        return response()->json(null, 201);
     }
 
-    
-    public function attachSongToPlaylist($playlist_id,$song_id){
+    public function attachSongToPlaylist($playlist_id, $song_id)
+    {
         $playlist = Playlist::find($playlist_id);
-        $song = Song::find($song_id);
-        if (!$playlist->songs->contains($song)) 
-        {
-        $playlist->songs()->attach($song_id);
+        $song     = Song::find($song_id);
+        if (!$playlist->songs->contains($song)) {
+            $playlist->songs()->attach($song_id);
         }
-        return response()->json(null,201);
     }
 
     /**
@@ -117,25 +114,18 @@ class PlaylistController extends Controller
     {
         $playlist = Playlist::find($id);
         $playlist->delete();
-        return response()->json(null,201);
+        return response()->json(null, 201);
     }
 
-
-    protected function getUser($id){
-        if (Auth::guard('admin')->check()) 
-        {
+    protected function getUser($id)
+    {
+        if (Auth::guard('admin')->check()) {
             return Admin::find($id);
-        }
-        else if (Auth::guard('teacher')->check()) 
-        {
+        } else if (Auth::guard('teacher')->check()) {
             return Teacher::find($id);
-        }
-        else if (Auth::guard('organization')->check()) 
-        {
+        } else if (Auth::guard('organization')->check()) {
             return Organization::find($id);
-        }
-        else if (Auth::guard()->check()) 
-        {
+        } else if (Auth::guard()->check()) {
             return User::find($id);
         }
 
@@ -149,10 +139,10 @@ class PlaylistController extends Controller
 
     protected function getUserNoParams()
     {
-        $user = Auth::user();
-        $user == null ? $user = Auth::guard('teacher')->user() : ''; 
-        $user == null ? $user = Auth::guard('admin')->user() : ''; 
-        $user == null ? $user = Auth::guard('organization')->user() : ''; 
+        $user                 = Auth::user();
+        $user == null ? $user = Auth::guard('teacher')->user() : '';
+        $user == null ? $user = Auth::guard('admin')->user() : '';
+        $user == null ? $user = Auth::guard('organization')->user() : '';
         return $user;
     }
 }

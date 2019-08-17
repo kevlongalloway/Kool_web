@@ -1,21 +1,21 @@
 <template>
-    <div class="container">
-        <grades></grades>
-    </div>
+  <div class="container">
+    <grades></grades>
+  </div>
 </template>
 
 <script>
 export default {
-  mounted () {
+  mounted() {
     console.log('page mounted')
     this.user = this.$root.$data.user
 
   },
-  data(){
+  data() {
     return {
-      user:{},
-      grade:''
+      user: {},
+      grade: ''
     }
   }
-  }
+}
 </script>

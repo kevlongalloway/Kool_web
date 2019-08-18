@@ -78,10 +78,10 @@ img.emoji {
 @guest
 <li id="menu-item-331" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-331"><a href="/login">Login</a>
 <ul class="sub-menu">
-    <li id="menu-item-526" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-526"><a href="/login">Individual/Student</a>
+    <li id="menu-item-526" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-526"><a href="/login">Individual/Student</a>
    
 </li>
-    <li id="menu-item-527" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-527"><a href="/portal">Teacher</a>
+    <li id="menu-item-527" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-527"><a href="/portal">Teacher</a>
     
 </li>
 </ul>
@@ -91,10 +91,10 @@ img.emoji {
 
 <li id="menu-item-331" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-331"><a href="http://koolriculumclub.com/subjects/">Register</a>
 <ul class="sub-menu">
-    <li id="menu-item-526" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-526"><a href="/register">Individual/Student Registration</a>
+    <li id="menu-item-526" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-526"><a href="/register">Individual/Student Registration</a>
    
 </li>
-    <li id="menu-item-527" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-527"><a href="/portal/register">Teacher Registration</a>
+    <li id="menu-item-527" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-527"><a href="/portal/register">Teacher Registration</a>
     
 </li>
 </ul>

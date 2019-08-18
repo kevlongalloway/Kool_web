@@ -17,7 +17,8 @@ class ClassroomController extends Controller
      */
     public function index()
     {
-
+        $classrooms = $this->getUserNoParams()->classrooms;
+        return $classrooms;
     }
 
     /**
@@ -185,5 +186,21 @@ class ClassroomController extends Controller
             return User::find($id);
         }
 
+    }
+
+    protected function getUserNoParams() 
+    {
+         if (Auth::guard()->user()) {
+            return Auth::guard()->user();
+         }
+         else if (Auth::guard('teacher')->user()) {
+            return Auth::guard('teacher')->user();
+         }
+         else if (Auth::guard('organization')->user()) {
+            return Auth::guard('organization')->user();
+         }
+         else if (Auth::guard('admin')->user()) {
+            return Auth::guard('admin')->user();
+         }
     }
 }

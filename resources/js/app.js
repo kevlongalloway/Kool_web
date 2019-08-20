@@ -99,6 +99,7 @@ Vue.component('pagination', require('./components/App/Pagination.vue').default);
 Vue.component('add-students', require('./components/App/Classrooms/AddStudentModal.vue').default);
 Vue.component('add-playlist', require('./components/App/Classrooms/AddPlaylistModal.vue').default);
 Vue.component('classrooms', require('./components/App/Classrooms.vue').default);
+Vue.component('classrooms-widget', require('./components/Widgets/Classrooms.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

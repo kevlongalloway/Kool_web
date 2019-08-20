@@ -12,10 +12,12 @@
                       </a>
               </div>
               <div class="col-md-7 float-left desktop-order-1">
-                <ul v-if="playlists.length" class="list-group">
-                  <div v-if="loading" class="spinner-border text-info" role="status">
+                <ul  class="list-group">
+                  <li v-if="loading" class="list-group-item">
+                  <div class="d-flex spinner-border text-info" role="status">
                     <span class="sr-only">Loading...</span>
                   </div>
+                </li>
                   <li v-else v-for="playlist in playlists" :key="playlist.id" class="list-group-item">
                     <router-link :to="{path: '/playlist/' + playlist.id }">{{playlist.name}}</router-link><span><a class="list-icon" href="#" @click="deletePlaylist(playlist.id)"><i class="fa fa-trash" aria-hidden="true"></i></a></span>
                   </li>

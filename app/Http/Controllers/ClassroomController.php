@@ -18,7 +18,7 @@ class ClassroomController extends Controller
     public function index()
     {
         $classrooms = $this->getUserNoParams()->classrooms;
-        return $classrooms;
+        return $classrooms->take(5);
     }
 
     /**

@@ -12,11 +12,11 @@
                 </router-link>
               </div>
             </div>
-            <div class="row">
+            <div class="row mt-3">
               <div class="col-md-12">
                 <ul v-if="classrooms.length" class="list-group">
                   <li v-for="classroom in classrooms" :key="classroom.id" class="list-group-item">
-                    <router-link :to="{path: '/portal/classrooms/' + classroom.id }">{{classroom.name}}</router-link><span><a href="#"><i class="fa fa-trash" aria-hidden="true"></i></a></span></li>
+                    <router-link :to="{path: '/portal/classrooms/' + classroom.id }">{{classroom.name}}</router-link><span class="float-right"><a href="#"><i class="fa fa-trash" aria-hidden="true"></i></a></span></li>
                 </ul>
               </div>
             </div>

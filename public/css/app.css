@@ -10681,6 +10681,10 @@ a.text-dark:focus {
   float: right;
 }
 
+bottom-margin {
+  margin-bottom: 1em;
+}
+
 @media (min-width: 768px) {
   .grade-button {
     padding: 1em;

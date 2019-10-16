@@ -58,4 +58,12 @@ class Admin extends Authenticatable
         return false;
     }
 
+    public function belongsToOrganization(){
+        return false;
+    }
+
+    public function isActive(){
+        return true;
+    }
+
 }

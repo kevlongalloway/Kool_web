@@ -6,7 +6,7 @@
 /**after adding playlist to class the list doesnt update*/
 add students functionality
 student page
-
+/**
 pagination
 	change eloquent collections to queries
 /*individual user server side*//

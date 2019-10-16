@@ -27,7 +27,6 @@ class RegisterRequest extends FormRequest
             'name'        => 'required|string|max:255',
             'email'       => 'required|string|email|max:255|unique:users|unique:teachers',
             'password'    => 'required|string|min:8|confirmed',
-            'guard'       => 'required|string',
             'access_code' => 'nullable|exists:organizations,id',
         ];
     }
@@ -35,7 +34,10 @@ class RegisterRequest extends FormRequest
     public function messages()
     {
         return [
-            'access_code.exists' => 'The given data is invalid.',
+            'email.unique' => 'The email has already been taken.',
+            'access_code.exists' => 'The access code is invalid.',
+            'password.min' => 'The password must be at least 8 characters.',
+            'password.confirmed' => 'The password confirmation does not match.',
         ];
     }
 }

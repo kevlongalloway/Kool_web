@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Repository\Login;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use \App\Http\Requests\AccessCodeRequest;
 use \App\Http\Requests\RegisterRequest;
+use App\Repository\Authenticator;
 
 class AccessCodeController extends Controller
 {
@@ -19,7 +20,7 @@ class AccessCodeController extends Controller
     {
         $this->middleware('guest');
     }
-
+ 
     /**
      * handle an access code request
      *
@@ -28,6 +29,7 @@ class AccessCodeController extends Controller
      */
     public function accessCodeRequest(AccessCodeRequest $request)
     {
+        //resolve guard from HTTP_REFERRER
         $guard      = $this->resolveGuard($request);
         $accesscode = $request->access_code;
         return redirect(url('registration/' . $guard . '/' . $accesscode));
@@ -39,26 +41,25 @@ class AccessCodeController extends Controller
      * @param access code, guard
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function showRegisterForm($guard, $accesscode)
+    public function showRegisterForm($guard = null, $accesscode = null)
     {
         return view('register', ['guard' => $guard, 'access_code' => $accesscode]);
     }
 
     public function register(RegisterRequest $request)
     {
-        $e = new Login;
-        $e->register($request);
-
+        $authenticator = new Authenticator;
         $guard = $request->guard;
-        $route = "payment";
-        if ($request->filled('access_code')) {
-            $route = "{$guard}.home";
-
-            //get credentials
-            $credentials = [
+        $route = $authenticator->register($request, $guard);
+        //get credentials
+        $credentials = [
                 'email'    => $request->email,
                 'password' => $request->password,
             ];
+            //ifbelongs to organizationredirect route is {guard}.home
+        if ($request->filled('access_code')) {
+            $route = "{$guard}.home";
+
             // attempt to log the user in
             $guard == 'user' ? $guard = null : false;
             if (Auth::guard($guard)->attempt($credentials, $request->remember)) {
@@ -67,6 +68,7 @@ class AccessCodeController extends Controller
             }
             return redirect()->back()->withInput($request->only('email', 'remember'));
         }
+        Auth::guard($guard)->attempt($credentials, $request->remember);
         return redirect(route($route));
 
     }
@@ -86,4 +88,6 @@ class AccessCodeController extends Controller
         }
         return 'user';
     }
+
+    
 }

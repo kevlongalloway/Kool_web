@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use \App\Http\Requests\RegisterRequest;
 
 class RegisterController extends Controller
 {
@@ -28,16 +29,36 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/portal/home';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function showRegisterForm()
     {
-        $this->middleware('organization');
+        $guard = 'teacher';
+        $access_code = null;
+        return view('teacher.auth.register', compact('guard', 'access_code'));
+    }
+
+    public function register(RegisterRequest $request)
+    {
+        //if request has access code create a user attached to organization
+        if($request->filled('access_code')) {
+            event(new Registered($user = Organization::find($request->access_code)->teachers()->create($request->all())));
+        }else{
+            event(new Registered($user = $this->create($request->all())));
+            $user->deactivate();
+        }
+
+        
+        $credentials = [
+                'email'    => $request->email,
+                'password' => $request->password,
+            ];
+
+        $this->guard()->login($user);
+
+        return $this->registered($request, $user)
+                         ?: redirect(route('teacher.home'));
+
     }
 
     /**

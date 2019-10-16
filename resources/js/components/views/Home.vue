@@ -4,7 +4,10 @@
       <loading-screen v-if="loading"></loading-screen>
     
     <!-- App -->
+
       <div v-else class="row">
+        <search></search>
+
         <div class="col-md-9 desktop-order-2">
           <grades></grades>
         </div>
@@ -13,6 +16,7 @@
             <classrooms-widget></classrooms-widget>
           </div>
         </div>
+
         
       </div>
     </div>
@@ -21,7 +25,6 @@
 <script>
 export default {
   mounted() {
-    console.log('page mounted')
     this.getData()
 
   },

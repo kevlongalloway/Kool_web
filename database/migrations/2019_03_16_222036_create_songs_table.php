@@ -23,6 +23,7 @@ class CreateSongsTable extends Migration
             $table->integer('subject_id')->nullable();
             $table->string('src')->nullable();
             $table->string('thumbnail_src')->nullable();
+            $table->integer('views')->default(0);
             $table->timestamps();
         });
     }

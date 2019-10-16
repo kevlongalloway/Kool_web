@@ -100,6 +100,7 @@ Vue.component('add-students', require('./components/App/Classrooms/AddStudentMod
 Vue.component('add-playlist', require('./components/App/Classrooms/AddPlaylistModal.vue').default);
 Vue.component('classrooms', require('./components/App/Classrooms.vue').default);
 Vue.component('classrooms-widget', require('./components/Widgets/Classrooms.vue').default);
+Vue.component('search', require('./components/App/Search.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -134,13 +135,5 @@ const app = new Vue({
       this.$Progress.finish()
     })
   },
-    methods:{
-      userData(){
-      axios.get('/api/user')
-        .then(response => {
-          this.user = response.data
-        });
-      }
-    },
     router
 }).$mount('#app')

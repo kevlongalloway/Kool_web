@@ -3118,6 +3118,38 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/App/Search.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/App/Search.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      query: ''
+    };
+  },
+  methods: {
+    search: function search(e) {
+      e.preventDefault();
+      axios.post('/api/search', {
+        qry: this.query
+      }).then(function (res) {
+        console.log(res);
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/App/Subjects.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/App/Subjects.vue?vue&type=script&lang=js& ***!
@@ -3607,9 +3639,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
-    console.log('page mounted');
     this.getData();
   },
   data: function data() {
@@ -8319,7 +8354,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.current-page {\r\n  margin: .5em;\n}\r\n", ""]);
+exports.push([module.i, "\n.current-page {\n  margin: .5em;\n}\n", ""]);
 
 // exports
 
@@ -8338,7 +8373,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.small-blur {\r\n  opacity: 0.9;\n}\r\n", ""]);
+exports.push([module.i, "\n.small-blur {\n  opacity: 0.9;\n}\n", ""]);
 
 // exports
 
@@ -8395,7 +8430,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.dev {\r\n  background-color: #FEFEFE;\r\n  border: 1px solid #000;\n}\r\n", ""]);
+exports.push([module.i, "\n.dev {\n  background-color: #FEFEFE;\n  border: 1px solid #000;\n}\n", ""]);
 
 // exports
 
@@ -8414,7 +8449,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.current-page {\r\n  margin: .5em;\n}\r\n", ""]);
+exports.push([module.i, "\n.current-page {\n  margin: .5em;\n}\n", ""]);
 
 // exports
 
@@ -8433,7 +8468,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\nbottom-margin {\r\n  margin-bottom: 1em !important;\n}\r\n", ""]);
+exports.push([module.i, "\nbottom-margin {\n  margin-bottom: 1em !important;\n}\n", ""]);
 
 // exports
 
@@ -43428,6 +43463,51 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/App/Search.vue?vue&type=template&id=7a2c4321&":
+/*!*************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/App/Search.vue?vue&type=template&id=7a2c4321& ***!
+  \*************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("input", {
+    directives: [
+      {
+        name: "model",
+        rawName: "v-model",
+        value: _vm.query,
+        expression: "query"
+      }
+    ],
+    staticClass: "form-control",
+    attrs: { type: "text" },
+    domProps: { value: _vm.query },
+    on: {
+      keyup: _vm.search,
+      input: function($event) {
+        if ($event.target.composing) {
+          return
+        }
+        _vm.query = $event.target.value
+      }
+    }
+  })
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/App/Subjects.vue?vue&type=template&id=7f055280&":
 /*!***************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/App/Subjects.vue?vue&type=template&id=7f055280& ***!
@@ -44349,20 +44429,27 @@ var render = function() {
     [
       _vm.loading
         ? _c("loading-screen")
-        : _c("div", { staticClass: "row" }, [
-            _c(
-              "div",
-              { staticClass: "col-md-9 desktop-order-2" },
-              [_c("grades")],
-              1
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-3 desktop-order-1" }, [
-              _vm.user.organization_id
-                ? _c("div", [_c("classrooms-widget")], 1)
-                : _vm._e()
-            ])
-          ])
+        : _c(
+            "div",
+            { staticClass: "row" },
+            [
+              _c("search"),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col-md-9 desktop-order-2" },
+                [_c("grades")],
+                1
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-3 desktop-order-1" }, [
+                _vm.user.organization_id
+                  ? _c("div", [_c("classrooms-widget")], 1)
+                  : _vm._e()
+              ])
+            ],
+            1
+          )
     ],
     1
   )
@@ -59626,6 +59713,7 @@ Vue.component('add-students', __webpack_require__(/*! ./components/App/Classroom
 Vue.component('add-playlist', __webpack_require__(/*! ./components/App/Classrooms/AddPlaylistModal.vue */ "./resources/js/components/App/Classrooms/AddPlaylistModal.vue").default);
 Vue.component('classrooms', __webpack_require__(/*! ./components/App/Classrooms.vue */ "./resources/js/components/App/Classrooms.vue").default);
 Vue.component('classrooms-widget', __webpack_require__(/*! ./components/Widgets/Classrooms.vue */ "./resources/js/components/Widgets/Classrooms.vue").default);
+Vue.component('search', __webpack_require__(/*! ./components/App/Search.vue */ "./resources/js/components/App/Search.vue").default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -59663,15 +59751,6 @@ var app = new Vue({
       //  finish the progress bar
       _this.$Progress.finish();
     });
-  },
-  methods: {
-    userData: function userData() {
-      var _this2 = this;
-
-      axios.get('/api/user').then(function (response) {
-        _this2.user = response.data;
-      });
-    }
   },
   router: router
 }).$mount('#app');
@@ -60880,6 +60959,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/App/Search.vue":
+/*!************************************************!*\
+  !*** ./resources/js/components/App/Search.vue ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Search_vue_vue_type_template_id_7a2c4321___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Search.vue?vue&type=template&id=7a2c4321& */ "./resources/js/components/App/Search.vue?vue&type=template&id=7a2c4321&");
+/* harmony import */ var _Search_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Search.vue?vue&type=script&lang=js& */ "./resources/js/components/App/Search.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Search_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Search_vue_vue_type_template_id_7a2c4321___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Search_vue_vue_type_template_id_7a2c4321___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/App/Search.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/App/Search.vue?vue&type=script&lang=js&":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/App/Search.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Search_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Search.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/App/Search.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Search_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/App/Search.vue?vue&type=template&id=7a2c4321&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/App/Search.vue?vue&type=template&id=7a2c4321& ***!
+  \*******************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Search_vue_vue_type_template_id_7a2c4321___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Search.vue?vue&type=template&id=7a2c4321& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/App/Search.vue?vue&type=template&id=7a2c4321&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Search_vue_vue_type_template_id_7a2c4321___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Search_vue_vue_type_template_id_7a2c4321___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/App/Subjects.vue":
 /*!**************************************************!*\
   !*** ./resources/js/components/App/Subjects.vue ***!
@@ -61987,8 +62135,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Kevlon\kool_web\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Kevlon\kool_web\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/kevlon/valet/koolriculum/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/kevlon/valet/koolriculum/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

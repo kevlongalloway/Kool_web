@@ -7,6 +7,7 @@ use App\Playlist;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Repository\GuardResolver;
 
 class ClassroomController extends Controller
 {
@@ -15,9 +16,9 @@ class ClassroomController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(GuardResolver $guard)
     {
-        $classrooms = $this->getUserNoParams()->classrooms;
+        $classrooms = $guard->user()->classrooms;
         return $classrooms->take(5);
     }
 
@@ -94,9 +95,9 @@ class ClassroomController extends Controller
         return response()->json(null, 201);
     }
 
-    public function getClassrooms($user_id)
+    public function getClassrooms(GuardResolver $guard, $user_id)
     {
-        $classrooms = $this->getUser($user_id)->classrooms;
+        $classrooms = $guard->user()->classrooms;
     }
 
     public function getClassroomsNoParams()
@@ -174,33 +175,4 @@ class ClassroomController extends Controller
 
     }
 
-    protected function getUser($id)
-    {
-        if (Auth::guard('admin')->check()) {
-            return Admin::find($id);
-        } else if (Auth::guard('teacher')->check()) {
-            return Teacher::find($id);
-        } else if (Auth::guard('organization')->check()) {
-            return Organization::find($id);
-        } else if (Auth::guard()->check()) {
-            return User::find($id);
-        }
-
-    }
-
-    protected function getUserNoParams() 
-    {
-         if (Auth::guard()->user()) {
-            return Auth::guard()->user();
-         }
-         else if (Auth::guard('teacher')->user()) {
-            return Auth::guard('teacher')->user();
-         }
-         else if (Auth::guard('organization')->user()) {
-            return Auth::guard('organization')->user();
-         }
-         else if (Auth::guard('admin')->user()) {
-            return Auth::guard('admin')->user();
-         }
-    }
 }

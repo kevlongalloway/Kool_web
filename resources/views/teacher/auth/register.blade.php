@@ -5,10 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ ucfirst($guard) }} Register</div>
+                <div class="card-header">Teacher Register</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('accesscode.register') }}">
+                    <form method="POST" action="{{ route('teacher.register') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -60,17 +60,33 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
-
+                        @if(!empty($access_code))
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Access Code</label>
+                            <label for="access_code" class="col-md-4 col-form-label text-md-right">Access Code</label>
 
                             <div class="col-md-6">
                                 <input id="access_code" type="text" class="form-control" name="access_code" value="{{ $access_code }}" required disabled>
                             </div>
                         </div>
+                        @endif
+                        @if(!empty($access_code))
+                        <div class="form-group row">
+                            <label for="access_code" class="col-md-4 col-form-label text-md-right">Access Code</label>
 
-                        <input id="access_code" type="hidden" value="{{ $access_code }}" name="access_code">
-                        <input id="guard" type="hidden" value="{{ $guard }}" name="guard">
+                            <div class="col-md-6">
+                                <input id="access_code" type="text" class="form-control" name="access_code" value="{{ $access_code }}" required disabled>
+                            </div>
+                        </div>
+                        @endif
+                        @if(empty($access_code))
+                        <div class="form-group row">
+                            <label for="access_code" class="col-md-4 col-form-label text-md-right">Access Code</label>
+
+                            <div class="col-md-6">
+                                <input id="access_code" type="text" class="form-control" name="access_code" required>
+                            </div>
+                        </div>
+                        @endif
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

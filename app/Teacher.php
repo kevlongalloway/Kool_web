@@ -52,14 +52,18 @@ class Teacher extends Authenticatable
         return $this->morphToMany('App\Playlist', 'playlistable');
     }
 
-    public function createPlaylist()
+    public function createPlaylist($name)
     {
-        return $this->playlists()->create();
+        return $this->playlists()->create([
+            'name'=> $name
+        ]);
     }
 
-    public function createClass()
+    public function createClass($name)
     {
-        $this->classrooms()->create();
+        $this->classrooms()->create([
+            'name'=> $name
+        ]);
     }
 
     public function loggedIn()
@@ -75,6 +79,10 @@ class Teacher extends Authenticatable
     public function hashPassword($request)
     {
         $this->update(['password' => Hash::make($request->password)]);
+    }
+
+    public function belongsToOrganization() {
+        return true;
     }
 
     public function isUser(){

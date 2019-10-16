@@ -7,11 +7,13 @@ use App\Song;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Storage;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
 
 class SongController extends Controller
 {
     protected $grades = [
-        'one' => 1,
+        'one'    => 1,
         'two'    => 2,
         'three'  => 3,
         'four'   => 4,
@@ -30,9 +32,8 @@ class SongController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
-        $songs = Song::all();
-        return response()->json($songs);
+    public function index(Song $songs){
+        return response()->json($songs->all());
     }
 
     /**
@@ -53,12 +54,12 @@ class SongController extends Controller
      */
     public function store(Request $request)
     {
-        if (Auth::guard('admin')->check()) {
+        if(Auth::guard('admin')->check()){
             $song = Song::create($request->except('file'));
             $this->attachGrades($request, $song);
             return response()->json(['message' => $song->title . ' has successfully been uploaded!'], 201);
         }
-        return response()->json(null, 404);
+        return response()->json(null,404);
     }
 
     /**
@@ -67,9 +68,9 @@ class SongController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Song $song)
     {
-        $song = Song::find($id);
+        $song->incrementViews();
         return response()->json($song);
     }
 
@@ -91,7 +92,7 @@ class SongController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Song $song)
     {
         //
     }
@@ -102,16 +103,73 @@ class SongController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Song $song)
     {
         //
     }
 
-    public function browse($grade, $subject)
+    public function browse(Grade $grade, $subject)
     {
-        $grade = Grade::find($grade);
         $songs = $grade->songs->where('subject_id', $subject);
         return response()->json($songs);
+    }
+
+    public function search(Request $request) {
+        $query = $request->qry;
+        
+        $results = Song::where('title', 'like', '%'.$query.'%')
+            ->orWhere('standard', 'like', '%'.$query.'%')
+            ->orWhere('tags', 'like',  '%'.$query.'%')
+            ->get();
+        return $results;
+    }
+
+    public function query(Request $request)
+    { 
+        //set query variable
+        $request->has('query')?
+        $query = $request->all()['query']:
+        $query = '';
+
+        //set grades array
+        $request->has('grades') ?
+        $grades = array_unique(explode(',', $request->all()['grades'])):
+        $grades =[];
+
+
+        $validatedGrades = [];
+        //validate the grades are greater than 0 and less than or equal to 13 remove if not
+        foreach ($grades as $key => $grade) {
+            if ($grade <= 13 && $grade > 0) {
+                array_push($validatedGrades, $grade);
+            }
+        }
+
+        //get all grades
+        $grades = Grade::whereIn('id', $validatedGrades)->get();
+        
+        //initialize song collection not working currently initializing collection NOT WORKING TODO
+        $songs = [];
+        //for every grade get all the songs and merge theminto one collection.
+        foreach($validatedGrades as $grade) {
+            $grade = Grade::find($grade);
+            $currentSongs = $grade->songs->where('title', 'like', '%'.$query.'%')
+            ->where('standard', 'like', '%'.$query.'%')
+            ->where('tags', 'like',  '%'.$query.'%');
+            $songs = $songs->merge($currentSongs);
+            dd($currentSongs,'hit');
+        }
+        //remove all duplicates
+        dd(array_unique($songs));
+        
+        //old code
+        $results ='';
+
+        return $results;
+    }
+
+    public function searchAndFilter() {
+
     }
 
     protected function subjectID($subject)
@@ -133,14 +191,14 @@ class SongController extends Controller
         }
     }
 
-    protected function attachGrades($request, $song)
+    protected function attachGrades($request, Song $song)
     {
         foreach ($request->grades as $key => $grade) {
             $song->grades()->attach($this->grades[$key]);
         }
     }
 
-    protected function storeRawSongData($song)
+    protected function storeRawSongData(Song $song)
     {
         if (Storage::exists('songs.txt')) {
             Storage::append('songs.txt', [$song, $song->grades()->pluck('grade_id')]);

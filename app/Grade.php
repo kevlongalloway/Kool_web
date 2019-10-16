@@ -10,4 +10,9 @@ class Grade extends Model
     {
         return $this->belongsToMany('App\Song');
     }
+
+    public function songsWhere()
+    {
+
+    }
 }

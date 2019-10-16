@@ -25,4 +25,8 @@ class Song extends Model
         return $this->belongsToMany('App\Grade');
     }
 
+    public function incrementViews(){
+        $this->increment('views');
+    }
+
 }

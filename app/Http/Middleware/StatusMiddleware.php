@@ -19,18 +19,18 @@ class StatusMiddleware
        if($request->user()) {
         $user = $request->user();
         //if user belongs to an organization
-            if(!empty($user->organization_id)){
-               if(!$user->organization->is_active){
-                return redirect(route('inactive'));
+            if($user->belongsToOrganization()){
+               if($user->organization->isActive()){
+                return $next($request);
                }
-               return $next($request);
+             return redirect(route('inactive'));
             }
         //if user doesn't belong to an organization
             else{
-                if(!$user->is_active) {
-                    return redirect(route('payment'));
+                if($user->isActive()) {
+                    return $next($request);
                 }
-                return $next($request);
+                return redirect(route('payment'));
             }
        }
 

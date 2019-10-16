@@ -136,4 +136,10 @@ class Organization extends Authenticatable
     public function isUser(){
         return false;
     }
+
+    public function belongsToOrganization() {
+        return false;
+    }
+
+    
 }

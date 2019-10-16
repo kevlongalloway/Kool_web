@@ -29,12 +29,22 @@ class Login
         return redirect()->back()->withInput($request->only('email', 'remember'));
     }
 
-    public function register(Request $request)
+    public function register(Request $request, $guard = null)
     {
-        $guard = $request->guard;
+        if($guard == null) {
+            $guard = $request->guard;
+        }
+
         if ($request->filled('access_code')) {
             $organization = Organization::find($request->access_code);
-            $user         = $organization->resolveGuard($request->guard)->create($request->all());
+            switch($guard) {
+                case 'user':
+                    $user         = $organization->users()->create($request->all());
+                    break;
+                case 'teacher':
+                    $user = $organization->teachers()->create($request->all());
+            }
+            
         } else {
             $user            = \App\User::create($request->all());
             $user->is_active = 0;

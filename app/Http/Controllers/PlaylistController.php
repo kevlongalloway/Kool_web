@@ -10,6 +10,7 @@ use App\Teacher;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Repository\GuardResolver;
 
 class PlaylistController extends Controller
 {
@@ -18,11 +19,11 @@ class PlaylistController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index(GuardResolver $guard, $id)
     {
-        $user = $this->getUser($id);
-
+        $user = $guard->user();
         $playlists = $user->playlists;
+
 
         if (Auth::guard('teacher')->check()) {
             $classrooms = $user->classrooms;
@@ -32,7 +33,8 @@ class PlaylistController extends Controller
             }
         }
 
-        return response()->json($playlists);
+        
+        return response()->json($playlists, 200);
     }
 
     /**
@@ -41,15 +43,11 @@ class PlaylistController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $user                 = Auth::user();
-        $user == null ? $user = Auth::guard('teacher')->user() : '';
-        $user == null ? $user = Auth::guard('admin')->user() : '';
-        $user == null ? $user = Auth::guard('organization')->user() : '';
+    public function store(Request $request, GuardResolver $guard)
+    {  
+        $user = $guard->user();
 
         $playlist = $user->playlists()->create($request->all());
-
         return response()->json($playlist, 201);
     }
 
@@ -59,16 +57,14 @@ class PlaylistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Playlist $playlist)
     {
-        $playlist = Playlist::find($id);
         return response()->json($playlist);
     }
 
-    public function showSongs($playlist_id)
+    public function showSongs(Playlist $playlist)
     {
-        $songs = Playlist::find($playlist_id)->songs;
-        return response()->json($songs);
+        return response()->json($playlist->songs);
     }
 
     /**
@@ -77,7 +73,7 @@ class PlaylistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($playlist)
+    public function edit(Playlist $playlist)
     {
 
     }
@@ -89,19 +85,21 @@ class PlaylistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $playlist)
+    public function update(Request $request, Playlist $playlist)
     {
         $playlist->update($request->all());
         return response()->json(null, 201);
     }
 
-    public function attachSongToPlaylist($playlist_id, $song_id)
+    public function attachSongToPlaylist(Playlist $playlist, Song $song)
     {
-        $playlist = Playlist::find($playlist_id);
-        $song     = Song::find($song_id);
-        if (!$playlist->songs->contains($song)) {
-            $playlist->songs()->attach($song_id);
-        }
+        if($playlist->songs->contains($song)) {
+            return response()->json(['message' => 'song has already been added']);
+        } 
+        
+        return $playlist->songs()->attach($song->id);
+
+
     }
 
     /**
@@ -117,32 +115,10 @@ class PlaylistController extends Controller
         return response()->json(null, 201);
     }
 
-    protected function getUser($id)
-    {
-        if (Auth::guard('admin')->check()) {
-            return Admin::find($id);
-        } else if (Auth::guard('teacher')->check()) {
-            return Teacher::find($id);
-        } else if (Auth::guard('organization')->check()) {
-            return Organization::find($id);
-        } else if (Auth::guard()->check()) {
-            return User::find($id);
-        }
-
-    }
-
     public function getTeacherPlaylists()
     {
         $playlists = Auth::guard('teacher')->user()->playlists;
         return response()->json($playlists);
     }
 
-    protected function getUserNoParams()
-    {
-        $user                 = Auth::user();
-        $user == null ? $user = Auth::guard('teacher')->user() : '';
-        $user == null ? $user = Auth::guard('admin')->user() : '';
-        $user == null ? $user = Auth::guard('organization')->user() : '';
-        return $user;
-    }
 }

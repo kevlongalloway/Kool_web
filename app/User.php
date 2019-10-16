@@ -16,11 +16,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'first_login', 'grade',
+        'name', 'email', 'password', 'first_login', 'grade', 'is_active',
     ];
 
     /**
-     * The attributes that should be hidden for arrays.
+     * The attributes that should be hidden for array
+     *
      *
      * @var array
      */
@@ -50,6 +51,18 @@ class User extends Authenticatable
     public function playlists()
     {
         return $this->morphToMany('App\Playlist', 'playlistable');
+    }
+
+    public function attachToOrganization($organization_id) 
+    {
+        if(empty($this->organization_id)) {
+            $organization = Organization::findOrFail($organization_id);
+            if($organization) {
+                $this->organization_id = $organization_id;
+                return true;
+            }
+        }
+        return false;
     }
 
     public function createPlaylist()
@@ -88,9 +101,9 @@ class User extends Authenticatable
 
     public function isActive()
     {
-        return $this->organization_id == null ?
-        $this->is_active :
-        $this->organization->isActive();
+        return $this->belongsToOrganization() ?
+        $this->organization->isActive() :
+        $this->is_active;
     }
 
     public function isUser(){
@@ -101,4 +114,19 @@ class User extends Authenticatable
     {
         $this->update(['password' => Hash::make($request->password)]);
     }
+
+     public function activate()
+    {
+        return !$this->belongsToOrganization() ?
+        $this->update(['is_active' => 1]):
+        false;
+    }
+
+    public function deactivate()
+    {
+        return !$this->belongsToOrganization() ?
+        $this->update(['is_active' => 0]):
+        false;
+    }
+
 }

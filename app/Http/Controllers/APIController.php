@@ -3,16 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use App\Repository\GuardResolver;
 
 class APIController extends Controller
 {
-    public function user()
+    public function user(GuardResolver $guard)
     {
-        $user                 = Auth::user();
-        $user == null ? $user = Auth::guard('teacher')->user() : '';
-        $user == null ? $user = Auth::guard('organization')->user() : '';
-        $user == null ? $user = Auth::guard('admin')->user() : '';
-        return response()->json($user);
+        return response()->json($guard->user());
     }
 
 }

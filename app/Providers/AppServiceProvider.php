@@ -15,7 +15,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(GuardResolver::class, function () {
+            return GuardResolver();
+        });
+
+        if ($this->app->environment() != 'testing') {
+            $this->app->register(TelescopeServiceProvider::class);
+        }
     }
 
     /**
@@ -30,10 +36,11 @@ class AppServiceProvider extends ServiceProvider
         Blade::if('bto', function () {
             return auth()->user() && auth()->user()->belongsToOrganization();
         });
+
+        //If user is student or individual
         Blade::if('user',function(){
             return auth()->user() && auth()->user()->isUser();
         });
-
 
     }
 }

@@ -22,6 +22,9 @@ class CreateOrganizationsTable extends Migration
             $table->integer('subscription_id')->nullable();
             $table->boolean('is_active')->default(1);
             $table->integer('user_type')->default(3);
+            $table->string('teacher_passcode')->nullable();
+            $table->integer('max_teachers')->default(30);
+            $table->integer('max_students')->default(300);
             $table->rememberToken();
             $table->timestamps();
         });

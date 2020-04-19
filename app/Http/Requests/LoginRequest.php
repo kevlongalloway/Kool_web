@@ -29,8 +29,4 @@ class LoginRequest extends FormRequest
         ];
     }
 
-    public function messages()
-    {
-
-    }
 }

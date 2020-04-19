@@ -88,6 +88,4 @@ class AccessCodeController extends Controller
         }
         return 'user';
     }
-
-    
 }

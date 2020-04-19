@@ -29,13 +29,6 @@ class RegisterController extends Controller
     use RegistersUsers;
 
     /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
-
-    /**
      * Create a new controller instance.
      *
      * @return void
@@ -50,70 +43,19 @@ class RegisterController extends Controller
         return view('auth.register');
     }
 
-
-    /**
-     * Handle a registration request for the application.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    // public function register(Request $request)
-    // {
-    //     $this->validator($request->all())->validate();
-
-    //     event(new Registered($user = $this->create($request->all())));
-
-    //     $this->guard()->login($user);
-
-
-
-    //     return $this->registered($request, $user)
-    //                     ?: redirect($this->redirectPath());
-    // }
-
-
-    public function register(RegisterRequest $request)
-    {
-        //if request has access code create a user attached to organization
-        if($request->filled('access_code')) {
-            event(new Registered($user = Organization::find($request->access_code)->users()->create($request->all())));
-        }else{
-            event(new Registered($user = $this->create($request->all())));
-            $user->deactivate();
-        }
-
-        
-        $credentials = [
-                'email'    => $request->email,
-                'password' => $request->password,
-            ];
-
-        $this->guard()->login($user);
-
-        if($user->isActive()) {
-            return $this->registered($request, $user)
-                             ?: redirect($this->redirectPath());
-        }
-        return redirect(route('payment'));
-
-    }
-
-
-
-
     /**
      * Get a validator for an incoming registration request.
-     * NOT BEING USED
+     * 
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name'        => ['required', 'string', 'max:255'],
-            'email'       => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password'    => ['required', 'string', 'min:8', 'confirmed'],
-            'access_code' => ['required', 'exists:organization'],
+            'name'        => 'required|string|max:255',
+            'email'       => 'required|string|email|max:255|unique:users|unique:teachers',
+            'password'    => 'required|string|min:8|confirmed',
+            'access_code' => 'nullable|exists:organizations,id',
         ]);
     }
 
@@ -132,8 +74,24 @@ class RegisterController extends Controller
         ]);
     }
 
-    protected function guard()
+    /**
+     * The user has been registered.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function registered(Request $request, $user)
     {
-        return Auth::guard();
+        //if request has access code create a user attached to organization
+        if($request->filled('access_code')) {
+            $organization = Organization::find($request->access_code);
+            $user->organization()->associate($organization);
+            $user->save();
+            return redirect($this->redirectPath());
+        }else{
+            $user->deactivate();
+            return redirect(route('payment'));
+        }
     }
 }

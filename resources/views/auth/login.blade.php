@@ -47,7 +47,7 @@
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" value="{{ old('remember') ? 'checked' : '' }}">
 
                                     <label class="form-check-label" for="remember">
                                         {{ __('Remember Me') }}
@@ -74,24 +74,10 @@
             </div>
             
              <div class="card-body">
-                <form method="POST" action="{{ route('access-code') }}">
-                        @csrf
+               
                     <div class="form-group row">
-                        <label for="access_code" class="col-md-4 col-form-label text-md-right">Don't have an account? Enter an access code or <a href="/register">Click here</a></label>
-
-                        <div class="col-md-6">
-                             <input name="access_code" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"  autofocus>
-                        </div>  
+                        <span>Don't have an account? <a href="/register">Click here</a></span>
                     </div>
-                    <div class="form-group row mb-0">
-                        <div class="col-md-8 offset-md-4">
-                            <button type="submit" class="btn btn-primary">
-                                Next
-                            </button>
-                        </div>
-                         
-                    </div>
-                </form> 
             </div>
 
         </div>

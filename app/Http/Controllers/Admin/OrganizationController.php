@@ -51,6 +51,7 @@ class OrganizationController extends Controller
     {
         $organization = Organization::create($request->all());
         $organization->generateAccessCode();
+        $organization->generateTeacherPasscode();
         $organization->hashPassword($request);
         return response()->json(null, 201);
     }

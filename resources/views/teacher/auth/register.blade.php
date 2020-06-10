@@ -10,7 +10,6 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('teacher.register') }}">
                         @csrf
-
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
@@ -66,15 +65,12 @@
 
                             <div class="col-md-6">
                                 <input id="access_code" type="text" class="form-control" name="access_code" value="{{ $access_code }}" required disabled>
-                            </div>
-                        </div>
-                        @endif
-                        @if(!empty($access_code))
-                        <div class="form-group row">
-                            <label for="access_code" class="col-md-4 col-form-label text-md-right">Access Code</label>
 
-                            <div class="col-md-6">
-                                <input id="access_code" type="text" class="form-control" name="access_code" value="{{ $access_code }}" required disabled>
+                                @if ($errors->has('access_code'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('access_code') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
                         @endif
@@ -84,9 +80,27 @@
 
                             <div class="col-md-6">
                                 <input id="access_code" type="text" class="form-control" name="access_code" required>
+                                @if ($errors->has('access_code'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('access_code') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
                         @endif
+                        <div class="form-group row">
+                            <label for="teacher_passcode" class="col-md-4 col-form-label text-md-right">Teacher Code</label>
+
+                            <div class="col-md-6">
+                                <input id="teacher_passcode" type="password" class="form-control{{ $errors->has('teacher_passcode') ? ' is-invalid' : '' }}" name="teacher_passcode" required>
+
+                                @if ($errors->has('teacher_passcode'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('teacher_passcode') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

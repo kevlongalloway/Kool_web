@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Blade;
+use App\Organization;
+use App\Observers\OrganizationObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -41,6 +43,8 @@ class AppServiceProvider extends ServiceProvider
         Blade::if('user',function(){
             return auth()->user() && auth()->user()->isUser();
         });
+
+        Organization::observe(OrganizationObserver::class);
 
     }
 }

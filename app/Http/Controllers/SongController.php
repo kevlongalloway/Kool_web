@@ -151,6 +151,7 @@ class SongController extends Controller
         //initialize song collection not working currently initializing collection NOT WORKING TODO
         $songs = [];
         //for every grade get all the songs and merge theminto one collection.
+        if($validatedGrades)
         foreach($validatedGrades as $grade) {
             $grade = Grade::find($grade);
             $currentSongs = $grade->songs->where('title', 'like', '%'.$query.'%')

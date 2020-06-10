@@ -87,13 +87,13 @@ class UserTest extends TestCase
     {
         // $this->withoutExceptionHandling();
         $this->beforeEach();
-        $user = factory(User::class)->create(['password' => 'abc123456']);
+        $user = factory(User::class)->create(['password' => 'abc12345678']);
 
         $response = $this->post('/login', [
             'email' => $user->email,
-            'password' => 'abc123456'
+            'password' => 'abc12345678'
         ]);
-
+        dd($user);
         $response->assertRedirect('/home');
     }
 

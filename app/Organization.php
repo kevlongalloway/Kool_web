@@ -125,7 +125,14 @@ class Organization extends Authenticatable
             $this->update(['id' => $code]);
             return $code;
         }
-        generateAccessCode();
+        $this->generateAccessCode();
+    }
+
+    public function generateTeacherPasscode()
+    {
+        $code = rand(100000, 999999);
+        $this->update(['teacher_passcode' => $code]);
+        return $code;
     }
 
     public function hashPassword($request)
@@ -139,6 +146,16 @@ class Organization extends Authenticatable
 
     public function belongsToOrganization() {
         return false;
+    }
+
+    public function canRegisterStudent()
+    {
+        return count($this->users) < $this->max_students; 
+    }
+
+    public function canRegisterTeacher()
+    {
+        return count($this->teachers) < $this->max_teachers;
     }
 
     

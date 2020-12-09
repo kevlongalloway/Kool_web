@@ -11,10 +11,6 @@
 |
  */
 
-Route::get('landing/{lpage}', function($lpage) {
-    return 'hello '.$lpage ;
-});
-
 Route::get('/', function () {
     return view('welcome');
 })->name('landing');

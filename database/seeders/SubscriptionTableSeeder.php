@@ -1,6 +1,9 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class SubscriptionTableSeeder extends Seeder
 {
@@ -12,8 +15,8 @@ class SubscriptionTableSeeder extends Seeder
     public function run()
     {
         DB::table('subscriptions')->insert([
-        		['subscription' => 'Full School Site License'],
-        		['subscription' => 'Classroom']
+            ['subscription' => 'Full School Site License'],
+            ['subscription' => 'Classroom'],
         ]);
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,5 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AdminSeeder::class);
         $this->call(SubscriptionTableSeeder::class);
         $this->call(GradeTableSeeder::class);
+        $this->call(SongTableSeeder::class);
     }
 }

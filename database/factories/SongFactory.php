@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Factories;
+
 use App\Song;
 use Faker\Generator as Faker;
 

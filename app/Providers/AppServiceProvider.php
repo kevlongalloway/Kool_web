@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Blade;
 use App\Organization;
 use App\Observers\OrganizationObserver;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,9 +22,8 @@ class AppServiceProvider extends ServiceProvider
             return GuardResolver();
         });
 
-        if ($this->app->environment() != 'testing') {
-            $this->app->register(TelescopeServiceProvider::class);
-        }
+        $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
+        $this->app->register(TelescopeServiceProvider::class);
     }
 
     /**
@@ -33,6 +33,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Paginator::useBootstrap();
         Schema::defaultStringLength(191);
         //If user belongs to an organization
         Blade::if('bto', function () {

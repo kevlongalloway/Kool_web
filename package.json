@@ -26,7 +26,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "swup": "^2.0.5",
+        "admin-lte": "^3.0.0",
         "vue-progressbar": "^0.7.5",
         "vue-router": "^3.4.9"
     }

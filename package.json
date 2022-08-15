@@ -27,6 +27,7 @@
     },
     "dependencies": {
         "swup": "^2.0.5",
+        "admin-lte": "^3.1.0",
         "vue-progressbar": "^0.7.5",
         "vue-router": "^3.4.9"
     }
